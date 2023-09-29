@@ -10,7 +10,7 @@ function Header() {
         setNavActive(!navActive)
     }
     return (
-        <nav className="navbar navbar-expand-lg navbar-light navbar-custom-css justify-content-start">
+        <nav className="navbar navbar-expand-lg navbar-dark navbar-custom-css justify-content-start">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={navActive ? "True" : "False"} aria-label="Toggle navigation" onClick={handleNavBtn}>
                 <span className="navbar-toggler-icon"></span>
             </button>
