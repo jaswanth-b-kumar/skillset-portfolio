@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/skillset-portfolio/static/css/main.23fa09e2.css",
-    "main.js": "/skillset-portfolio/static/js/main.f3d46b39.js",
+    "main.css": "/skillset-portfolio/static/css/main.e3e70970.css",
+    "main.js": "/skillset-portfolio/static/js/main.ff3d776b.js",
     "static/js/787.8cf906fa.chunk.js": "/skillset-portfolio/static/js/787.8cf906fa.chunk.js",
     "index.html": "/skillset-portfolio/index.html",
-    "main.23fa09e2.css.map": "/skillset-portfolio/static/css/main.23fa09e2.css.map",
-    "main.f3d46b39.js.map": "/skillset-portfolio/static/js/main.f3d46b39.js.map",
+    "main.e3e70970.css.map": "/skillset-portfolio/static/css/main.e3e70970.css.map",
+    "main.ff3d776b.js.map": "/skillset-portfolio/static/js/main.ff3d776b.js.map",
     "787.8cf906fa.chunk.js.map": "/skillset-portfolio/static/js/787.8cf906fa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.23fa09e2.css",
-    "static/js/main.f3d46b39.js"
+    "static/css/main.e3e70970.css",
+    "static/js/main.ff3d776b.js"
   ]
 }
