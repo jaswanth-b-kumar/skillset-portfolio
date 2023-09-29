@@ -15,10 +15,10 @@ function App() {
         <Header />
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/skillset-portfolio/' element={<Home />} />
-          <Route path='/skillset-portfolio/experience' element={<Experience />} />
-          <Route path='/skillset-portfolio/contact' element={<Contact />} />
-          <Route path='/skillset-portfolio/projects' element={<Projects />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/experience' element={<Experience />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/projects' element={<Projects />} />
         </Routes>
         <Footer />
       </div>

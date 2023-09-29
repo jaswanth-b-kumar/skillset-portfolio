@@ -17,10 +17,10 @@ function Header() {
             <h1 className="navbar-brand portfolio-logo blockquote">Jaswanth Kumar Bevara</h1>
             <div className={`${navActive ? '' : 'collapse'} navbar-collapse justify-content-end nav-pills`} id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto nav-ul-custom">
-                    <li className="nav-item"><NavLink className="nav-link" exact activeClassName="active" to='/skillset-portfolio/'><span>Home</span></NavLink></li>
-                    <li className="nav-item"><NavLink className="nav-link" to='/skillset-portfolio/experience'><span>Experience</span></NavLink></li>
-                    <li className="nav-item"><NavLink className="nav-link" to='/skillset-portfolio/projects'><span>Projects</span></NavLink></li>
-                    <li className="nav-item"><NavLink className="nav-link" to='/skillset-portfolio/contact'><span>Contact</span></NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link" exact activeClassName="active" to='/'><span>Home</span></NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link" to='/experience'><span>Experience</span></NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link" to='/projects'><span>Projects</span></NavLink></li>
+                    <li className="nav-item"><NavLink className="nav-link" to='/contact'><span>Contact</span></NavLink></li>
                 </ul>
             </div>
         </nav>
