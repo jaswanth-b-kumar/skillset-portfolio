@@ -1,9 +1,14 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
-body{
-    margin: 0;
+body {
 
-    .app-component{
+    margin: 0;
+    
+    * {
+        color: #fff;
+    }
+
+    .app-component {
         background: linear-gradient(to bottom, #0B0C10, #1F2833);
     }
 }
