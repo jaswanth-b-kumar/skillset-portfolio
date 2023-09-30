@@ -11,6 +11,10 @@
         border-color: #fff;
     }
 
+    .navbar-toggler:focus{
+        box-shadow: none !important;
+    }
+
     a,
     a:hover {
         color: #fff;

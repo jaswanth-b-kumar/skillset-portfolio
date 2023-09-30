@@ -12,14 +12,14 @@ function Home() {
             <img src={profilePhoto} className="img-fluid rounded img-thumbnail" alt='profile' />
           </div>
           <div className="col-11 col-sm-9 col-md-9 col-lg-9 mx-auto card-customflex">
-            <div class="card-header">
+            <div className="card-header">
               <div className="card-head card-text-custom"><span><icons.PersonSquare /></span><span className="m-2">Jaswanth Kumar Bevara</span></div>
             </div>
             <div className="card-body">
               <div className="card-subhead  mb-2 text-body-secondary card-text-custom"><span><icons.CodeSlash /></span><span className="m-2">UI Developer</span></div>
               <div className="card-subhead  mb-2 text-body-secondary card-text-custom"><span><icons.Briefcase /></span><span className="m-2">Advanced Application Engineering Analyst at Accenture</span></div>
               <div className="card-subhead  mb-2 text-body-secondary card-text-custom"><span><icons.Buildings /></span><span className="m-2">NIT Surathkal, Karnataka</span></div>
-              <div className="card-subhead  mb-2 text-body-secondary card-text-custom">
+              <div className="card-subhead  mb-2 text-body-secondary card-text-custom mt-4">
                 <span className="line-height-custom">
                   I have over 3+ years of dedicated UI development experience, and I have a focus on cutting-edge technologies like React.js, HTML5, SCSS, CSS, JavaScript, JQuery and Bootstrap.
                   My interest in learning and encouraging a collaborative, inclusive team culture is motivated by my passion for designing outstanding user experiences.
@@ -27,9 +27,6 @@ function Home() {
                 </span>
               </div>
             </div>
-            {/* <div class="card-footer">
-              <div className="card-head card-text-custom"><span><icons.PersonSquare /></span><span className="m-2">Jaswanth Kumar Bevara</span></div>
-            </div> */}
           </div>
         </div>
       </div>
