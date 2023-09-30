@@ -10,11 +10,11 @@ function Header() {
         setNavActive(!navActive)
     }
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark navbar-custom-css justify-content-start">
+        <nav className="container navbar navbar-expand-lg navbar-dark navbar-custom-css justify-content-start">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={navActive ? "True" : "False"} aria-label="Toggle navigation" onClick={handleNavBtn}>
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <h1 className="navbar-brand portfolio-logo blockquote mt-2"><i>Jaswanth</i></h1>
+            <h1 className="navbar-brand portfolio-logo blockquote mt-2"><i>Jaswanth Portfolio Showcase</i></h1>
             <div className={`${navActive ? '' : 'collapse '}navbar-collapse justify-content-end nav-pills mt-2`} id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto nav-ul-custom">
                     <li className="nav-item"><NavLink className="nav-link" to='/'><span>About</span></NavLink></li>

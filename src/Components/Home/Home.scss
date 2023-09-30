@@ -1,8 +1,29 @@
-.card-text-custom{
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    .line-height-custom{
-        line-height: 1.3;
+.about-container {
+    .card{
+         background: #C5C6C7;
+    }
+
+    .card-text-custom {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+
+        .line-height-custom {
+            line-height: 1.5;
+        }
+
+        svg {
+            fill: #45A29E;
+        }
+    }
+
+    .about-description {
+        h1 {
+            color: #45A29E;
+        }
+
+        p {
+            color: #C5C6C7;
+        }
     }
 }

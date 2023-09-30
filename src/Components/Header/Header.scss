@@ -2,16 +2,23 @@
     padding: 0;
 
     .portfolio-logo {
-        margin: 0 10px;
-        color: #fff !important;
+        margin: 0 10px !important;
+        color: #45A29E !important;
+        font-size: 1rem;
     }
 
-    .navbar-toggler{
+    @media (width < 301px) {
+        .portfolio-logo {
+            font-size: 0.7rem;
+        }
+    }
+
+    .navbar-toggler {
         margin-left: 10px;
         border-color: #fff;
     }
 
-    .navbar-toggler:focus{
+    .navbar-toggler:focus {
         box-shadow: none !important;
     }
 
@@ -24,7 +31,8 @@
         li {
             a {
                 color: #fff;
-                span{
+
+                span {
                     padding: 0 10px;
                 }
             }
