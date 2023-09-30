@@ -7,19 +7,19 @@ function Footer() {
     <div className="footer-container">
       <div className="container py-2">
         <div className="row mt-2">
-          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center d-md-flex align-items-center flex-nowrap footer-thumbnails">
+          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.EnvelopePaper /></div>
             <p className="mx-2 mt-2 mt-sm-0">jaswanth.k.bevara@gmailcom</p>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center d-md-flex align-items-center flex-nowrap footer-thumbnails">
+          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.TelephoneInboundFill /></div>
             <p className="mx-2 mt-2 mt-sm-0">+91-9493454424</p>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center d-md-flex align-items-center flex-nowrap footer-thumbnails">
+          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.PersonVcardFill /></div>
             <p className="mx-2 mt-2 mt-sm-0">3+ Years experience</p>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center d-md-flex align-items-center flex-nowrap footer-thumbnails">
+          <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.GeoAltFill /></div>
             <p className="mx-2 mt-2 mt-sm-0">Hyderabad, India. 50081</p>
           </div>
