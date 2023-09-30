@@ -1,6 +1,16 @@
 .about-container {
     .card{
          background: #C5C6C7;
+
+         @media (width < 576px) {
+            .card-header,.card-body {
+                padding: 0;
+            }
+
+            .m-0-custom{
+                margin: 0 !important;
+            }
+        }
     }
 
     .card-text-custom {
