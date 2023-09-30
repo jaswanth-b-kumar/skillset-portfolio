@@ -4,12 +4,11 @@
     .portfolio-logo {
         margin: 0 10px !important;
         color: #45A29E !important;
-        font-size: 1rem;
     }
 
-    @media (width < 301px) {
+    @media (width < 350px) {
         .portfolio-logo {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
         }
     }
 

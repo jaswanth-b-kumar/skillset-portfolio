@@ -16,9 +16,9 @@ function Home() {
               <div className="card-head card-text-custom"><span><icons.PersonSquare /></span><span className="m-2">Jaswanth Kumar Bevara</span></div>
             </div>
             <div className="card-body">
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom"><span><icons.Briefcase /></span><span className="m-2">Advanced Application Engineering Analyst at Accenture <small><i>(September 2020 - Present)</i></small></span></div>
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom"><span><icons.Buildings /></span><span className="m-2">NIT Surathkal, Karnataka </span><small><i>(June 2016 - July 2020)</i></small></div>
               <div className="card-subhead mb-2 text-body-secondary card-text-custom"><span><icons.CodeSlash /></span><span className="m-2">UI Developer</span></div>
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom"><span><icons.Briefcase /></span><span className="m-2">Advanced Application Engineering Analyst at Accenture</span></div>
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom"><span><icons.Buildings /></span><span className="m-2">NIT Surathkal, Karnataka</span></div>
               <div className="card-subhead mb-2 text-body-secondary card-text-custom mt-2">
                 <span className="line-height-custom">
                   I have over 3+ years of dedicated UI development experience, and I have a focus on cutting-edge technologies like React.js, HTML5, SCSS, CSS, JavaScript, JQuery and Bootstrap.
