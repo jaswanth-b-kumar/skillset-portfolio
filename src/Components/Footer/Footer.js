@@ -5,7 +5,7 @@ import * as icons from 'react-bootstrap-icons';
 function Footer() {
   return (
     <div className="footer-container">
-      <div className="container py-2">
+      <div className="container-fluid py-2">
         <div className="row mt-2">
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <a className='text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap' href="mailto:jaswanth.k.bevara@gmail.com?subject=RE:Online Portfolio">

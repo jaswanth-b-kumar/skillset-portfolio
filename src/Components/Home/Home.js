@@ -5,7 +5,7 @@ import './Home.scss';
 
 function Home() {
   return (
-    <div className="container about-container">
+    <div className="container-fluid about-container">
       <div className="card mt-3 p-2">
         <div className="row gx-0">
           <div className="col-12 col-sm-3 col-md-3 col-lg-3 text-center mx-auto m-0-custom">
