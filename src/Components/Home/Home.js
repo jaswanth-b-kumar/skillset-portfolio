@@ -2,6 +2,7 @@ import React from 'react';
 import profilePhoto from './../../Assets/Images/profile_photo.jpg';
 import * as icons from 'react-bootstrap-icons';
 import './Home.scss';
+import MainHead from '../../Containers/MainHead/MainHead';
 
 function Home() {
   return (
@@ -32,7 +33,7 @@ function Home() {
       </div>
       <div className='about-description row'>
         <div className='col-12 col-md-6'>
-          <h1 className='mt-3'>My Skills</h1>
+          <MainHead content="My Skills" classes="mt-3" />
           <div className='row g-2 mt-2'>
             <div className='skill-container col-6 col-lg-4'>
               <div className='skill-background d-flex align-items-center'>
@@ -103,7 +104,7 @@ function Home() {
           </div>
         </div>
         <div className='col-12 col-md-6 about-container'>
-          <h1 className='mt-3'>About Me</h1>
+        <MainHead content="About Me" classes="mt-3" />
           <p>
             My journey began with the role of Advanced Application Engineering Analyst at Accenture, where I honed with my skills in UI technologies, consistently delivering high-quality work and exceeding expectations. With a solid background in frontend development,
             I've had the privilege of working in projects contributing to my growth as a professional in this field. While these

@@ -37,7 +37,12 @@
     }
 
     .copyright-divider{
-        border-top: 1px solid #66FCF1;
         color: #C5C6C7;
+
+        &.bordered-div{
+            border-top: 1px solid #66FCF1;
+        }
     }
+
+
 }
