@@ -31,14 +31,15 @@ function Experience() {
               <td>
                 <div className="table-chips">React.js</div>
                 <div className="table-chips">axios</div>
+                <div className="table-chips">react-redux</div>
+                <div className="table-chips">react-router</div>
                 <div className="table-chips">css</div>
                 <div className="table-chips">scss</div>
                 <div className="table-chips">html</div>
                 <div className="table-chips">Javascript</div>
                 <div className="table-chips">npm</div>
                 <div className="table-chips">Bootstrap</div>
-                <div className="table-chips">react-redux</div>
-                <div className="table-chips">react-router</div>
+               
               </td>
             </tr>
           </tbody>
