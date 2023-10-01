@@ -17,7 +17,7 @@ function Home() {
             </div>
             <div className="card-body">
               <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Briefcase /></span><span className="m-2">Advanced Application Engineering Analyst at Accenture <small><i>(September 2020 - Present)</i></small></span></div>
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Buildings /></span><span className="m-2">NIT Surathkal, Karnataka </span><small><i>(June 2016 - July 2020)</i></small></div>
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Buildings /></span><span className="m-2">NITK Surathkal, Karnataka </span><small><i>(June 2016 - July 2020)</i></small></div>
               <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.CodeSlash /></span><span className="m-2">UI Developer</span></div>
               <div className="card-subhead mb-2 text-body-secondary card-text-custom mt-2 px-2">
                 <span className="line-height-custom">

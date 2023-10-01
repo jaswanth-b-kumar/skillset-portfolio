@@ -6,16 +6,18 @@ function Footer() {
   return (
     <div className="footer-container">
       <div className="container-fluid py-2">
-        <div className="row mt-2">
+        <div className="row col-12 col-lg-12 col-md-8 mx-auto mt-2">
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
-            <a className='text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap' href="mailto:jaswanth.k.bevara@gmail.com?subject=RE:Online Portfolio">
+            <a className='text-center justify-content-sm-center justify-content-md-start text-center d-md-flex align-items-center flex-nowrap' href="mailto:jaswanth.k.bevara@gmail.com?subject=RE:Online Portfolio">
               <div className="footer-icon"><icons.EnvelopePaper /></div>
               <p className="mx-2 mt-2 mt-sm-0">jaswanth.k.bevara@gmail.com</p>
             </a>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
+          <a className='text-center justify-content-sm-center justify-content-md-start text-center d-md-flex align-items-center flex-nowrap' href="tel:+919493454424">
             <div className="footer-icon"><icons.TelephoneInboundFill /></div>
             <p className="mx-2 mt-2 mt-sm-0">+91-9493454424</p>
+          </a>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.PersonVcardFill /></div>
