@@ -39,7 +39,6 @@ function Experience() {
                 <div className="table-chips">Javascript</div>
                 <div className="table-chips">npm</div>
                 <div className="table-chips">Bootstrap</div>
-               
               </td>
             </tr>
           </tbody>
