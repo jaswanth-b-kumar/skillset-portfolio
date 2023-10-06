@@ -33,7 +33,7 @@ function Home() {
       </div>
       <div className='about-description row'>
         <div className='col-12 col-md-6'>
-          <MainHead content="My Skills" classes="mt-3" />
+          <MainHead content="Technical Skills" classes="mt-3" />
           <div className='row g-2 mt-2'>
             <div className='skill-container col-6 col-lg-4'>
               <div className='skill-background d-flex align-items-center'>
