@@ -9,15 +9,15 @@ function Contact() {
     email: '',
     body: ''
   })
-  const handleFloatingEmailChange = (e) => {
-    setState({ ...state, email: e.target.value });
-  }
-  const handleFloatingTextChange = (e) => {
-    setState({ ...state, body: e.target.value });
-  }
-  const handleFloatingNameChange = (e) => {
-    setState({ ...state, name: e.target.value });
-  }
+  // const handleFloatingEmailChange = (e) => {
+  //   setState({ ...state, email: e.target.value });
+  // }
+  // const handleFloatingTextChange = (e) => {
+  //   setState({ ...state, body: e.target.value });
+  // }
+  // const handleFloatingNameChange = (e) => {
+  //   setState({ ...state, name: e.target.value });
+  // }
   return (
     <div className="container-fluid contact-container">
       <MainHead content="Let's Talk!" classes="mt-3" />
@@ -27,7 +27,7 @@ function Contact() {
         eager to hear from you and help with any inquiries, suggestions, or opportunities for collaboration
         that you may have. I will contact you as soon as I can after you complete the form below.
       </p>
-      <Form>
+      {/* <Form>
         <FloatingLabel
           controlId="floatingTextarea"
           label="Comments"
@@ -42,7 +42,7 @@ function Contact() {
             style={{ height: '100px' }}
           />
         </FloatingLabel>
-      </Form>
+      </Form> */}
     </div>
   )
 }

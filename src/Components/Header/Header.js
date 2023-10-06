@@ -20,7 +20,7 @@ function Header() {
                     <li className="nav-item"><NavLink className="nav-link" to='/'><span>About</span></NavLink></li>
                     <li className="nav-item"><NavLink className="nav-link" to='/experience'><span>Experience</span></NavLink></li>
                     <li className="nav-item"><NavLink className="nav-link" to='/projects'><span>Projects</span></NavLink></li>
-                    <li className="nav-item"><NavLink className="nav-link" to='/contact'><span>Contact</span></NavLink></li>
+                    {/* <li className="nav-item"><NavLink className="nav-link" to='/contact'><span>Contact</span></NavLink></li> */}
                 </ul>
             </div>
         </nav>
