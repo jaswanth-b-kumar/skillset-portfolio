@@ -11,7 +11,7 @@ function Footer() {
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <a className='text-center justify-content-sm-center justify-content-md-start text-center mx-auto d-block d-md-flex align-items-center flex-nowrap' href="mailto:jaswanth.k.bevara@gmail.com?subject=RE:Online Portfolio">
               <div className="footer-icon"><icons.EnvelopePaper /></div>
-              <p className="mx-2 mt-2 mt-sm-0">jaswanth.k.bevara@gmail.com</p>
+              <p className="mx-2 mt-2 mt-sm-0">jaswanth.k.bevara@gmail.com </p>
             </a>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
