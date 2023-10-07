@@ -23,6 +23,10 @@ function Experience() {
               <td>Advanced Application Engineering Senior Analyst</td>
             </tr>
             <tr>
+              <td>Client</td>
+              <td>Accenture - Internal</td>
+            </tr>
+            <tr>
               <td>Duration</td>
               <td>May 2022 - Present</td>
             </tr>
@@ -48,11 +52,15 @@ function Experience() {
           <tbody>
             <tr>
               <td>Project</td>
-              <td>myConcerto Client Portals</td>
+              <td>myConcerto - Client Portals</td>
             </tr>
             <tr>
               <td>Role</td>
               <td>Advanced Application Engineering Analyst</td>
+            </tr>
+            <tr>
+              <td>Client</td>
+              <td>Accenture - Internal</td>
             </tr>
             <tr>
               <td>Duration</td>
