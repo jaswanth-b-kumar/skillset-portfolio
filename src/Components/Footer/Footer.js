@@ -17,16 +17,16 @@ function Footer() {
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <a className='text-center justify-content-sm-center justify-content-md-start text-center mx-auto d-block d-md-flex align-items-center flex-nowrap' href="tel:+919493454424">
               <div className="footer-icon"><icons.TelephoneInboundFill /></div>
-              <p className="mx-2 mt-2 mt-sm-0">+91-9493454424</p>
+              <p className="mx-2 mt-2 mt-sm-0">+4407356095607</p>
             </a>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.PersonVcardFill /></div>
-            <p className="mx-2 mt-2 mt-sm-0">3+ Years experience</p>
+            <p className="mx-2 mt-2 mt-sm-0">4+ Years experience</p>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12 col-12 text-center justify-content-sm-center justify-content-md-start mx-auto text-center mt-lg-0 mt-4 d-md-flex align-items-center flex-nowrap footer-thumbnails">
             <div className="footer-icon"><icons.GeoAltFill /></div>
-            <p className="mx-2 mt-2 mt-sm-0">Hyderabad, India. 500081</p>
+            <p className="mx-2 mt-2 mt-sm-0">E14, London, United Kingdom</p>
           </div>
         </div>
         <div className="d-flex my-4 mx-auto justify-content-center">

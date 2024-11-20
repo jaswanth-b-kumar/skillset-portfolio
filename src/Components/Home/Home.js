@@ -17,14 +17,14 @@ function Home() {
               <div className="card-head card-text-custom px-2"><span><icons.PersonSquare /></span><span className="m-2 py-3">Jaswanth Kumar Bevara</span></div>
             </div>
             <div className="card-body">
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Briefcase /></span><span className="m-2">Advanced Application Engineering Analyst at Accenture <small><i>(September 2020 - Present)</i></small></span></div>
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Buildings /></span><span className="m-2">NITK Surathkal, Karnataka <small><i>(June 2016 - July 2020)</i></small></span></div>
-              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.CodeSlash /></span><span className="m-2">UI Developer</span></div>
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Briefcase /></span><span className="m-2">Software Engineer at Liv-Ex</span></div>
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.Buildings /></span><span className="m-2">NITK Surathkal, Karnataka</span></div>
+              <div className="card-subhead mb-2 text-body-secondary card-text-custom px-2"><span><icons.CodeSlash /></span><span className="m-2">Front end developer</span></div>
               <div className="card-subhead mb-2 text-body-secondary card-text-custom mt-2 px-2">
                 <span className="line-height-custom">
-                  I have over 3+ years of dedicated UI development experience, and I have a focus on cutting-edge technologies like React.js, react-redux, react-router, npm, git, Node.js , HTML5, SCSS, CSS, JavaScript, JQuery and Bootstrap.
-                  My interest in learning and encouraging a collaborative, inclusive team culture is motivated by my passion for designing outstanding user experiences.
-                  I enjoy a challenge, and my goal is to contribute to initiatives that improves my skills in front-end development.
+                  I am a software development professional based in the United Kingdom on a Tier 2 visa, actively pursuing my aspiration to become a Software Architect. With a strong background in designing and developing scalable, efficient web applications, I am passionate about creating robust software systems that meet modern technological demands.
+                  <br /><br />
+                  Currently, as a React Developer, I have honed my expertise in technologies like React.js, JavaScript, TypeScript, and AWS. My experience spans front-end architecture, API integrations, and performance optimization, laying a solid foundation for my transition into software architecture. I am committed to continuously expanding my knowledge and skills to excel in this field and contribute to innovative, high-performing systems.
                 </span>
               </div>
             </div>
@@ -51,6 +51,30 @@ function Home() {
                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM243.8 381.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z" /></svg>
                 </div>
                 <p>Javascript</p>
+              </div>
+            </div>
+            <div className='skill-container col-6 col-lg-4'>
+              <div className='skill-background d-flex align-items-center'>
+                <div className='skill-icon d-flex justify-content-center align-items-center'>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4 .4 67.6 .1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+                </div>
+                <p>Docker</p>
+              </div>
+            </div>
+            <div className='skill-container col-6 col-lg-4'>
+              <div className='skill-background  d-flex align-items-center'>
+                <div className='skill-icon d-flex justify-content-center align-items-center'>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M216.3 158.4H137C97 147.9 6.5 150.6 6.5 233.2c0 30.1 15 51.2 35 61-25.1 23-37 33.9-37 49.2 0 11 4.5 21.1 17.9 26.8C8.1 383.6 0 393.4 0 411.7c0 32.1 28.1 50.8 101.6 50.8 70.8 0 111.8-26.4 111.8-73.2 0-58.7-45.2-56.5-151.6-63l13.4-21.6c27.3 7.6 118.7 10 118.7-67.9 0-18.7-7.7-31.7-15-41.1l37.4-2.8zm-63.4 241.9c0 32.1-104.9 32.1-104.9 2.4 0-8.1 5.3-15 10.6-21.5 77.7 5.3 94.3 3.4 94.3 19.1zm-50.8-134.6c-52.8 0-50.5-71.2 1.2-71.2 49.5 0 50.8 71.2-1.2 71.2zm133.3 100.5v-32.1c26.8-3.7 27.2-2 27.2-11V203.6c0-8.5-2.1-7.4-27.2-16.3l4.5-32.9H324v168.7c0 6.5 .4 7.3 6.5 8.1l20.7 2.8v32.1zm52.5-244.3c-23.2 0-36.6-13.4-36.6-36.6s13.4-35.8 36.6-35.8c23.6 0 37 12.6 37 35.8s-13.4 36.6-37 36.6zM512 350.5c-17.5 8.5-43.1 16.3-66.3 16.3-48.4 0-66.7-19.5-66.7-65.5V194.8c0-5.4 1.1-4.1-31.7-4.1V154.5c35.8-4.1 50-22 54.5-66.3h38.6c0 65.8-1.3 61.8 3.3 61.8H501v40.7h-60.6v97.2c0 6.9-4.9 51.4 60.6 26.8z"/></svg>
+                </div>
+                <p>GIT</p>
+              </div>
+            </div>
+            <div className='skill-container col-6 col-lg-4'>
+              <div className='skill-background  d-flex align-items-center'>
+                <div className='skill-icon d-flex justify-content-center align-items-center'>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z" /></svg>
+                </div>
+                <p>npm</p>
               </div>
             </div>
             <div className='skill-container col-6 col-lg-4'>
@@ -93,29 +117,18 @@ function Home() {
                 <p>JQuery</p>
               </div>
             </div>
-            <div className='skill-container col-6 col-lg-4'>
-              <div className='skill-background  d-flex align-items-center'>
-                <div className='skill-icon d-flex justify-content-center align-items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M288 288h-32v-64h32v64zm288-128v192H288v32H160v-32H0V160h576zm-416 32H32v128h64v-96h32v96h32V192zm160 0H192v160h64v-32h64V192zm224 0H352v128h64v-96h32v96h32v-96h32v96h32V192z"/></svg>
-                </div>
-                <p>npm</p>
-              </div>
-            </div>
           </div>
         </div>
         <div className='col-12 col-md-6 about-container'>
           <MainHead content="About Me" classes="mt-3" />
           <p>
-            My journey began with the role of Advanced Application Engineering Analyst at Accenture, where I honed with my skills in UI technologies, consistently delivering high-quality work and exceeding expectations. With a solid background in frontend development,
-            I've had the privilege of working in projects contributing to my growth as a professional in this field. While these
-            experiences have been instrumental in establishing my foundation, I'm now eagerly seeking a new challenge that allows me to dive into advanced JavaScript
-            frameworks and client-focused projects.
+            My journey as a software developer began with a role at Accenture, where I built a strong foundation in UI development and developed my skills in technologies like React.js, Angular, and JavaScript. Working on diverse projects, I consistently delivered high-quality results while gaining valuable experience in frontend architecture, API integrations, and performance optimization.
           </p>
           <p>
-            I'm a results-driven UI Developer with a profound commitment to Agile and Scrum methodologies.
-            I've consistently demonstrated my dedication to these collaborative frameworks, which I believe are essential
-            for delivering successful projects. I've adopted the Agile mindset by actively participating in daily standup calls, sprint planning, and retrospective
-            meetings.
+            Over time, I have followed Agile methodologies, actively participating in sprint planning, retrospectives, and daily standups to contribute to collaborative and efficient project delivery. These experiences have been pivotal in shaping me into a results-driven developer who thrives in team-oriented environments.
+          </p>
+          <p>
+            While my current role as a React Developer at Liv-ex has further strengthened my expertise in building user-friendly and scalable web applications, I am now seeking new challenges that align with my aspirations of becoming a Software Architect. I am eager to explore advanced front-end and back-end technologies, focusing on designing robust systems that drive innovation and deliver exceptional value to users.
           </p>
         </div>
       </div>
