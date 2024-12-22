@@ -1,5 +1,16 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+@font-face {
+    font-family: 'Fira Code';
+    src: url('../Fonts/roboto-regular.woff2') format('woff2'), url('../Fonts/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Fira Code', sans-serif;
+}
+
 body {
 
     margin: 0;
