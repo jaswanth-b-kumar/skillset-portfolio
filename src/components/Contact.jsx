@@ -75,7 +75,7 @@ const Contact = ({ darkMode }) => {
   };
   
   return (
-    <section id="contact" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="contact" className={`py-8 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-3xl md:text-4xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>

@@ -11,15 +11,14 @@ import Footer from './components/Footer';
 import EasterEgg from './components/EasterEgg';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [easterEggActive, setEasterEggActive] = useState(false);
 
   useEffect(() => {
-    // Check user's preferred color scheme
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(prefersDarkMode);
+    // user's preferred color scheme
+    // const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // setDarkMode(prefersDarkMode);
 
-    // Set up console easter egg
     const originalConsoleLog = console.log;
     console.log = (...args) => {
       if (args.length === 1 && args[0] === 'help') {

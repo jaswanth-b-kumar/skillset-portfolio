@@ -20,13 +20,17 @@ const ExperienceCard = ({ experience, index, darkMode }) => {
       { threshold: 0.1 }
     );
     
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    // Store the current value of the ref
+    const currentCardRef = cardRef.current;
+    
+    if (currentCardRef) {
+      observer.observe(currentCardRef);
     }
     
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      // Use the stored value in cleanup
+      if (currentCardRef) {
+        observer.unobserve(currentCardRef);
       }
     };
   }, [index]);
