@@ -1,445 +1,434 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const SkillChip = ({ skill, category, level, darkMode, index }) => {
-  const categoryColors = {
-    languages: { bg: darkMode ? 'bg-blue-900/30' : 'bg-blue-100', text: darkMode ? 'text-blue-400' : 'text-blue-700', border: darkMode ? 'border-blue-700' : 'border-blue-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg> },
-    frameworks: { bg: darkMode ? 'bg-purple-900/30' : 'bg-purple-100', text: darkMode ? 'text-purple-400' : 'text-purple-700', border: darkMode ? 'border-purple-700' : 'border-purple-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg> },
-    styling: { bg: darkMode ? 'bg-pink-900/30' : 'bg-pink-100', text: darkMode ? 'text-pink-400' : 'text-pink-700', border: darkMode ? 'border-pink-700' : 'border-pink-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg> },
-    tools: { bg: darkMode ? 'bg-green-900/30' : 'bg-green-100', text: darkMode ? 'text-green-400' : 'text-green-700', border: darkMode ? 'border-green-700' : 'border-green-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg> },
-    testing: { bg: darkMode ? 'bg-yellow-900/30' : 'bg-yellow-100', text: darkMode ? 'text-yellow-500' : 'text-yellow-700', border: darkMode ? 'border-yellow-700' : 'border-yellow-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> },
-    ide: { bg: darkMode ? 'bg-red-900/30' : 'bg-red-100', text: darkMode ? 'text-red-400' : 'text-red-700', border: darkMode ? 'border-red-700' : 'border-red-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> },
-    build: { bg: darkMode ? 'bg-orange-900/30' : 'bg-orange-100', text: darkMode ? 'text-orange-400' : 'text-orange-700', border: darkMode ? 'border-orange-700' : 'border-orange-300', icon: <svg className="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg> }
+const Skills = ({ darkMode }) => {
+  const [activeMode, setActiveMode] = useState('constellation');
+  const [activeSkill, setActiveSkill] = useState(null);
+  const [typedCommand, setTypedCommand] = useState('');
+  const [terminalHistory, setTerminalHistory] = useState([
+    { type: 'system', content: 'Welcome to the Skills Terminal. Type "help" for available commands.' }
+  ]);
+  const constellationRef = useRef(null);
+  const terminalInputRef = useRef(null);
+  
+  const skillsData = {
+    languages: [
+      { name: 'JavaScript', level: 90, description: 'Advanced JavaScript including ES6+ features.', projects: ['Liv-ex Trading Platform', 'Design Library'] },
+      { name: 'TypeScript', level: 85, description: 'Strong typing and object-oriented TypeScript.', projects: ['CDAO Finance App'] },
+      { name: 'HTML5', level: 95, description: 'Semantic HTML for accessible web applications.', projects: ['All Projects'] },
+      { name: 'SQL', level: 75, description: 'Database queries and data manipulation.', projects: ['Liv-ex Trading Platform'] }
+    ],
+    frameworks: [
+      { name: 'React.js', level: 92, description: 'Component-based architecture, hooks, and state management.', projects: ['Liv-ex Trading Platform', 'Design Library'] },
+      { name: 'Angular.js', level: 80, description: 'MVW architecture and dependency injection.', projects: ['CDAO Finance App'] },
+      { name: 'jQuery', level: 85, description: 'DOM manipulation and event handling.', projects: ['Client Solution'] }
+    ],
+    styling: [
+      { name: 'SCSS', level: 88, description: 'Advanced CSS with variables, nesting, and mixins.', projects: ['All Projects'] },
+      { name: 'Bootstrap', level: 90, description: 'Responsive layouts and UI components.', projects: ['CDAO Finance App', 'Client Solution'] },
+      { name: 'Bulma', level: 85, description: 'Modern CSS framework based on Flexbox.', projects: ['Liv-ex Trading Platform'] }
+    ],
+    tools: [
+      { name: 'Git', level: 88, description: 'Version control and collaborative development.', projects: ['All Projects'] },
+      { name: 'NPM', level: 92, description: 'Package management and dependency resolution.', projects: ['CDAO Finance App', 'Design Library'] },
+      { name: 'Yarn', level: 86, description: 'Fast, reliable, and secure dependency management.', projects: ['Liv-ex Trading Platform'] },
+      { name: 'Jest/RTL', level: 82, description: 'Testing frameworks for React applications.', projects: ['Design Library'] },
+      { name: 'Mocha/Chai', level: 78, description: 'JavaScript test framework for Node.js.', projects: ['Client Solution'] },
+      { name: 'AWS S3/CloudFront', level: 85, description: 'Cloud hosting and content delivery.', projects: ['Liv-ex Trading Platform'] },
+      { name: 'Azure DevOps', level: 80, description: 'CI/CD pipelines and work item tracking.', projects: ['CDAO Finance App', 'Design Library'] }
+    ]
   };
-
-  const colorSet = categoryColors[category] || categoryColors.languages;
-  const progressBarColor = darkMode ? 
-    (category === 'languages' ? 'bg-blue-400' : 
-    category === 'frameworks' ? 'bg-purple-400' : 
-    category === 'styling' ? 'bg-pink-400' : 
-    category === 'tools' ? 'bg-green-400' : 
-    category === 'testing' ? 'bg-yellow-400' : 
-    category === 'ide' ? 'bg-red-400' : 
-    category === 'build' ? 'bg-orange-400' : 'bg-cyan-400') : 
-    (category === 'languages' ? 'bg-blue-600' : 
-    category === 'frameworks' ? 'bg-purple-600' : 
-    category === 'styling' ? 'bg-pink-600' : 
-    category === 'tools' ? 'bg-green-600' : 
-    category === 'testing' ? 'bg-yellow-600' : 
-    category === 'ide' ? 'bg-red-600' : 
-    category === 'build' ? 'bg-orange-600' : 'bg-blue-600');
   
-  const delay = index * 0.05;
+  const allSkills = Object.values(skillsData).flat();
   
-  return (
-    <div 
-      className={`rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg animate-fade-in ${colorSet.bg} border ${colorSet.border}`}
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center space-x-2">
-            <span className={`${colorSet.text}`}>
-              {colorSet.icon}
-            </span>
-            <span className={`font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              {skill}
-            </span>
-          </div>
-          <span className={`text-xs px-2 py-1 rounded-full ${colorSet.bg} ${colorSet.text}`}>
-            {level}%
-          </span>
-        </div>
-        
-        <div className="w-full h-2 rounded-full bg-gray-700/20">
-          <div 
-            className={`h-full rounded-full transition-all duration-1000 ease-out ${progressBarColor}`}
-            style={{ width: `${level}%` }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const SkillConstellation = ({ skills, activeCategory, darkMode, onSkillClick }) => {
-  const canvasRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [orbs, setOrbs] = useState([]);
-  const animationRef = useRef(null);
-  
-  const categorySettings = React.useMemo(() => ({
-    languages: { x: 0.3, y: 0.3, color: darkMode ? '#60a5fa' : '#2563eb' },
-    frameworks: { x: 0.7, y: 0.3, color: darkMode ? '#c084fc' : '#7c3aed' },
-    styling: { x: 0.2, y: 0.7, color: darkMode ? '#f472b6' : '#db2777' },
-    tools: { x: 0.5, y: 0.5, color: darkMode ? '#4ade80' : '#16a34a' },
-    testing: { x: 0.8, y: 0.7, color: darkMode ? '#facc15' : '#ca8a04' },
-    ide: { x: 0.3, y: 0.8, color: darkMode ? '#f87171' : '#dc2626' },
-    build: { x: 0.7, y: 0.8, color: darkMode ? '#fb923c' : '#ea580c' }
-  }),[darkMode]);
-  
-  useEffect(() => {
-    if (canvasRef.current) {
-      const updateDimensions = () => {
-        setDimensions({
-          width: canvasRef.current.offsetWidth,
-          height: canvasRef.current.offsetHeight
-        });
-      };
+  // Terminal functionality
+  const handleTerminalCommand = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
       
-      updateDimensions();
-      window.addEventListener('resize', updateDimensions);
+      const command = typedCommand.trim().toLowerCase();
+      let response;
       
-      return () => {
-        window.removeEventListener('resize', updateDimensions);
-      };
-    }
-  }, []);
-  
-  useEffect(() => {
-    if (dimensions.width === 0 || dimensions.height === 0) return;
-    
-    const newOrbs = skills.map(skill => {
-      const category = skill.category;
-      const targetX = categorySettings[category].x * dimensions.width;
-      const targetY = categorySettings[category].y * dimensions.height;
-      
-      // Random starting position
-      const startX = Math.random() * dimensions.width;
-      const startY = Math.random() * dimensions.height;
-      
-      // Random speed
-      const speedFactor = 0.02 + Math.random() * 0.03;
-      
-      const isActive = activeCategory === 'all' || activeCategory === category;
-      const size = isActive ? 
-        Math.floor(Math.random() * 10) + 20 : // larger for active 
-        Math.floor(Math.random() * 6) + 12;   // smaller for inactive
-        
-      return {
-        id: skill.skill,
-        x: startX,
-        y: startY,
-        targetX,
-        targetY,
-        size,
-        speedFactor,
-        color: categorySettings[category].color,
-        category,
-        level: skill.level,
-        isActive,
-        isHighlighted: false
-      };
-    });
-    
-    setOrbs(newOrbs);
-  }, [skills, dimensions, activeCategory, darkMode, categorySettings]);
-  
-  useEffect(() => {
-    if (orbs.length === 0) return;
-    
-    const animate = () => {
-      setOrbs(prevOrbs => {
-        return prevOrbs.map(orb => {
-          // Calculating distance to target
-          const dx = orb.targetX - orb.x;
-          const dy = orb.targetY - orb.y;
-          
-          // Added some "wobble" to make it more organic
-          const wobbleX = Math.sin(Date.now() * 0.001 + orb.id.length) * 5;
-          const wobbleY = Math.cos(Date.now() * 0.002 + orb.id.length) * 5;
-          
-          // Move towards target with easing
-          const newX = orb.x + dx * orb.speedFactor + wobbleX * 0.2;
-          const newY = orb.y + dy * orb.speedFactor + wobbleY * 0.2;
-          
-          return {
-            ...orb,
-            x: newX,
-            y: newY
+      if (command === 'help') {
+        response = {
+          type: 'system',
+          content: `Available commands:
+- "list": Lists all skill categories
+- "show <category>": Shows skills in a category (e.g., "show languages")
+- "skill <name>": Shows details about a specific skill (e.g., "skill React.js")
+- "clear": Clears the terminal
+- "exit": Exits terminal mode`
+        };
+      } else if (command === 'list') {
+        response = {
+          type: 'system',
+          content: `Skill categories:
+- Languages (${skillsData.languages.length} skills)
+- Frameworks (${skillsData.frameworks.length} skills)
+- Styling (${skillsData.styling.length} skills)
+- Tools (${skillsData.tools.length} skills)`
+        };
+      } else if (command.startsWith('show ')) {
+        const category = command.substring(5);
+        if (category === 'languages' || category === 'frameworks' || category === 'styling' || category === 'tools') {
+          const categorySkills = skillsData[category].map(skill => skill.name).join(', ');
+          response = {
+            type: 'system',
+            content: `${category.charAt(0).toUpperCase() + category.slice(1)}: ${categorySkills}`
           };
-        });
-      });
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
-    
-    animationRef.current = requestAnimationFrame(animate);
-    
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+        } else {
+          response = { type: 'error', content: `Unknown category: ${category}` };
+        }
+      } else if (command.startsWith('skill ')) {
+        const skillName = command.substring(6);
+        const skill = allSkills.find(s => s.name.toLowerCase() === skillName.toLowerCase());
+        
+        if (skill) {
+          response = {
+            type: 'skill',
+            content: `${skill.name} (${skill.level}%): ${skill.description}
+Related projects: ${skill.projects.join(', ')}`
+          };
+        } else {
+          response = { type: 'error', content: `Skill not found: ${skillName}` };
+        }
+      } else if (command === 'clear') {
+        setTerminalHistory([{ type: 'system', content: 'Terminal cleared.' }]);
+        setTypedCommand('');
+        return;
+      } else if (command === 'exit') {
+        setActiveMode('constellation');
+        setTypedCommand('');
+        return;
+      } else if (command === '') {
+        response = { type: 'system', content: '' };
+      } else {
+        response = { type: 'error', content: `Unknown command: ${command}. Type "help" for available commands.` };
       }
-    };
-  }, [orbs.length]);
+      
+      setTerminalHistory([...terminalHistory, 
+        { type: 'command', content: `> ${typedCommand}` },
+        response
+      ]);
+      setTypedCommand('');
+    }
+  };
   
-  // Update orbs when active category changes
+  // Skill constellation
   useEffect(() => {
-    setOrbs(prevOrbs => {
-      return prevOrbs.map(orb => {
-        const isActive = activeCategory === 'all' || activeCategory === orb.category;
-        const size = isActive ? 
-          Math.floor(Math.random() * 10) + 20 : // larger for active 
-          Math.floor(Math.random() * 6) + 12;   // smaller for inactive
+    if (activeMode === 'constellation' && constellationRef.current) {
+      const canvas = constellationRef.current;
+      const ctx = canvas.getContext('2d');
+      let animationFrameId;
+      
+      // Set canvas dimensions
+      const resizeCanvas = () => {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      };
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Create nodes for all skills
+      const nodes = allSkills.map((skill, index) => {
+        const angle = (index / allSkills.length) * Math.PI * 2;
+        const radius = 130 + Math.random() * 50;
+        
+        return {
+          x: canvas.width / 2 + Math.cos(angle) * radius,
+          y: canvas.height / 2 + Math.sin(angle) * radius,
+          radius: 5 + (skill.level / 20),
+          skill: skill,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          hovered: false
+        };
+      });
+      
+      // Handle mouse interactions
+      let hoveredNode = null;
+      const handleMouseMove = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        hoveredNode = null;
+        for (const node of nodes) {
+          const dx = mouseX - node.x;
+          const dy = mouseY - node.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
           
-        return {
-          ...orb,
-          isActive,
-          size
-        };
-      });
-    });
-  }, [activeCategory]);
-  
-  const handleMouseEnter = (id) => {
-    setOrbs(prevOrbs => {
-      return prevOrbs.map(orb => {
-        return {
-          ...orb,
-          isHighlighted: orb.id === id
-        };
-      });
-    });
-  };
-  
-  const handleMouseLeave = () => {
-    setOrbs(prevOrbs => {
-      return prevOrbs.map(orb => {
-        return {
-          ...orb,
-          isHighlighted: false
-        };
-      });
-    });
-  };
-  
-  return (
-    <div 
-      ref={canvasRef} 
-      className="relative w-full h-full overflow-hidden rounded-xl"
-      style={{ minHeight: '500px' }}
-    >
-      <div className="absolute inset-0 grid grid-cols-6 grid-rows-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={`col-${i}`} className={`border-l ${darkMode ? 'border-gray-700/30' : 'border-gray-300/30'}`}></div>
-        ))}
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={`row-${i}`} className={`border-t ${darkMode ? 'border-gray-700/30' : 'border-gray-300/30'}`}></div>
-        ))}
-      </div>
-      
-      {Object.entries(categorySettings).map(([category, settings]) => (
-        <div
-          key={category}
-          className={`absolute transform -translate-x-1/2 -translate-y-1/2 opacity-30 text-xs font-mono transition-opacity duration-500 ${
-            activeCategory === category || activeCategory === 'all' ? 'opacity-70' : 'opacity-20'
-          }`}
-          style={{ 
-            left: `${settings.x * 100}%`, 
-            top: `${settings.y * 100}%`,
-            color: settings.color
-          }}
-        >
-          {category.toUpperCase()}
-        </div>
-      ))}
-      
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {activeCategory !== 'all' && orbs
-          .filter(orb => orb.category === activeCategory)
-          .map((orb, i, filteredOrbs) => {
-            return filteredOrbs.slice(i + 1).map((otherOrb, j) => (
-              <line
-                key={`line-${i}-${j}`}
-                x1={orb.x}
-                y1={orb.y}
-                x2={otherOrb.x}
-                y2={otherOrb.y}
-                stroke={orb.color}
-                strokeWidth="1"
-                strokeOpacity="0.2"
-                strokeDasharray="3,3"
-              />
-            ));
-          })}
-      </svg>
-      
-      {orbs.map(orb => (
-        <div
-          key={orb.id}
-          className="absolute transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full cursor-pointer transition-all duration-300"
-          style={{
-            left: `${orb.x}px`,
-            top: `${orb.y}px`,
-            width: `${orb.size * 2}px`,
-            height: `${orb.size * 2}px`,
-            backgroundColor: `${orb.color}${orb.isHighlighted ? '40' : '20'}`,
-            borderWidth: 2,
-            borderColor: orb.isHighlighted ? orb.color : 'transparent',
-            boxShadow: orb.isHighlighted ? `0 0 15px ${orb.color}80` : 'none',
-            zIndex: orb.isHighlighted ? 10 : (orb.isActive ? 5 : 1),
-            opacity: orb.isActive ? 1 : 0.5,
-            fontSize: `${orb.size / 2}px`
-          }}
-          onMouseEnter={() => handleMouseEnter(orb.id)}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => onSkillClick(orb.category)}
-        >
-          <span 
-            className="whitespace-nowrap font-mono font-medium px-2 py-1"
-            style={{ color: orb.color }}
-          >
-            {orb.id}
-          </span>
-          
-          {orb.isHighlighted && (
-            <div 
-              className="absolute top-full mt-2 px-2 py-1 rounded-md text-xs whitespace-nowrap"
-              style={{ 
-                backgroundColor: darkMode ? '#1f2937' : '#f9fafb',
-                color: orb.color,
-                boxShadow: `0 0 5px ${orb.color}40`,
-                border: `1px solid ${orb.color}40`
-              }}
-            >
-              {orb.level}% Proficiency
-            </div>
-          )}
-        </div>
-      ))}
-      
-      {Object.entries(categorySettings).map(([category, settings]) => {
-        let icon;
-        switch(category) {
-          case 'languages':
-            icon = <svg className="w-full h-full" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>;
+          if (distance < node.radius + 5) {
+            hoveredNode = node;
             break;
-          case 'frameworks':
-            icon = <svg className="w-full h-full" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>;
-            break;
-          case 'styling':
-            icon = <svg className="w-full h-full" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>;
-            break;
-          default:
-            icon = <svg className="w-full h-full" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>;
+          }
         }
         
-        return (
-          <div
-            key={`icon-${category}`}
-            className={`absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-500 flex items-center justify-center pointer-events-none ${
-              activeCategory === category ? 'opacity-70' : 'opacity-30'
-            }`}
-            style={{ 
-              left: `${settings.x * dimensions.width}px`, 
-              top: `${settings.y * dimensions.height}px`,
-              width: activeCategory === category ? '40px' : '24px',
-              height: activeCategory === category ? '40px' : '24px',
-              color: settings.color,
-              backgroundColor: `${settings.color}10`,
-              borderWidth: 1,
-              borderColor: settings.color
-            }}
-          >
-            {icon}
-          </div>
-        );
-      })}
+        canvas.style.cursor = hoveredNode ? 'pointer' : 'default';
+      };
       
-      {Object.entries(categorySettings).map(([category, settings]) => (
-        <div
-          key={`pulse-${category}`}
-          className={`absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none ${
-            activeCategory === category || activeCategory === 'all' ? 'opacity-40' : 'opacity-0'
-          }`}
-          style={{ 
-            left: `${settings.x * dimensions.width}px`, 
-            top: `${settings.y * dimensions.height}px`,
-            width: '80px',
-            height: '80px',
-            background: `radial-gradient(circle, ${settings.color}30 0%, ${settings.color}00 70%)`,
-            animation: 'pulse 2s infinite'
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-const Skills = ({ darkMode }) => {
-  const [activeCategory, setActiveCategory] = useState('all');
-  
-  const skillCategories = [
-    {
-      id: 'languages',
-      name: 'Languages',
-      skills: ['JavaScript', 'TypeScript', 'HTML5', 'SQL']
-    },
-    {
-      id: 'frameworks',
-      name: 'Frameworks/Libraries',
-      skills: ['React.js', 'Angular.js', 'jQuery']
-    },
-    {
-      id: 'styling',
-      name: 'Styling Tools',
-      skills: ['SCSS', 'CSS', 'Bootstrap', 'Bulma', 'Tailwind CSS']
-    },
-    {
-      id: 'tools',
-      name: 'Tools/Platforms',
-      skills: ['Git', 'AWS S3/CloudFront', 'Azure DevOps', 'Figma']
-    },
-    {
-      id: 'testing',
-      name: 'Testing Tools',
-      skills: ['Jest', 'RTL', 'Enzyme', 'Mocha/Chai']
-    },
-    {
-      id: 'ide',
-      name: 'IDE\'s',
-      skills: ['VS Code', 'Sublime Text', 'IntelliJ']
-    },
-    {
-      id: 'build',
-      name: 'Build Tools',
-      skills: ['NPM', 'Yarn']
+      const handleClick = (e) => {
+        if (hoveredNode) {
+          setActiveSkill(hoveredNode.skill.name);
+        } else {
+          setActiveSkill(null);
+        }
+      };
+      
+      canvas.addEventListener('mousemove', handleMouseMove);
+      canvas.addEventListener('click', handleClick);
+      
+      // Animation loop
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update and draw connections between related skills
+        ctx.beginPath();
+        ctx.strokeStyle = darkMode ? 'rgba(14, 165, 233, 0.2)' : 'rgba(37, 99, 235, 0.2)';
+        ctx.lineWidth = 1;
+        
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const node1 = nodes[i];
+            const node2 = nodes[j];
+            
+            // Connect skills within the same category or related projects
+            const sameCategory = 
+              skillsData.languages.includes(node1.skill) && skillsData.languages.includes(node2.skill) ||
+              skillsData.frameworks.includes(node1.skill) && skillsData.frameworks.includes(node2.skill) ||
+              skillsData.styling.includes(node1.skill) && skillsData.styling.includes(node2.skill) ||
+              skillsData.tools.includes(node1.skill) && skillsData.tools.includes(node2.skill);
+            
+            const sharedProjects = node1.skill.projects.some(project => 
+              node2.skill.projects.includes(project)
+            );
+            
+            if (sameCategory || sharedProjects) {
+              ctx.moveTo(node1.x, node1.y);
+              ctx.lineTo(node2.x, node2.y);
+            }
+          }
+        }
+        ctx.stroke();
+        
+        // Update and draw nodes
+        for (const node of nodes) {
+          // Move nodes slightly
+          node.x += node.vx;
+          node.y += node.vy;
+          
+          // Bounce off edges
+          if (node.x - node.radius < 0 || node.x + node.radius > canvas.width) {
+            node.vx = -node.vx;
+          }
+          if (node.y - node.radius < 0 || node.y + node.radius > canvas.height) {
+            node.vy = -node.vy;
+          }
+          
+          // Keep nodes within center area
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height / 2;
+          const dx = node.x - centerX;
+          const dy = node.y - centerY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxDistance = 200;
+          
+          if (distance > maxDistance) {
+            node.vx -= dx * 0.001;
+            node.vy -= dy * 0.001;
+          }
+          
+          // Draw node
+          ctx.beginPath();
+          if (node.skill.name === activeSkill) {
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = darkMode ? '#06b6d4' : '#2563eb';
+          } else {
+            ctx.shadowBlur = 0;
+          }
+          
+          const isHovered = hoveredNode === node;
+          const gradient = ctx.createRadialGradient(
+            node.x, node.y, 0,
+            node.x, node.y, node.radius * (isHovered ? 1.5 : 1)
+          );
+          
+          if (darkMode) {
+            gradient.addColorStop(0, isHovered ? '#0891b2' : '#06b6d4');
+            gradient.addColorStop(1, isHovered ? '#0e7490' : '#0891b2');
+          } else {
+            gradient.addColorStop(0, isHovered ? '#3b82f6' : '#60a5fa');
+            gradient.addColorStop(1, isHovered ? '#2563eb' : '#3b82f6');
+          }
+          
+          ctx.fillStyle = gradient;
+          ctx.arc(node.x, node.y, node.radius * (isHovered ? 1.3 : 1), 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Draw node label
+          if (isHovered || node.skill.name === activeSkill) {
+            const fontSize = 12;
+            ctx.font = `${fontSize}px Arial`;
+            ctx.fillStyle = darkMode ? '#e5e7eb' : '#1f2937';
+            ctx.textAlign = 'center';
+            ctx.fillText(node.skill.name, node.x, node.y - node.radius - 7);
+          }
+        }
+        
+        animationFrameId = requestAnimationFrame(animate);
+      };
+      
+      animate();
+      
+      return () => {
+        window.removeEventListener('resize', resizeCanvas);
+        canvas.removeEventListener('mousemove', handleMouseMove);
+        canvas.removeEventListener('click', handleClick);
+        cancelAnimationFrame(animationFrameId);
+      };
     }
-  ];
+  }, [activeMode, darkMode, allSkills, activeSkill]);
   
-  // Create flat array of skills with their categories
-  const allSkillsWithCategories = skillCategories.flatMap(category => 
-    category.skills.map(skill => ({
-      skill,
-      category: category.id,
-      level: getSkillLevel(skill)
-    }))
-  );
-  
-  // Filter skills based on active category
-  const filteredSkills = activeCategory === 'all' 
-    ? allSkillsWithCategories
-    : allSkillsWithCategories.filter(skill => skill.category === activeCategory);
-  
-  // Generate skill level (just for visualization)
-  function getSkillLevel(skill) {
-    // This would ideally come from real data, but for demo purposes we'll generate
-    const baseLevel = 75; // Everyone has at least this level
-    
-    // Add some randomness but ensure React and modern tools get higher scores
-    let bonus = 0;
-    
-    if (['React.js', 'TypeScript', 'JavaScript'].includes(skill)) {
-      bonus = 15;
-    } else if (['SCSS', 'Git', 'HTML5'].includes(skill)) {
-      bonus = 10;
-    } else if (['Angular.js', 'AWS S3/CloudFront', 'VS Code'].includes(skill)) {
-      bonus = 8;
+  // Terminal effect
+  useEffect(() => {
+    if (activeMode === 'terminal' && terminalInputRef.current) {
+      terminalInputRef.current.focus();
     }
-    
-    // Add slight randomness
-    const randomFactor = Math.floor(Math.random() * 5);
-    return Math.min(baseLevel + bonus + randomFactor, 98);
-  }
+  }, [activeMode, terminalHistory]);
+  
+  // Scroll to bottom of terminal when history changes
+  useEffect(() => {
+    if (activeMode === 'terminal') {
+      const terminalOutput = document.getElementById('terminal-output');
+      if (terminalOutput) {
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      }
+    }
+  }, [terminalHistory, activeMode]);
+  
+  // Terminal UI renderer
+  const renderTerminal = () => {
+    return (
+      <div className={`mt-8 h-96 rounded-lg overflow-hidden shadow-lg ${
+        darkMode ? 'bg-gray-900' : 'bg-gray-800'
+      }`}>
+        {/* Terminal header */}
+        <div className="bg-gray-800 px-4 py-2 flex items-center">
+          <div className="flex space-x-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          </div>
+          <span className="ml-4 text-white text-sm font-mono">skills.terminal</span>
+        </div>
+        
+        {/* Terminal output */}
+        <div id="terminal-output" className="p-4 h-80 overflow-y-auto font-mono text-sm">
+          {terminalHistory.map((entry, index) => (
+            <div 
+              key={index} 
+              className={`mb-2 ${
+                entry.type === 'command' 
+                  ? 'text-white' 
+                  : entry.type === 'error' 
+                    ? 'text-red-400' 
+                    : entry.type === 'skill'
+                      ? darkMode ? 'text-cyan-400' : 'text-blue-400'
+                      : 'text-green-400'
+              }`}
+            >
+              {entry.content.split('\n').map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+            </div>
+          ))}
+          
+          {/* Terminal input line */}
+          <div className="flex text-white">
+            <span className="text-green-400 mr-2">guest@portfolio:~$</span>
+            <input
+              ref={terminalInputRef}
+              type="text"
+              value={typedCommand}
+              onChange={(e) => setTypedCommand(e.target.value)}
+              onKeyDown={handleTerminalCommand}
+              className="flex-1 bg-transparent outline-none"
+              aria-label="Terminal input"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  // List of all skills
+  const renderSkillList = () => {
+    return (
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {Object.entries(skillsData).map(([category, skills]) => (
+          <div 
+            key={category}
+            className={`p-6 rounded-lg shadow-lg ${
+              darkMode ? 'bg-gray-900' : 'bg-white'
+            }`}
+          >
+            <h3 className={`text-xl font-bold mb-4 ${
+              darkMode ? 'text-cyan-400' : 'text-blue-600'
+            }`}>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </h3>
+            
+            <div className="space-y-4">
+              {skills.map(skill => (
+                <div 
+                  key={skill.name}
+                  className="group"
+                  onClick={() => setActiveSkill(activeSkill === skill.name ? null : skill.name)}
+                >
+                  <div className="flex justify-between items-center mb-1 cursor-pointer">
+                    <span className={`font-medium ${
+                      darkMode ? 'text-white group-hover:text-cyan-400' : 'text-gray-800 group-hover:text-blue-600'
+                    } transition-colors`}>
+                      {skill.name}
+                    </span>
+                    <span className={`text-sm ${
+                      darkMode ? 'text-cyan-400' : 'text-blue-600'
+                    }`}>
+                      {skill.level}%
+                    </span>
+                  </div>
+                  
+                  <div className={`w-full h-2 rounded-full overflow-hidden ${
+                    darkMode ? 'bg-gray-800' : 'bg-gray-200'
+                  }`}>
+                    <div 
+                      className={`h-full ${
+                        darkMode ? 'bg-cyan-500' : 'bg-blue-600'
+                      } transition-all duration-500`}
+                      style={{ width: `${skill.level}%` }}
+                    />
+                  </div>
+                  
+                  {/* Expanded skill details */}
+                  {activeSkill === skill.name && (
+                    <div className={`mt-3 p-3 rounded-md text-sm ${
+                      darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      <p className="mb-2">{skill.description}</p>
+                      <div>
+                        <span className="font-medium">Related Projects: </span>
+                        {skill.projects.join(', ')}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
   
   return (
     <section id="skills" className={`py-24 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -451,70 +440,120 @@ const Skills = ({ darkMode }) => {
             <span className={`inline-block ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>{'>'}</span>
           </h2>
           
-          {/* Skill category filter */}
-          <div className="mb-12 flex flex-wrap justify-center gap-2">
-            <button
-              onClick={() => setActiveCategory('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeCategory === 'all'
-                  ? darkMode
-                    ? 'bg-cyan-500 text-white'
-                    : 'bg-blue-600 text-white'
-                  : darkMode
-                    ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              All
-            </button>
-            
-            {skillCategories.map((category) => (
+          <p className={`text-lg mb-8 max-w-3xl ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+            Explore my technical skills and expertise through different interactive visualizations.
+            Select a visualization mode below to get started.
+          </p>
+          
+          {/* Visualization mode selector */}
+          <div className="mb-8 flex flex-wrap justify-center gap-4">
+            {[
+              { id: 'constellation', label: 'Skill Constellation', icon: 'M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64' },
+              { id: 'terminal', label: 'Skill Terminal', icon: 'M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z' },
+              { id: 'list', label: 'Skill List', icon: 'M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z' }
+            ].map(mode => (
               <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === category.id
+                key={mode.id}
+                onClick={() => setActiveMode(mode.id)}
+                className={`px-4 py-2 rounded-full flex items-center transition-colors ${
+                  activeMode === mode.id
                     ? darkMode
                       ? 'bg-cyan-500 text-white'
                       : 'bg-blue-600 text-white'
                     : darkMode
                       ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
                 }`}
               >
-                {category.name}
+                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={mode.icon} />
+                </svg>
+                {mode.label}
               </button>
             ))}
           </div>
           
-          <div className="flex flex-col lg:flex-row">
-            {/* Skill Constellation - Hidden on mobile */}
-            <div className="hidden lg:block lg:w-7/12 mb-8 lg:mb-0 lg:pr-8">
-              <div className={`w-full h-full rounded-xl p-4 ${darkMode ? 'bg-gray-900/50' : 'bg-white/80'} shadow-lg`}>
-                <SkillConstellation 
-                  skills={allSkillsWithCategories}
-                  activeCategory={activeCategory}
-                  darkMode={darkMode}
-                  onSkillClick={setActiveCategory}
-                />
+          {/* Active visualization */}
+          <div className="relative min-h-[30rem] bg-opacity-50 rounded-lg">
+            {activeMode === 'constellation' && (
+              <div className="relative h-96 w-full">
+                <canvas 
+                  ref={constellationRef} 
+                  className="w-full h-full rounded-lg"
+                  aria-label="Skill constellation visualization"
+                  role="img"
+                ></canvas>
+                
+                {/* Info panel when a skill is selected */}
+                {activeSkill && (
+                  <div className={`absolute right-4 top-4 w-64 p-4 rounded-lg shadow-lg ${
+                    darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'
+                  }`}>
+                    <button 
+                      onClick={() => setActiveSkill(null)}
+                      className={`absolute top-2 right-2 p-1 rounded-full ${
+                        darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-700'
+                      }`}
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                    
+                    {allSkills.filter(skill => skill.name === activeSkill).map(skill => (
+                      <div key={skill.name}>
+                        <h4 className={`text-lg font-bold ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>
+                          {skill.name}
+                        </h4>
+                        <div className="flex items-center mt-2">
+                          <div className="flex-1">
+                            <div className={`h-2 rounded-full overflow-hidden ${
+                              darkMode ? 'bg-gray-800' : 'bg-gray-200'
+                            }`}>
+                              <div 
+                                className={`h-full ${darkMode ? 'bg-cyan-500' : 'bg-blue-600'}`}
+                                style={{ width: `${skill.level}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                          <span className={`ml-2 text-sm font-medium ${
+                            darkMode ? 'text-cyan-400' : 'text-blue-600'
+                          }`}>
+                            {skill.level}%
+                          </span>
+                        </div>
+                        
+                        <p className="mt-3 text-sm">{skill.description}</p>
+                        
+                        <div className="mt-4">
+                          <h5 className="text-sm font-semibold mb-1">Related Projects:</h5>
+                          <ul className="text-sm">
+                            {skill.projects.map(project => (
+                              <li key={project} className="flex items-start">
+                                <span className={`mr-1 ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>•</span>
+                                {project}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                <div className={`absolute left-4 bottom-4 p-3 rounded-md ${
+                  darkMode ? 'bg-gray-900/80 text-white' : 'bg-white/80 text-gray-800'
+                }`}>
+                  <p className="text-sm">
+                    <span className={`font-medium ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>Hover</span> over nodes to see skills.
+                    <span className={`font-medium ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}> Click</span> on a skill for details.
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
             
-            {/* Skills Grid */}
-            <div className="w-full lg:w-5/12">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                {filteredSkills.map((skill, index) => (
-                  <SkillChip 
-                    key={skill.skill}
-                    skill={skill.skill}
-                    category={skill.category}
-                    level={skill.level}
-                    darkMode={darkMode}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </div>
+            {activeMode === 'terminal' && renderTerminal()}
+            {activeMode === 'list' && renderSkillList()}
           </div>
         </div>
       </div>
