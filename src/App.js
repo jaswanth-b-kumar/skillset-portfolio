@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
 import EasterEgg from './components/EasterEgg';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -37,23 +38,25 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      {
-        <>
-          <Hero darkMode={darkMode} />
-          <About darkMode={darkMode} />
-          <Projects darkMode={darkMode} />
-          <Skills darkMode={darkMode} />
-          <Experience darkMode={darkMode} />
-          <Blog darkMode={darkMode} />
-          <Contact darkMode={darkMode} />
-          {easterEggActive && <EasterEgg darkMode={darkMode} onClose={() => setEasterEggActive(false)} />}
-        </>
-      }
+    <ParallaxProvider>
+      <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
+        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        {
+          <>
+            <Hero darkMode={darkMode} />
+            <About darkMode={darkMode} />
+            <Projects darkMode={darkMode} />
+            <Skills darkMode={darkMode} />
+            <Experience darkMode={darkMode} />
+            <Blog darkMode={darkMode} />
+            <Contact darkMode={darkMode} />
+            {easterEggActive && <EasterEgg darkMode={darkMode} onClose={() => setEasterEggActive(false)} />}
+          </>
+        }
 
-      <Footer darkMode={darkMode} />
-    </div>
+        <Footer darkMode={darkMode} />
+      </div>
+    </ParallaxProvider>
   );
 }
 
