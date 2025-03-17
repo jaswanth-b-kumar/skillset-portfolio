@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const BlogCard = ({ post, darkMode }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -84,32 +84,129 @@ const BlogCard = ({ post, darkMode }) => {
 };
 
 const Blog = ({ darkMode }) => {
-  const blogPosts = [
-    {
-      title: "Optimizing React Performance with Code Splitting",
-      excerpt: "Learn how to improve your React application's load time using code splitting techniques and lazy loading components.",
-      date: "February 15, 2025",
-      category: "React",
-      image: "/api/placeholder/600/400",
-      link: "#"
-    },
-    {
-      title: "The Future of Frontend Development with AI Assistance",
-      excerpt: "Explore how AI tools are transforming the frontend development workflow and increasing productivity for developers.",
-      date: "January 20, 2025",
-      category: "AI",
-      image: "/api/placeholder/600/400",
-      link: "#"
-    },
-    {
-      title: "Building Responsive Interfaces with Modern CSS",
-      excerpt: "Discover the latest CSS techniques for creating fluid, adaptive layouts that work across all screen sizes.",
-      date: "December 5, 2024",
-      category: "CSS",
-      image: "/api/placeholder/600/400",
-      link: "#"
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // Function to parse RSS content and extract plain text excerpt
+  const extractExcerpt = (content, maxLength = 120) => {
+    // Create a temporary element to parse HTML content
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    
+    // Get text content without HTML tags
+    const textContent = tempDiv.textContent || tempDiv.innerText || '';
+    
+    // Remove extra whitespace and trim to maxLength
+    const cleanText = textContent.replace(/\s+/g, ' ').trim();
+    
+    if (cleanText.length <= maxLength) {
+      return cleanText;
     }
-  ];
+    
+    // Trim to maxLength and add ellipsis
+    return cleanText.substring(0, maxLength).trim() + '...';
+  };
+  
+  // Function to format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+  
+  // Function to get placeholder image based on categories
+  const getCategoryImage = (category) => {
+    const categoryMap = {
+      'javascript': '/api/placeholder/600/400?text=JavaScript',
+      'react': '/api/placeholder/600/400?text=React',
+      'front-end-development': '/api/placeholder/600/400?text=Frontend',
+      'web-development': '/api/placeholder/600/400?text=Web',
+      'ai-in-development': '/api/placeholder/600/400?text=AI',
+      'es6': '/api/placeholder/600/400?text=ES6',
+      'browser-api': '/api/placeholder/600/400?text=Browser',
+      'javascript-development': '/api/placeholder/600/400?text=JS'
+    };
+    
+    return categoryMap[category.toLowerCase()] || '/api/placeholder/600/400?text=Tech';
+  };
+
+  useEffect(() => {
+    const fetchRssFeed = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch RSS feed from Medium
+        const response = await fetch('https://medium.com/feed/@jaswanth.k.bevara', {
+          headers: {
+            'Content-Type': 'application/xml',
+            'Accept': 'application/xml',
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch RSS feed: ${response.status}`);
+        }
+        const xmlText = await response.text();
+        
+        // Parse XML
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+        
+        // Extract items
+        const items = xmlDoc.querySelectorAll('item');
+        
+        const parsedPosts = Array.from(items).map(item => {
+          // Get the first category if multiple exist
+          const categoryElement = item.querySelector('category');
+          const category = categoryElement ? categoryElement.textContent.trim() : 'General';
+          
+          // Get content
+          const contentElement = item.querySelector('content\\:encoded');
+          const content = contentElement ? contentElement.textContent : '';
+          
+          // Get publication date
+          const pubDateElement = item.querySelector('pubDate');
+          const pubDate = pubDateElement ? pubDateElement.textContent : '';
+          
+          return {
+            title: item.querySelector('title').textContent.replace(/<!\[CDATA\[|\]\]>/g, '').trim(),
+            link: item.querySelector('link').textContent,
+            excerpt: extractExcerpt(content),
+            date: formatDate(pubDate),
+            category: category.replace(/<!\[CDATA\[|\]\]>/g, '').trim(),
+            image: getCategoryImage(category)
+          };
+        });
+        
+        setPosts(parsedPosts);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching or parsing RSS feed:', err);
+        setError(err.message);
+        setLoading(false);
+        
+        // Fallback to default posts if there's an error
+        setPosts([
+          {
+            title: "Error fetching posts",
+            excerpt: "We couldn't load the latest posts from Medium. Please try again later or check out the blog directly.",
+            date: new Date().toLocaleDateString(),
+            category: "Error",
+            image: "/api/placeholder/600/400?text=Error",
+            link: "https://medium.com/@jaswanth.k.bevara"
+          }
+        ]);
+      }
+    };
+    
+    fetchRssFeed();
+    
+    // Set up periodic refresh (every 30 minutes)
+    const refreshInterval = setInterval(fetchRssFeed, 30 * 60 * 1000);
+    
+    // Clean up on unmount
+    return () => clearInterval(refreshInterval);
+  }, []);
 
   return (
     <section id="blog" className={`py-8 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
@@ -126,19 +223,43 @@ const Blog = ({ darkMode }) => {
             Check out some of my recent articles below.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <BlogCard 
-                key={index} 
-                post={post} 
-                darkMode={darkMode} 
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className={`text-center py-12 ${darkMode ? 'text-white' : 'text-gray-700'}`}>
+              <svg className="animate-spin h-8 w-8 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <p>Loading latest articles...</p>
+            </div>
+          ) : error && posts.length === 0 ? (
+            <div className={`text-center py-12 ${darkMode ? 'text-white' : 'text-gray-700'}`}>
+              <p>Error loading articles: {error}</p>
+              <a 
+                href="https://medium.com/@jaswanth.k.bevara" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`inline-block mt-4 px-4 py-2 rounded ${
+                  darkMode ? 'bg-cyan-600 text-white' : 'bg-blue-600 text-white'
+                }`}
+              >
+                Visit Medium Blog
+              </a>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post, index) => (
+                <BlogCard 
+                  key={index} 
+                  post={post} 
+                  darkMode={darkMode} 
+                />
+              ))}
+            </div>
+          )}
           
           <div className="mt-12 text-center">
             <a 
-              href="https://medium.com" 
+              href="https://medium.com/@jaswanth.k.bevara" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`inline-flex items-center px-6 py-3 rounded-md font-semibold transition-colors ${

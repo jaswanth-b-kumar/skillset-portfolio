@@ -114,7 +114,7 @@ const Hero = ({ darkMode }) => {
       </Parallax>
       
       {/* Foreground code particles - kept to sides/corners, away from main content */}
-      <Parallax translateY={['-200px', '200px']} translateX={['-100px', '100px']} className="absolute top-[15%] left-[5%] z-20">
+      <Parallax translateY={['-300px', '200px']} translateX={['-200px', '100px']} className="absolute top-[0%] left-[1%] z-20">
         <div className={`px-4 py-2 rounded-lg border ${darkMode ? 'border-cyan-500/30 bg-gray-900/80' : 'border-blue-500/30 bg-white/80'}`}>
           <pre className={`text-xs font-mono ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>
             {`import React from 'react';`}
@@ -138,7 +138,7 @@ const Hero = ({ darkMode }) => {
         </div>
       </Parallax>
       
-      <Parallax translateY={['-150px', '350px']} translateX={['100px', '-100px']} rotate={[0, 15]} className="absolute bottom-[20%] right-[5%] z-20">
+      <Parallax translateY={['-450px', '350px']} translateX={['100px', '-100px']} rotate={[0, 15]} className="absolute bottom-[20%] right-[5%] z-20">
         <div className={`px-4 py-2 rounded-lg border ${darkMode ? 'border-amber-500/30 bg-gray-900/80' : 'border-amber-500/30 bg-white/80'}`}>
           <pre className={`text-xs font-mono ${darkMode ? 'text-amber-400' : 'text-amber-600'}`}>
             {`return <App />;`}
@@ -147,7 +147,7 @@ const Hero = ({ darkMode }) => {
       </Parallax>
       
       {/* Main large code snippet with dramatic parallax - positioned clearly away from content */}
-      <Parallax translateY={['400px', '-200px']} translateX={['50px', '-50px']} rotate={[0, 5]} className="absolute bottom-[5%] right-[15%] z-30">
+      <Parallax translateY={['-100px', '-200px']} translateX={['50px', '-50px']} rotate={[0, 5]} className="absolute bottom-[5%] right-[15%] z-30">
         <div className={`p-4 rounded-lg border shadow-xl ${
           darkMode ? 'border-cyan-500/40 bg-gray-900/90 text-cyan-400' : 'border-blue-500/40 bg-white/90 text-blue-600'
         }`}>
@@ -183,7 +183,7 @@ const Hero = ({ darkMode }) => {
             </div>
             
             {/* Role text with parallax */}
-            <div ref={roleParallax.ref} className="h-16 sm:h-20 mb-10 relative">
+            <div ref={roleParallax.ref} className="h-10 sm:h-20 mb-10 relative">
               {roles.map((role, index) => (
                 <div 
                   key={index} 
@@ -214,7 +214,7 @@ const Hero = ({ darkMode }) => {
             {/* Glass card with parallax */}
             <div 
               ref={cardParallax.ref}
-              className={`mb-12 p-6 rounded-xl backdrop-blur-md shadow-lg transition-all duration-1000 delay-300 transform ${
+              className={`mb-6 p-6 rounded-xl backdrop-blur-md shadow-lg transition-all duration-1000 delay-300 transform ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               } ${
                 darkMode 
