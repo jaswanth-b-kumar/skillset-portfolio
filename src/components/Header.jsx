@@ -1,114 +1,190 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Sun, Moon, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const Header = ({ darkMode, toggleDarkMode }) => {
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/jaswanth-b-kumar', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/jaswanth-bevara/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:jaswanth.k.bevara@gmail.com', label: 'Email' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? `${darkMode ? 'bg-gray-900/90 shadow-lg' : 'bg-white/90 shadow-md'} backdrop-blur-md` 
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center">
-          <svg viewBox="0 0 200 50" className="h-10 w-auto">
-            <text 
-              x="10" 
-              y="35" 
-              className={`font-mono font-bold text-2xl fill-current ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'glass-effect shadow-lg py-3'
+            : 'bg-transparent py-6'
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex-shrink-0"
             >
-              {"<"}JaswanthB{">"}
-            </text>
-          </svg>
-        </div>
+              <a
+                href="#hero"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#hero');
+                }}
+                className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity"
+              >
+                JK
+              </a>
+            </motion.div>
 
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {['Home', 'About', 'Projects', 'Skills', 'Experience', 'Blog', 'Contact'].map((item) => (
-            <Link
-              key={item}
-              to={item.toLowerCase()}
-              smooth={true}
-              duration={500}
-              offset={-70}
-              className={`font-medium hover:text-blue-500 cursor-pointer transition-colors ${
-                darkMode ? 'text-gray-200 hover:text-cyan-400' : 'text-gray-700'
-              }`}
-            >
-              {item}
-            </Link>
-          ))}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 font-medium relative group"
+                  whileHover={{ y: -2 }}
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300" />
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Social Links & Theme Toggle */}
+            <div className="hidden md:flex items-center space-x-4">
+              {socialLinks.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <link.icon size={18} />
+                </motion.a>
+              ))}
+              
+              <motion.button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center space-x-2">
+              <motion.button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full glass-effect"
+                whileTap={{ scale: 0.95 }}
+              >
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.button>
+              
+              <motion.button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-full glass-effect"
+                whileTap={{ scale: 0.95 }}
+              >
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </motion.button>
+            </div>
+          </div>
         </nav>
+      </motion.header>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center">
-          <button 
-            className={`p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              darkMode 
-                ? 'focus:ring-cyan-400 text-gray-200' 
-                : 'focus:ring-blue-500 text-gray-700'
-            }`}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-20 left-4 right-4 z-30 md:hidden"
           >
-            <svg 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M4 6h16M4 12h16M4 18h16" 
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className={`ml-4 p-2 rounded-full focus:outline-none focus:ring-2 transition-colors ${
-            darkMode 
-              ? 'bg-gray-800 text-yellow-300 focus:ring-yellow-500' 
-              : 'bg-gray-200 text-gray-700 focus:ring-blue-500'
-          }`}
-        >
-          {darkMode ? (
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                clipRule="evenodd"
-              />
-            </svg>
-          ) : (
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-            </svg>
-          )}
-        </button>
-      </div>
-    </header>
+            <div className="glass-effect rounded-xl p-6 shadow-xl">
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                    }}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 font-medium py-2"
+                    whileHover={{ x: 10 }}
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+                
+                <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+                  <div className="flex justify-center space-x-6">
+                    {socialLinks.map((link) => (
+                      <motion.a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <link.icon size={18} />
+                      </motion.a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
