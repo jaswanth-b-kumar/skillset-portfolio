@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, Calendar, ExternalLink, TrendingUp, Users, Code, Award } from 'lucide-react';
+import { MapPin, Calendar, TrendingUp, Users, Code, Award } from 'lucide-react';
 
 const Experience = ({ darkMode }) => {
   const [ref, inView] = useInView({

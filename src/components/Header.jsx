@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
 
 const Header = ({ darkMode, toggleDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,14 +43,14 @@ const Header = ({ darkMode, toggleDarkMode }) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 ${
           isScrolled
-            ? 'glass-effect shadow-lg py-3'
-            : 'bg-transparent py-6'
+            ? 'glass-effect shadow-lg'
+            : 'bg-transparent'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}

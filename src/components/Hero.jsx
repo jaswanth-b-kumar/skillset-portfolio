@@ -32,7 +32,7 @@ const Hero = ({ darkMode }) => {
     }, 100);
 
     return () => clearInterval(typeInterval);
-  }, [currentRoleIndex, fullText]);
+  }, [currentRoleIndex, fullText, roles.length]);
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
