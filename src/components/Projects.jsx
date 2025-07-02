@@ -292,9 +292,12 @@ const useAIContent = (prompt: string) => {
                 >
                   {/* Project Image */}
                   <div className="relative h-48 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-t-xl flex items-center justify-center">
-                    {/* <div className="text-6xl opacity-20">
-                      {project.highlights[0].icon && <project.highlights[0].icon size={48} />}
-                    </div> */}
+                    <div className="text-6xl opacity-20">
+                      {(() => {
+                        const IconComponent = project.highlights[0].icon;
+                        return IconComponent ? <IconComponent size={48} /> : null;
+                      })()}
+                    </div>
                     <div className="absolute top-4 right-4 flex space-x-2">
                       {project.demoUrl && (
                         <motion.a
