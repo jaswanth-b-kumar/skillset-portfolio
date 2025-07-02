@@ -41,22 +41,23 @@ function App() {
     window.addEventListener('mousemove', handleMouseMove);
 
     // Easter egg console message
-    console.log(`%c🚀 Welcome to Jaswanth's Portfolio! %c\\n\\n` +
-      `I see you're checking out the console - that's awesome! \\n` +
-      'Feel free to explore the code and see how this portfolio was built.\\n\\n' +
-      '💡 Pro tip: Type "help()" in the console for some hidden features!',
+    console.log(
+      `Welcome to Jaswanth's Portfolio! ` +
+      `I see you're checking out the console - that's awesome!` +
+      'Feel free to explore the code and see how this portfolio was built.' +
+      'Pro tip: Type "help()" in the console for some hidden features!',
       'color: #4facfe; font-size: 16px; font-weight: bold;',
       'color: #64748b; font-size: 12px;'
-  );
+    );
 
     // Add help function to window
     window.help = () => {
       console.log(
-        '%cAvailable Commands: %c\\n\\n' +
-        '• skills() - View my technical skills\\n' +
-        '• experience() - See my work experience\\n' +
-        '• contact() - Get my contact information\\n' +
-        '• theme() - Toggle dark/light theme\\n' +
+        '%cAvailable Commands: %c\n\n' +
+        '• skills() - View my technical skills\n' +
+        '• experience() - See my work experience\n' +
+        '• contact() - Get my contact information\n' +
+        '• theme() - Toggle dark/light theme\n' +
         '• source() - View source code',
         'color: #4facfe; font-weight: bold;',
         'color: #64748b;'

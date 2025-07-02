@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const Header = ({ darkMode, toggleDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,15 +43,87 @@ const Header = ({ darkMode, toggleDarkMode }) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'glass-effect shadow-lg'
-            : 'bg-transparent'
+            ? 'glass-effect shadow-lg py-2'
+            : 'bg-transparent py-4'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo */}
+          {/* Three Column Layout for Desktop */}
+          <div className="hidden md:grid md:grid-cols-3 items-center h-16">
+            {/* Left Column - Logo */}
+            <div className="flex justify-start">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex-shrink-0"
+              >
+                <a
+                  href="#hero"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('#hero');
+                  }}
+                  className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity"
+                >
+                  JK
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Center Column - Navigation */}
+            <div className="flex justify-center">
+              <div className="flex items-center space-x-8">
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.href);
+                    }}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 font-medium relative group"
+                    whileHover={{ y: -2 }}
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300" />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Social Links & Theme Toggle */}
+            <div className="flex justify-end">
+              <div className="flex items-center space-x-4">
+                {socialLinks.map((link) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <link.icon size={18} />
+                  </motion.a>
+                ))}
+                
+                <motion.button
+                  onClick={toggleDarkMode}
+                  className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                </motion.button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="md:hidden flex items-center justify-between h-16">
+            {/* Mobile Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex-shrink-0"
@@ -68,53 +140,8 @@ const Header = ({ darkMode, toggleDarkMode }) => {
               </a>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 font-medium relative group"
-                  whileHover={{ y: -2 }}
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300" />
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links & Theme Toggle */}
-            <div className="hidden md:flex items-center space-x-4">
-              {socialLinks.map((link) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <link.icon size={18} />
-                </motion.a>
-              ))}
-              
-              <motion.button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full glass-effect hover:text-primary-500 transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile Controls */}
+            <div className="flex items-center space-x-2">
               <motion.button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-full glass-effect"

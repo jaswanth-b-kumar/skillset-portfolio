@@ -5,7 +5,7 @@ import { ChevronDown, Code2, Cpu, Zap, ArrowRight } from 'lucide-react';
 const Hero = ({ darkMode }) => {
   const [typedText, setTypedText] = useState('');
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-
+  
   const roles = [
     'Senior Software Engineer',
     'React.js Specialist',
@@ -32,7 +32,7 @@ const Hero = ({ darkMode }) => {
     }, 100);
 
     return () => clearInterval(typeInterval);
-  }, [currentRoleIndex, fullText, roles.length]);
+  }, [currentRoleIndex, fullText]);
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -57,7 +57,7 @@ const Hero = ({ darkMode }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern pt-24 sm:pt-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern"
     >
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -99,24 +99,24 @@ const Hero = ({ darkMode }) => {
 
           {/* Name */}
           <motion.div variants={itemVariants}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 leading-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
               <span className="gradient-text">Jaswanth Kumar</span>
             </h1>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-700 dark:text-gray-300 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-700 dark:text-gray-300">
               Bevara
             </h2>
           </motion.div>
 
           {/* Dynamic Role */}
-          <motion.div variants={itemVariants} className="h-16 md:h-20 flex items-center justify-center">
-            <div className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium text-primary-500 dark:text-primary-400 text-center">
+          <motion.div variants={itemVariants} className="h-16 flex items-center justify-center">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-medium text-primary-500 dark:text-primary-400">
               <span className="typing-cursor">{typedText}</span>
             </div>
           </motion.div>
 
           {/* Description */}
-          <motion.div variants={itemVariants} className="max-w-3xl mx-auto px-4">
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed text-center">
+          <motion.div variants={itemVariants} className="max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
               Transforming ideas into exceptional digital experiences with{' '}
               <span className="text-primary-500 font-semibold">5+ years</span> of frontend expertise.
               Currently architecting scalable solutions at{' '}
@@ -127,18 +127,18 @@ const Hero = ({ darkMode }) => {
           </motion.div>
 
           {/* Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto px-4">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-2">5+</div>
-              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">5+</div>
+              <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-2">50+</div>
-              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400">Projects Delivered</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">50+</div>
+              <div className="text-gray-600 dark:text-gray-400">Projects Delivered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-2">98%</div>
-              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400">Client Satisfaction</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">98%</div>
+              <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
             </div>
           </motion.div>
 
@@ -175,7 +175,7 @@ const Hero = ({ darkMode }) => {
               <span>Explore My Work</span>
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
-
+            
             <motion.a
               href="mailto:jaswanth.k.bevara@gmail.com"
               className="px-8 py-4 glass-effect text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:text-primary-500 transition-all duration-300"
@@ -188,12 +188,12 @@ const Hero = ({ darkMode }) => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Fixed positioning */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
         onClick={scrollToAbout}
       >
         <motion.div
@@ -205,7 +205,7 @@ const Hero = ({ darkMode }) => {
           <ChevronDown size={20} />
         </motion.div>
       </motion.div>
-    </section >
+    </section>
   );
 };
 

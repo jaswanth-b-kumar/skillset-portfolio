@@ -24,8 +24,8 @@ const ScrollProgress = () => {
         style={{ scaleX: scrollProgress }}
       />
       
-      {/* Circular Progress Indicator */}
-      <div className="fixed bottom-8 right-8 z-40 hidden lg:block">
+      {/* Circular Progress Indicator - Better positioned */}
+      <div className="fixed bottom-8 right-8 z-30 hidden lg:block">
         <div className="relative w-12 h-12">
           {/* Background Circle */}
           <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
