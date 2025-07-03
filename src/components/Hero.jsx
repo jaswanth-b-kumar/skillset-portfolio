@@ -193,7 +193,7 @@ const Hero = ({ darkMode }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
+        className="absolute bottom-8 cursor-pointer z-20"
         onClick={scrollToAbout}
       >
         <motion.div
