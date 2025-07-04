@@ -164,27 +164,6 @@ const Hero = ({ darkMode }) => {
             </motion.div>
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <motion.button
-              onClick={scrollToAbout}
-              className="group px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300 flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Explore My Work</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            
-            <motion.a
-              href="mailto:jaswanth.k.bevara@gmail.com"
-              className="px-8 py-4 glass-effect text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:text-primary-500 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get In Touch
-            </motion.a>
-          </motion.div>
         </motion.div>
       </div>
 
