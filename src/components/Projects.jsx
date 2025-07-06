@@ -441,7 +441,7 @@ const useAIContent = (prompt: string) => {
                 </div>
 
                 {/* Code Snippet */}
-                {selectedProject.codeSnippet && (
+                {/* {selectedProject.codeSnippet && (
                   <div className="mb-8">
                     <h4 className="text-xl font-semibold mb-4 flex items-center space-x-2">
                       <Code size={20} />
@@ -453,7 +453,7 @@ const useAIContent = (prompt: string) => {
                       </pre>
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {/* Technologies */}
                 <div className="mb-8">
