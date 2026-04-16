@@ -1,0 +1,156 @@
+.skills {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.skills__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 112px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skills__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 16px;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  padding: 20px 0;
+  color: #000000;
+}
+
+.skills__heading-regular {
+  font-weight: 400;
+}
+
+.skills__heading-bold {
+  font-weight: 800;
+}
+
+.skills__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.skills__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* Skill card */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 186px;
+  height: 186px;
+  padding: 24px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  background-color: #ffffff;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.skill-card--selected {
+  background-color: #000000;
+}
+
+.skill-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skill-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.skill-card__label {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-transform: capitalize;
+  color: #000000;
+  width: 100%;
+}
+
+.skill-card--selected .skill-card__label {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .skills__inner {
+    padding: 60px 48px;
+  }
+
+  .skill-card {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 900px) {
+  .skills__inner {
+    padding: 48px 32px;
+  }
+
+  .skills__row {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .skill-card {
+    width: 150px;
+    height: 150px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills__inner {
+    padding: 40px 24px;
+  }
+
+  .skills__heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .skill-card {
+    width: 130px;
+    height: 130px;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .skill-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-card__label {
+    font-size: 16px;
+  }
+}
