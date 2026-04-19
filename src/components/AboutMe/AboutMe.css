@@ -1,0 +1,217 @@
+.about {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.about__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Illustration */
+.about__illustration {
+  position: relative;
+  width: 526px;
+  height: 526px;
+  flex-shrink: 0;
+}
+
+.about__illus-layer {
+  position: absolute;
+  display: block;
+}
+
+.about__illus-bg {
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  object-fit: contain;
+}
+
+.about__illus-g4 {
+  left: 50px;
+  top: 234px;
+  width: 353px;
+  height: 331px;
+  object-fit: contain;
+}
+
+.about__illus-g5 {
+  left: 44px;
+  top: 223px;
+  width: 262px;
+  height: 348px;
+  object-fit: contain;
+}
+
+.about__illus-g2 {
+  left: 110px;
+  top: 213px;
+  width: 275px;
+  height: 313px;
+  object-fit: contain;
+}
+
+.about__illus-v15 {
+  left: 208px;
+  top: 228px;
+  width: 267px;
+  height: 327px;
+  object-fit: contain;
+}
+
+.about__illus-g3 {
+  left: 222px;
+  top: 223px;
+  width: 258px;
+  height: 336px;
+  object-fit: contain;
+}
+
+.about__illus-g6 {
+  left: 120px;
+  top: 356px;
+  width: 148px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.about__illus-g12 {
+  left: 191px;
+  top: 38px;
+  width: 130px;
+  height: 113px;
+  object-fit: contain;
+}
+
+.about__illus-g8 {
+  left: 203px;
+  top: 59px;
+  width: 120px;
+  height: 157px;
+  object-fit: contain;
+}
+
+/* Text content */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  max-width: 610px;
+}
+
+.about__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  padding: 20px 0;
+  color: #000000;
+}
+
+.about__heading-regular {
+  font-weight: 400;
+}
+
+.about__heading-bold {
+  font-weight: 800;
+}
+
+.about__paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__paragraphs p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #71717a;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .about__inner {
+    padding: 60px 48px;
+    gap: 32px;
+  }
+
+  .about__illustration {
+    width: 420px;
+    height: 420px;
+  }
+
+  /* Scale illustration positions proportionally (420/526 ≈ 0.8) */
+  .about__illus-g4 { left: 40px; top: 187px; width: 282px; height: 265px; }
+  .about__illus-g5 { left: 35px; top: 178px; width: 209px; height: 278px; }
+  .about__illus-g2 { left: 88px; top: 170px; width: 220px; height: 250px; }
+  .about__illus-v15 { left: 167px; top: 182px; width: 214px; height: 261px; }
+  .about__illus-g3 { left: 178px; top: 178px; width: 206px; height: 269px; }
+  .about__illus-g6 { left: 96px; top: 285px; width: 119px; height: 70px; }
+  .about__illus-g12 { left: 153px; top: 30px; width: 104px; height: 90px; }
+  .about__illus-g8 { left: 163px; top: 47px; width: 96px; height: 126px; }
+}
+
+@media (max-width: 1024px) {
+  .about__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 32px;
+  }
+
+  .about__illustration {
+    width: 360px;
+    height: 360px;
+  }
+
+  /* Scale for 360px container (360/526 ≈ 0.685) */
+  .about__illus-g4 { left: 34px; top: 160px; width: 242px; height: 226px; }
+  .about__illus-g5 { left: 30px; top: 153px; width: 179px; height: 238px; }
+  .about__illus-g2 { left: 76px; top: 146px; width: 188px; height: 214px; }
+  .about__illus-v15 { left: 143px; top: 156px; width: 183px; height: 224px; }
+  .about__illus-g3 { left: 152px; top: 153px; width: 177px; height: 230px; }
+  .about__illus-g6 { left: 82px; top: 244px; width: 101px; height: 60px; }
+  .about__illus-g12 { left: 130px; top: 26px; width: 89px; height: 77px; }
+  .about__illus-g8 { left: 139px; top: 40px; width: 82px; height: 108px; }
+
+  .about__content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .about__inner {
+    padding: 40px 24px;
+  }
+
+  .about__illustration {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Scale for 300px container (300/526 ≈ 0.57) */
+  .about__illus-g4 { left: 29px; top: 133px; width: 201px; height: 188px; }
+  .about__illus-g5 { left: 25px; top: 127px; width: 149px; height: 198px; }
+  .about__illus-g2 { left: 63px; top: 122px; width: 157px; height: 178px; }
+  .about__illus-v15 { left: 119px; top: 130px; width: 152px; height: 186px; }
+  .about__illus-g3 { left: 127px; top: 127px; width: 147px; height: 192px; }
+  .about__illus-g6 { left: 69px; top: 203px; width: 84px; height: 50px; }
+  .about__illus-g12 { left: 109px; top: 22px; width: 74px; height: 64px; }
+  .about__illus-g8 { left: 116px; top: 34px; width: 68px; height: 90px; }
+
+  .about__heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}

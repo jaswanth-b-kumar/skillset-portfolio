@@ -1,0 +1,149 @@
+.experience {
+  background-color: #000000;
+  width: 100%;
+}
+
+.experience__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 112px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 16px;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  padding: 20px 0;
+  color: #ffffff;
+}
+
+.experience__heading-regular {
+  font-weight: 400;
+}
+
+.experience__heading-bold {
+  font-weight: 800;
+}
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 24px;
+}
+
+.experience__card {
+  border: 1px solid #71717a;
+  border-radius: 10px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.experience__card--highlight {
+  border: none;
+  background-color: #27272a;
+}
+
+.experience__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.experience__card-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+  min-width: 0;
+}
+
+.experience__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.experience__period {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  color: #d4d4d8;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.experience__description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #d4d4d8;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .experience__inner {
+    padding: 60px 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .experience__inner {
+    padding: 48px 32px;
+  }
+
+  .experience__list {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience__card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .experience__title {
+    font-size: 20px;
+  }
+
+  .experience__heading {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience__inner {
+    padding: 40px 24px;
+  }
+
+  .experience__card-left {
+    gap: 16px;
+  }
+}
