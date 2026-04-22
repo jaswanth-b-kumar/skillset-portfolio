@@ -32,7 +32,7 @@ export default function Hero() {
               </div>
             </div>
             <p className="hero__description">
-              I'm a passionate, self-proclaimed designer who specializes in full
+              I'm a passionate, self-proclaimed developer who specializes in full
               stack development (React.js &amp; Node.js). I am very enthusiastic
               about bringing the technical and visual aspects of digital products
               to life. User experience, pixel perfect design, and writing clear,
