@@ -1,5 +1,3 @@
-import "./Footer.css";
-
 function LogoIcon() {
   return (
     <svg
@@ -24,16 +22,22 @@ function LogoIcon() {
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__inner">
-        <a href="/" className="footer__logo" aria-label="Home">
+    <footer className="bg-black w-full">
+      <div className="max-w-[1440px] mx-auto px-28 py-6 flex items-center justify-between">
+        <a href="/" className="flex items-center gap-3 no-underline" aria-label="Home">
           <LogoIcon />
-          <span className="footer__logo-text">Personal</span>
+          <span className="font-bold text-xl leading-6 tracking-[-0.02em] text-white capitalize">
+            Personal
+          </span>
         </a>
 
-        <div className="footer__copy">
-          <p>@ 2019-2024 Personal</p>
-          <p>Made In Figma</p>
+        <div className="flex flex-col items-end gap-3">
+          <p className="text-base font-semibold leading-5 tracking-[-0.02em] text-white whitespace-nowrap">
+            @ 2019-2024 Personal
+          </p>
+          <p className="text-base font-semibold leading-5 tracking-[-0.02em] text-white whitespace-nowrap">
+            Made In Figma
+          </p>
         </div>
       </div>
     </footer>

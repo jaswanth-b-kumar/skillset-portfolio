@@ -1,71 +1,79 @@
-import "./Skills.css";
-
-const gitIcon =
-  "https://www.figma.com/api/mcp/asset/fb36fc04-0c70-418a-9e80-4f84c57e2e2f";
-const jsIcon =
-  "https://www.figma.com/api/mcp/asset/2dea3301-b3c8-4d64-ad63-67b55e6a7a3e";
-const sassIcon =
-  "https://www.figma.com/api/mcp/asset/4bda0b73-f9ae-4e7a-a2a8-743843115033";
-const nestIcon =
-  "https://www.figma.com/api/mcp/asset/4b11354e-c854-4700-970b-2e2b3d2f552f";
-const storybookIcon =
-  "https://www.figma.com/api/mcp/asset/060aa548-b1c4-45fe-932e-f5163168305c";
-const socketIcon =
-  "https://www.figma.com/api/mcp/asset/e9654c15-9bd4-4915-84a4-2aab1d512af3";
+import {
+  type LucideIcon,
+  GitBranch,
+  Braces,
+  Palette,
+  Server,
+  BookOpen,
+  Network,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type SkillCardProps = {
-  icon: string;
+  icon: LucideIcon;
   label: string;
   selected?: boolean;
 };
 
-function SkillCard({ icon, label, selected = false }: SkillCardProps) {
+function SkillCard({ icon: Icon, label, selected = false }: SkillCardProps) {
   return (
-    <div className={`skill-card${selected ? " skill-card--selected" : ""}`}>
-      <div className="skill-card__icon">
-        <img
-          src={icon}
-          alt={label}
-          style={selected ? { filter: "invert(1)" } : undefined}
-        />
-      </div>
-      <span className="skill-card__label">{label}</span>
+    <div
+      className={cn(
+        "flex flex-col items-center justify-center gap-8 w-[186px] h-[186px] p-6 border-2 border-black rounded-[4px] flex-shrink-0",
+        selected ? "bg-black" : "bg-white"
+      )}
+    >
+      <Icon
+        size={56}
+        strokeWidth={1.5}
+        className={selected ? "text-white" : "text-black"}
+      />
+      <span
+        className={cn(
+          "text-xl font-bold leading-6 tracking-[-0.02em] text-center capitalize w-full",
+          selected ? "text-white" : "text-black"
+        )}
+      >
+        {label}
+      </span>
     </div>
   );
 }
 
-const ROW_1 = [
-  { icon: gitIcon, label: "Git" },
-  { icon: jsIcon, label: "JavaScript", selected: true },
-  { icon: sassIcon, label: "Sass/Scss" },
-  { icon: nestIcon, label: "Nest.Js" },
-  { icon: storybookIcon, label: "Storybook" },
+const ROW_1: SkillCardProps[] = [
+  { icon: GitBranch, label: "Git" },
+  { icon: Braces, label: "JavaScript", selected: true },
+  { icon: Palette, label: "Sass/Scss" },
+  { icon: Server, label: "Nest.Js" },
+  { icon: BookOpen, label: "Storybook" },
 ];
 
-const ROW_2 = [
-  { icon: nestIcon, label: "Nest.Js" },
-  { icon: gitIcon, label: "Git" },
-  { icon: storybookIcon, label: "Storybook" },
-  { icon: socketIcon, label: "Socket.io" },
-  { icon: sassIcon, label: "Sass/Scss" },
+const ROW_2: SkillCardProps[] = [
+  { icon: Server, label: "Nest.Js" },
+  { icon: GitBranch, label: "Git" },
+  { icon: BookOpen, label: "Storybook" },
+  { icon: Network, label: "Socket.io" },
+  { icon: Palette, label: "Sass/Scss" },
 ];
 
 export default function Skills() {
   return (
-    <section className="skills" id="skills">
-      <div className="skills__inner">
-        <div className="skills__heading">
-          <span className="skills__heading-regular">My</span>
-          <span className="skills__heading-bold">Skills</span>
+    <section className="bg-white w-full" id="skills">
+      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+        {/* Heading */}
+        <div className="flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
+          <span className="font-normal">My</span>
+          <span className="font-extrabold">Skills</span>
         </div>
 
-        <div className="skills__grid">
-          <div className="skills__row">
+        {/* Grid */}
+        <div className="flex flex-col items-center w-full">
+          <div className="flex items-center justify-between w-full py-5 flex-wrap gap-4">
             {ROW_1.map((skill) => (
               <SkillCard key={`r1-${skill.label}`} {...skill} />
             ))}
           </div>
-          <div className="skills__row">
+          <div className="flex items-center justify-between w-full py-5 flex-wrap gap-4">
             {ROW_2.map((skill, i) => (
               <SkillCard key={`r2-${skill.label}-${i}`} {...skill} />
             ))}

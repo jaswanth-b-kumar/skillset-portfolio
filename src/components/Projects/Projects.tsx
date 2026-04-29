@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
-import "./Projects.css";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const imgCrypto =
   "https://www.figma.com/api/mcp/asset/c943b0bb-aed6-4d84-8dae-48e4a20d9382";
@@ -14,7 +15,7 @@ type Project = {
   description: string;
   image: string;
   imageAlt: string;
-  link?: string;
+  link: string;
   reverse?: boolean;
 };
 
@@ -51,36 +52,63 @@ const PROJECTS: Project[] = [
 
 export default function Projects() {
   return (
-    <section className="projects" id="project">
-      <div className="projects__inner">
-        <div className="projects__heading">
-          <span className="projects__heading-regular">My</span>
-          <span className="projects__heading-bold">Projects</span>
+    <section className="bg-black w-full" id="project">
+      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+        {/* Heading */}
+        <div className="flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5">
+          <span className="font-normal">My</span>
+          <span className="font-extrabold">Projects</span>
         </div>
 
+        {/* Projects list */}
         {PROJECTS.map((project) => (
           <div
             key={project.number}
-            className={`project-item${project.reverse ? " project-item--reverse" : ""}`}
+            className={cn(
+              "flex items-center gap-10 py-5",
+              project.reverse && "flex-row-reverse"
+            )}
           >
-            <div className="project-item__image">
-              <img src={project.image} alt={project.imageAlt} />
+            {/* Image */}
+            <div
+              className={cn(
+                "flex-[0_0_594px] h-[476px] flex items-center overflow-hidden",
+                project.reverse && "justify-end"
+              )}
+            >
+              <img
+                src={project.image}
+                alt={project.imageAlt}
+                className="w-[530px] h-[398px] object-cover rounded-[18px] shadow-[0px_8px_18px_-6px_rgba(24,39,75,0.12),0px_12px_42px_-4px_rgba(24,39,75,0.12)] block"
+              />
             </div>
-            <div className="project-item__details">
-              <span className="project-item__number">{project.number}</span>
-              <h3 className="project-item__title">{project.title}</h3>
-              <p className="project-item__description">{project.description}</p>
-              {project.link && (
+
+            {/* Details */}
+            <div className="flex-1 flex flex-col gap-7 min-w-0">
+              <span className="text-[48px] font-extrabold leading-[56px] tracking-[-0.02em] text-white">
+                {project.number}
+              </span>
+              <h3 className="text-[32px] font-bold leading-10 tracking-[-0.02em] text-white m-0">
+                {project.title}
+              </h3>
+              <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+                {project.description}
+              </p>
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="text-white w-5 h-5 p-0 hover:bg-transparent hover:opacity-70"
+              >
                 <a
                   href={project.link}
-                  className="project-item__link"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`View ${project.title}`}
                 >
                   <ExternalLink size={20} strokeWidth={1.5} />
                 </a>
-              )}
+              </Button>
             </div>
           </div>
         ))}

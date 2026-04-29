@@ -1,5 +1,6 @@
 import { Download } from "lucide-react";
-import "./Navbar.css";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "About Me", href: "#about" },
@@ -32,18 +33,30 @@ function LogoIcon() {
 
 export default function Navbar() {
   return (
-    <header className="navbar">
-      <div className="navbar__inner">
-        <a href="/" className="navbar__logo" aria-label="Home">
+    <header className="w-full bg-white border-b border-zinc-100 sticky top-0 z-50">
+      <div className="max-w-[1440px] mx-auto h-[104px] px-28 flex items-center justify-between">
+        <a
+          href="/"
+          className="flex items-center gap-3 no-underline flex-shrink-0"
+          aria-label="Home"
+        >
           <LogoIcon />
-          <span className="navbar__logo-text">Personal</span>
+          <span className="font-bold text-xl leading-6 tracking-[-0.02em] text-black capitalize">
+            Personal
+          </span>
         </a>
 
-        <nav className="navbar__nav" aria-label="Main navigation">
-          <ul className="navbar__links">
+        <nav aria-label="Main navigation" className="flex-1 flex justify-center">
+          <ul className="flex items-center gap-10 list-none m-0 p-0">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={label}>
-                <a href={href} className="navbar__link">
+                <a
+                  href={href}
+                  className={cn(
+                    "font-semibold text-xl leading-6 tracking-[-0.02em] text-black no-underline",
+                    "hover:opacity-60 transition-opacity"
+                  )}
+                >
                   {label}
                 </a>
               </li>
@@ -51,10 +64,12 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <a href="#resume" className="navbar__resume-btn">
-          Resume
-          <Download size={16} strokeWidth={2} aria-hidden="true" />
-        </a>
+        <Button asChild className="flex-shrink-0">
+          <a href="#resume">
+            Resume
+            <Download size={16} strokeWidth={2} aria-hidden="true" />
+          </a>
+        </Button>
       </div>
     </header>
   );

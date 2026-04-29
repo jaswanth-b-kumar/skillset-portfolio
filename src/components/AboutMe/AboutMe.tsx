@@ -1,6 +1,3 @@
-import "./AboutMe.css";
-
-/* About Me illustration layers (Figma assets) */
 const bgCircle =
   "https://www.figma.com/api/mcp/asset/0cdba0b7-f2d9-4b4a-bd11-e9265043b3da";
 const charGroup4 =
@@ -20,83 +17,66 @@ const charGroup12 =
 const charGroup8 =
   "https://www.figma.com/api/mcp/asset/388bef14-b33b-4d6d-9d72-8100131c19c1";
 
+type LayerProps = {
+  src: string;
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+  alt?: string;
+};
+
+function IllusLayer({ src, top, left, width, height, alt = "" }: LayerProps) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      aria-hidden={!alt}
+      style={{ position: "absolute", top, left, width, height, objectFit: "contain" }}
+    />
+  );
+}
+
 export default function AboutMe() {
   return (
-    <section className="about" id="about">
-      <div className="about__inner">
+    <section className="bg-white w-full" id="about">
+      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-10">
         {/* Illustration */}
-        <div className="about__illustration">
-          <img
-            className="about__illus-layer about__illus-bg"
-            src={bgCircle}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g4"
-            src={charGroup4}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g5"
-            src={charGroup5}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g2"
-            src={charGroup2}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-v15"
-            src={charVector15}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g3"
-            src={charGroup3}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g6"
-            src={charGroup6}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g12"
-            src={charGroup12}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="about__illus-layer about__illus-g8"
+        <div className="relative w-[526px] h-[526px] flex-shrink-0">
+          <IllusLayer src={bgCircle} top={-2} left={-2} width={530} height={530} />
+          <IllusLayer src={charGroup4} top={234} left={50} width={353} height={331} />
+          <IllusLayer src={charGroup5} top={223} left={44} width={262} height={348} />
+          <IllusLayer src={charGroup2} top={213} left={110} width={275} height={313} />
+          <IllusLayer src={charVector15} top={228} left={208} width={267} height={327} />
+          <IllusLayer src={charGroup3} top={223} left={222} width={258} height={336} />
+          <IllusLayer src={charGroup6} top={356} left={120} width={148} height={88} />
+          <IllusLayer src={charGroup12} top={38} left={191} width={130} height={113} />
+          <IllusLayer
             src={charGroup8}
+            top={59}
+            left={203}
+            width={120}
+            height={157}
             alt="Developer character illustration"
           />
         </div>
 
-        {/* Text content */}
-        <div className="about__content">
-          <div className="about__heading">
-            <span className="about__heading-regular">About</span>
-            <span className="about__heading-bold">Me</span>
+        {/* Text */}
+        <div className="flex flex-col gap-5 flex-1 max-w-[610px]">
+          <div className="flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
+            <span className="font-normal">About</span>
+            <span className="font-extrabold">Me</span>
           </div>
 
-          <div className="about__paragraphs">
-            <p>
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               I'm a passionate, self-proclaimed designer who specializes in full
               stack development (React.js &amp; Node.js). I am very enthusiastic
               about bringing the technical and visual aspects of digital products
               to life. User experience, pixel perfect design, and writing clear,
               readable, highly performant code matters to me.
             </p>
-            <p>
+            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               I began my journey as a web developer in 2015, and since then,
               I've continued to grow and evolve as a developer, taking on new
               challenges and learning the latest technologies along the way. Now,
@@ -104,7 +84,7 @@ export default function AboutMe() {
               cutting-edge web applications using modern technologies such as
               Next.js, TypeScript, Nestjs, Tailwindcss, Supabase and much more.
             </p>
-            <p>
+            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               When I'm not in full-on developer mode, you can find me hovering
               around on twitter or on indie hacker, witnessing the journey of
               early startups or enjoying some free time. You can follow me on

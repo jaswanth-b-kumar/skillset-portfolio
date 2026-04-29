@@ -1,26 +1,28 @@
 import { useState } from "react";
-import "./Contact.css";
+import { Briefcase, GitBranch, X, Terminal } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { type LucideIcon } from "lucide-react";
 
-const linkedinIcon =
-  "https://www.figma.com/api/mcp/asset/54af594b-b293-4789-a09d-cb60260d2bbb";
-const githubIcon =
-  "https://www.figma.com/api/mcp/asset/be1aa231-6529-4677-b161-2c223c1131eb";
-const twitterIcon =
-  "https://www.figma.com/api/mcp/asset/0b0635e1-4eb5-48ce-8eda-7aef814fd28b";
-const devIcon =
-  "https://www.figma.com/api/mcp/asset/195c8775-01f6-4f57-8e2b-822f3fa28ba3";
+type SocialLink = {
+  href: string;
+  Icon: LucideIcon;
+  label: string;
+  filled: boolean;
+};
+
+const SOCIAL_LINKS: SocialLink[] = [
+  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: Briefcase, label: "LinkedIn", filled: true },
+  { href: "https://github.com/jaswanth-b-kumar", Icon: GitBranch, label: "GitHub", filled: false },
+  { href: "https://twitter.com", Icon: X, label: "Twitter", filled: false },
+  { href: "https://dev.to", Icon: Terminal, label: "Dev.to", filled: false },
+];
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    website: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", website: "", message: "" });
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
@@ -30,119 +32,87 @@ export default function Contact() {
   }
 
   return (
-    <section className="contact" id="contact">
-      <div className="contact__inner">
+    <section className="bg-white w-full" id="contact">
+      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-[60px]">
         {/* Left: Form */}
-        <div className="contact__form-col">
-          <form className="contact__form" onSubmit={handleSubmit} noValidate>
-            <div className="contact__field">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                value={form.name}
-                onChange={handleChange}
-                className="contact__input"
-                required
-              />
-            </div>
-            <div className="contact__field">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-                className="contact__input"
-                required
-              />
-            </div>
-            <div className="contact__field">
-              <input
-                type="url"
-                name="website"
-                placeholder="Your website (If exists)"
-                value={form.website}
-                onChange={handleChange}
-                className="contact__input"
-              />
-            </div>
-            <div className="contact__field">
-              <textarea
-                name="message"
-                placeholder="How can I help?*"
-                value={form.message}
-                onChange={handleChange}
-                className="contact__textarea"
-                required
-              />
-            </div>
+        <div className="flex-1 flex flex-col justify-center py-5">
+          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+            <Input
+              name="name"
+              placeholder="Your name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="url"
+              name="website"
+              placeholder="Your website (If exists)"
+              value={form.website}
+              onChange={handleChange}
+            />
+            <Textarea
+              name="message"
+              placeholder="How can I help?*"
+              value={form.message}
+              onChange={handleChange}
+              required
+            />
 
-            <div className="contact__actions">
-              <button type="submit" className="contact__submit-btn">
+            {/* Submit + socials row */}
+            <div className="flex items-center gap-6 flex-wrap">
+              <Button type="submit" className="text-xl font-semibold tracking-[0.02em]">
                 Get In Touch
-              </button>
+              </Button>
 
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social-btn contact__social-btn--filled"
-                aria-label="LinkedIn"
-              >
-                <img src={linkedinIcon} alt="LinkedIn" />
-              </a>
-              <a
-                href="https://github.com/jaswanth-b-kumar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social-btn contact__social-btn--outlined"
-                aria-label="GitHub"
-              >
-                <img src={githubIcon} alt="GitHub" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social-btn contact__social-btn--outlined"
-                aria-label="Twitter"
-              >
-                <img src={twitterIcon} alt="Twitter" />
-              </a>
-              <a
-                href="https://dev.to"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social-btn contact__social-btn--outlined"
-                aria-label="Dev.to"
-              >
-                <img src={devIcon} alt="Dev.to" />
-              </a>
+              {SOCIAL_LINKS.map(({ href, Icon, label, filled }) => (
+                <Button
+                  key={label}
+                  asChild
+                  variant={filled ? "icon" : "icon-outline"}
+                  size="icon"
+                >
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                    <Icon size={20} strokeWidth={1.75} className={filled ? "text-white" : "text-black"} />
+                  </a>
+                </Button>
+              ))}
             </div>
           </form>
         </div>
 
         {/* Right: CTA text */}
-        <div className="contact__text-col">
-          <div className="contact__cta">
-            <div className="contact__cta-heading">
-              <div className="contact__cta-line">
-                <span className="contact__cta-bold">Let's</span>
-                <span className="contact__cta-outline">talk</span>
-                <span className="contact__cta-bold">for</span>
+        <div className="flex-1 flex flex-col justify-center gap-10 py-5">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3 text-[48px] font-extrabold leading-[56px] tracking-[-0.02em]">
+              <div className="flex items-baseline gap-4 flex-wrap">
+                <span className="text-black">Let's</span>
+                <span className="text-stroke-black">talk</span>
+                <span className="text-black">for</span>
               </div>
-              <p className="contact__cta-bold">Something special</p>
+              <p className="text-black">Something special</p>
             </div>
-            <p className="contact__cta-sub">
+            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               I seek to push the limits of creativity to create high-engaging,
               user-friendly, and memorable interactive experiences.
             </p>
           </div>
 
-          <div className="contact__info">
-            <p className="contact__email">jaswanthphot@gmail.com</p>
-            <p className="contact__phone">+44 1234567890</p>
+          <div className="flex flex-col gap-4">
+            <p className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black">
+              jaswanthphot@gmail.com
+            </p>
+            <p className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black">
+              +44 1234567890
+            </p>
           </div>
         </div>
       </div>
