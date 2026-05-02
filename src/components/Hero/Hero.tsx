@@ -1,15 +1,24 @@
-import { Briefcase, GitBranch, X, Terminal } from "lucide-react";
+import { FiLinkedin } from "react-icons/fi";
+import { SiGithub, SiX, SiDevdotto } from "react-icons/si";
+import { type IconType } from "react-icons";
 import { Button } from "@/components/ui/button";
 
 const heroIllustration =
   "https://www.figma.com/api/mcp/asset/5d75fed4-13fc-4913-b592-e596608509c8";
 
-const SOCIAL_LINKS = [
-  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: Briefcase, label: "LinkedIn", filled: true },
-  { href: "https://github.com/jaswanth-b-kumar", Icon: GitBranch, label: "GitHub", filled: false },
-  { href: "https://twitter.com", Icon: X, label: "Twitter", filled: false },
-  { href: "https://dev.to", Icon: Terminal, label: "Dev.to", filled: false },
-] as const;
+type SocialLink = {
+  href: string;
+  Icon: IconType;
+  label: string;
+  filled: boolean;
+};
+
+const SOCIAL_LINKS: SocialLink[] = [
+  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: FiLinkedin, label: "LinkedIn", filled: true },
+  { href: "https://github.com/jaswanth-b-kumar", Icon: SiGithub, label: "GitHub", filled: false },
+  { href: "https://twitter.com", Icon: SiX, label: "X", filled: false },
+  { href: "https://dev.to", Icon: SiDevdotto, label: "Dev.to", filled: false },
+];
 
 export default function Hero() {
   return (
@@ -58,7 +67,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   aria-label={label}
                 >
-                  <Icon size={20} strokeWidth={1.75} className={filled ? "text-white" : "text-black"} />
+                  <Icon size={20} className={filled ? "text-white" : "text-black"} />
                 </a>
               </Button>
             ))}

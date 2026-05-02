@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { FaQuoteLeft } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 const avatar1 =
@@ -38,9 +38,8 @@ function TestimonialCard({ avatar, quote, name, role, dark = false }: Testimonia
             dark ? "bg-white" : "bg-black"
           )}
         >
-          <Quote
+          <FaQuoteLeft
             size={14}
-            strokeWidth={2}
             className={dark ? "text-black" : "text-white"}
           />
         </div>

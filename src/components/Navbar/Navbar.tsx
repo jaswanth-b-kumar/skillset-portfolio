@@ -1,4 +1,4 @@
-import { Download } from "lucide-react";
+import { FiDownload } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -67,7 +67,7 @@ export default function Navbar() {
         <Button asChild className="flex-shrink-0">
           <a href="#resume">
             Resume
-            <Download size={16} strokeWidth={2} aria-hidden="true" />
+            <FiDownload size={16} aria-hidden="true" />
           </a>
         </Button>
       </div>

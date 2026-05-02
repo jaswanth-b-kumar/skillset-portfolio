@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -106,7 +106,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   aria-label={`View ${project.title}`}
                 >
-                  <ExternalLink size={20} strokeWidth={1.5} />
+                  <FiExternalLink size={20} />
                 </a>
               </Button>
             </div>

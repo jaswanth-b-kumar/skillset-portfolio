@@ -1,16 +1,9 @@
-import {
-  type LucideIcon,
-  GitBranch,
-  Braces,
-  Palette,
-  Server,
-  BookOpen,
-  Network,
-} from "lucide-react";
+import { type IconType } from "react-icons";
+import { SiGit, SiJavascript, SiSass, SiNestjs, SiStorybook, SiSocketdotio } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 type SkillCardProps = {
-  icon: LucideIcon;
+  icon: IconType;
   label: string;
   selected?: boolean;
 };
@@ -25,7 +18,6 @@ function SkillCard({ icon: Icon, label, selected = false }: SkillCardProps) {
     >
       <Icon
         size={56}
-        strokeWidth={1.5}
         className={selected ? "text-white" : "text-black"}
       />
       <span
@@ -41,19 +33,19 @@ function SkillCard({ icon: Icon, label, selected = false }: SkillCardProps) {
 }
 
 const ROW_1: SkillCardProps[] = [
-  { icon: GitBranch, label: "Git" },
-  { icon: Braces, label: "JavaScript", selected: true },
-  { icon: Palette, label: "Sass/Scss" },
-  { icon: Server, label: "Nest.Js" },
-  { icon: BookOpen, label: "Storybook" },
+  { icon: SiGit, label: "Git" },
+  { icon: SiJavascript, label: "JavaScript", selected: true },
+  { icon: SiSass, label: "Sass/Scss" },
+  { icon: SiNestjs, label: "Nest.Js" },
+  { icon: SiStorybook, label: "Storybook" },
 ];
 
 const ROW_2: SkillCardProps[] = [
-  { icon: Server, label: "Nest.Js" },
-  { icon: GitBranch, label: "Git" },
-  { icon: BookOpen, label: "Storybook" },
-  { icon: Network, label: "Socket.io" },
-  { icon: Palette, label: "Sass/Scss" },
+  { icon: SiNestjs, label: "Nest.Js" },
+  { icon: SiGit, label: "Git" },
+  { icon: SiStorybook, label: "Storybook" },
+  { icon: SiSocketdotio, label: "Socket.io" },
+  { icon: SiSass, label: "Sass/Scss" },
 ];
 
 export default function Skills() {

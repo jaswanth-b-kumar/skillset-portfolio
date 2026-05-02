@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { Briefcase, GitBranch, X, Terminal } from "lucide-react";
+import { FiLinkedin } from "react-icons/fi";
+import { SiGithub, SiX, SiDevdotto } from "react-icons/si";
+import { type IconType } from "react-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { type LucideIcon } from "lucide-react";
 
 type SocialLink = {
   href: string;
-  Icon: LucideIcon;
+  Icon: IconType;
   label: string;
   filled: boolean;
 };
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: Briefcase, label: "LinkedIn", filled: true },
-  { href: "https://github.com/jaswanth-b-kumar", Icon: GitBranch, label: "GitHub", filled: false },
-  { href: "https://twitter.com", Icon: X, label: "Twitter", filled: false },
-  { href: "https://dev.to", Icon: Terminal, label: "Dev.to", filled: false },
+  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: FiLinkedin, label: "LinkedIn", filled: true },
+  { href: "https://github.com/jaswanth-b-kumar", Icon: SiGithub, label: "GitHub", filled: false },
+  { href: "https://twitter.com", Icon: SiX, label: "X", filled: false },
+  { href: "https://dev.to", Icon: SiDevdotto, label: "Dev.to", filled: false },
 ];
 
 export default function Contact() {
@@ -81,7 +82,7 @@ export default function Contact() {
                   size="icon"
                 >
                   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                    <Icon size={20} strokeWidth={1.75} className={filled ? "text-white" : "text-black"} />
+                    <Icon size={20} className={filled ? "text-white" : "text-black"} />
                   </a>
                 </Button>
               ))}
