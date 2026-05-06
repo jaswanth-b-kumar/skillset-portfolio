@@ -1,71 +1,100 @@
 import { FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/useInView";
 
-const imgCrypto =
-  "https://www.figma.com/api/mcp/asset/c943b0bb-aed6-4d84-8dae-48e4a20d9382";
-const imgEuphoria =
-  "https://www.figma.com/api/mcp/asset/f20694f9-37e4-45f5-9c35-3831ff0ff415";
-const imgBlog =
-  "https://www.figma.com/api/mcp/asset/3e5921a2-0c85-4ad0-abf8-5444e2d89611";
+/* Fresh Figma asset URLs (from design context) */
+const imgPoopla =
+  "https://www.figma.com/api/mcp/asset/217c39aa-82b7-49f4-bfc7-d0f5048d6e52";
+const imgLivex =
+  "https://www.figma.com/api/mcp/asset/057f7b00-9974-493a-96f9-856139ff8129";
+const imgPortfolio =
+  "https://www.figma.com/api/mcp/asset/152f6789-6ec7-4c77-865e-35b57edc212a";
 
 type Project = {
   number: string;
+  badge?: string;
   title: string;
   description: string;
+  tech: string[];
   image: string;
   imageAlt: string;
   link: string;
+  linkLabel?: string;
   reverse?: boolean;
 };
 
 const PROJECTS: Project[] = [
   {
     number: "01",
-    title: "Crypto Screener Application",
+    badge: "🏆 UK-India AIxcelerate Hackathon 2026 — 1st Place",
+    title: "Poopla — AI-Assisted Infant Gut Health Screening",
     description:
-      "I'm Evren Shah Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to specimen book.",
-    image: imgCrypto,
-    imageAlt: "Crypto Screener Application screenshot",
+      "Led full-stack AI infant gut health screening development in a 5-member team: Next.js 15 frontend, FastAPI backend, asynchronous SQS inference worker, and Terraform-managed AWS infrastructure across 7 services. Engineered authenticated and anonymous inference paths with role-based access control and a clinical review queue. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",
+    tech: ["Next.js 15", "FastAPI", "Python", "PostgreSQL", "AWS", "Terraform", "Docker"],
+    image: imgPoopla,
+    imageAlt: "Poopla app screenshot",
     link: "#",
+    linkLabel: "Code & demo available on request",
   },
   {
     number: "02",
-    title: "Euphoria - Ecommerce (Apparels) Website Template",
+    title: "Liv-ex Market Intelligence",
     description:
-      "I'm Evren Shah Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to specimen book.",
-    image: imgEuphoria,
-    imageAlt: "Euphoria Ecommerce website screenshot",
+      "Delivered a full-stack Market Intelligence editorial platform on the Liv-ex fine wine trading site (500+ daily active users). Built article cards, single article view, multi-level search and filter UI, mobile layouts, permission-gated access, and a featured section with video background — all powered by Contentful CMS. Reduced critical page-load from 8s to 3s and boosted user engagement by 15%.",
+    tech: ["React", "TypeScript", "Contentful CMS", "Redux", "Highcharts", "i18next", "AWS"],
+    image: imgLivex,
+    imageAlt: "Liv-ex Market Intelligence screenshot",
     link: "#",
+    linkLabel: "Production platform (details on request)",
     reverse: true,
   },
   {
     number: "03",
-    title: "Blog Website Template",
+    title: "Skillset Portfolio",
     description:
-      "I'm Evren Shah Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to specimen book.",
-    image: imgBlog,
-    imageAlt: "Blog website screenshot",
-    link: "#",
+      "This portfolio — built from scratch with React 18, TypeScript, Vite, and Tailwind CSS following a Figma design system. Features scroll-triggered animations, responsive layouts, and Figma-sourced assets. Deployed on GitHub Pages via CI/CD.",
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Figma"],
+    image: imgPortfolio,
+    imageAlt: "Portfolio website screenshot",
+    link: "https://jaswanth-b-kumar.github.io/skillset-portfolio/",
+    linkLabel: "View live",
   },
 ];
 
 export default function Projects() {
+  const { ref: headingRef, isVisible: headingVisible } = useInView<HTMLDivElement>();
+  const { ref: p1Ref, isVisible: p1Visible } = useInView<HTMLDivElement>(0.1);
+  const { ref: p2Ref, isVisible: p2Visible } = useInView<HTMLDivElement>(0.1);
+  const { ref: p3Ref, isVisible: p3Visible } = useInView<HTMLDivElement>(0.1);
+
+  const refs = [p1Ref, p2Ref, p3Ref];
+  const visibles = [p1Visible, p2Visible, p3Visible];
+
   return (
     <section className="bg-black w-full" id="project">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
         {/* Heading */}
-        <div className="flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5">
+        <div
+          ref={headingRef}
+          className={cn(
+            "flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
+            headingVisible && "in-view"
+          )}
+        >
           <span className="font-normal">My</span>
           <span className="font-extrabold">Projects</span>
         </div>
 
         {/* Projects list */}
-        {PROJECTS.map((project) => (
+        {PROJECTS.map((project, i) => (
           <div
             key={project.number}
+            ref={refs[i]}
             className={cn(
-              "flex items-center gap-10 py-5",
+              "flex items-center gap-10 py-5 anim-fade-up",
+              visibles[i] && "in-view",
+              i > 0 && `d-${i * 100}`,
               project.reverse && "flex-row-reverse"
             )}
           >
@@ -79,32 +108,54 @@ export default function Projects() {
               <img
                 src={project.image}
                 alt={project.imageAlt}
-                className="w-[530px] h-[398px] object-cover rounded-[18px] shadow-[0px_8px_18px_-6px_rgba(24,39,75,0.12),0px_12px_42px_-4px_rgba(24,39,75,0.12)] block"
+                className="w-[530px] h-[398px] object-cover rounded-[18px] shadow-[0px_8px_18px_-6px_rgba(24,39,75,0.24),0px_12px_42px_-4px_rgba(24,39,75,0.24)] block transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
 
             {/* Details */}
-            <div className="flex-1 flex flex-col gap-7 min-w-0">
+            <div className="flex-1 flex flex-col gap-5 min-w-0">
               <span className="text-[48px] font-extrabold leading-[56px] tracking-[-0.02em] text-white">
                 {project.number}
               </span>
+
+              {/* Badge */}
+              {project.badge && (
+                <span className="inline-flex self-start text-xs font-bold px-3 py-1.5 bg-amber-400 text-black rounded-full tracking-wide">
+                  {project.badge}
+                </span>
+              )}
+
               <h3 className="text-[32px] font-bold leading-10 tracking-[-0.02em] text-white m-0">
                 {project.title}
               </h3>
-              <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+              <p className="text-sm font-normal leading-6 tracking-[0.02em] text-zinc-400">
                 {project.description}
               </p>
+
+              {/* Tech stack */}
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-semibold px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full border border-zinc-700"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
               <Button
                 asChild
                 variant="ghost"
                 size="icon"
-                className="text-white w-5 h-5 p-0 hover:bg-transparent hover:opacity-70"
+                className="text-white w-5 h-5 p-0 hover:bg-transparent hover:opacity-70 self-start"
               >
                 <a
                   href={project.link}
-                  target="_blank"
+                  target={project.link !== "#" ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  aria-label={`View ${project.title}`}
+                  aria-label={project.linkLabel ?? `View ${project.title}`}
+                  title={project.linkLabel}
                 >
                   <FiExternalLink size={20} />
                 </a>

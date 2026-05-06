@@ -27,16 +27,16 @@ export default function Footer() {
         <a href="/" className="flex items-center gap-3 no-underline" aria-label="Home">
           <LogoIcon />
           <span className="font-bold text-xl leading-6 tracking-[-0.02em] text-white capitalize">
-            Personal
+            Jaswanth
           </span>
         </a>
 
         <div className="flex flex-col items-end gap-3">
           <p className="text-base font-semibold leading-5 tracking-[-0.02em] text-white whitespace-nowrap">
-            @ 2019-2024 Personal
+            © 2020–2026 Jaswanth Kumar Bevara
           </p>
-          <p className="text-base font-semibold leading-5 tracking-[-0.02em] text-white whitespace-nowrap">
-            Made In Figma
+          <p className="text-sm font-normal leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap">
+            Built with React · TypeScript · Vite · Tailwind CSS
           </p>
         </div>
       </div>

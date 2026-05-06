@@ -1,3 +1,6 @@
+import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/useInView";
+
 const bgCircle =
   "https://www.figma.com/api/mcp/asset/0cdba0b7-f2d9-4b4a-bd11-e9265043b3da";
 const charGroup4 =
@@ -32,17 +35,33 @@ function IllusLayer({ src, top, left, width, height, alt = "" }: LayerProps) {
       src={src}
       alt={alt}
       aria-hidden={!alt}
-      style={{ position: "absolute", top, left, width, height, objectFit: "contain" }}
+      style={{
+        position: "absolute",
+        top,
+        left,
+        width,
+        height,
+        objectFit: "contain",
+      }}
     />
   );
 }
 
 export default function AboutMe() {
+  const { ref: illusRef, isVisible: illusVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: textRef, isVisible: textVisible } = useInView<HTMLDivElement>(0.1);
+
   return (
     <section className="bg-white w-full" id="about">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-10">
         {/* Illustration */}
-        <div className="relative w-[526px] h-[526px] flex-shrink-0">
+        <div
+          ref={illusRef}
+          className={cn(
+            "relative w-[526px] h-[526px] flex-shrink-0 anim-fade-left",
+            illusVisible && "in-view"
+          )}
+        >
           <IllusLayer src={bgCircle} top={-2} left={-2} width={530} height={530} />
           <IllusLayer src={charGroup4} top={234} left={50} width={353} height={331} />
           <IllusLayer src={charGroup5} top={223} left={44} width={262} height={348} />
@@ -62,7 +81,13 @@ export default function AboutMe() {
         </div>
 
         {/* Text */}
-        <div className="flex flex-col gap-5 flex-1 max-w-[610px]">
+        <div
+          ref={textRef}
+          className={cn(
+            "flex flex-col gap-5 flex-1 max-w-[610px] anim-fade-right",
+            textVisible && "in-view"
+          )}
+        >
           <div className="flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
             <span className="font-normal">About</span>
             <span className="font-extrabold">Me</span>
@@ -70,26 +95,32 @@ export default function AboutMe() {
 
           <div className="flex flex-col gap-5">
             <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              I'm a passionate, self-proclaimed designer who specializes in full
-              stack development (React.js &amp; Node.js). I am very enthusiastic
-              about bringing the technical and visual aspects of digital products
-              to life. User experience, pixel perfect design, and writing clear,
-              readable, highly performant code matters to me.
+              I&apos;m a Senior Software Engineer with 5+ years of experience
+              building high-impact frontend products across fintech and
+              enterprise environments. I specialise in React.js, TypeScript,
+              and UI architecture, with a strong focus on performance
+              engineering and production quality. My current role at Liv-ex in
+              London places me in a lean, high-ownership setup where speed,
+              quality, and product clarity are equally important.
             </p>
             <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              I began my journey as a web developer in 2015, and since then,
-              I've continued to grow and evolve as a developer, taking on new
-              challenges and learning the latest technologies along the way. Now,
-              7 years after starting my web development journey, I'm building
-              cutting-edge web applications using modern technologies such as
-              Next.js, TypeScript, Nestjs, Tailwindcss, Supabase and much more.
+              At Liv-ex, I&apos;m one of two React developers on a fine wine
+              trading platform and have taken end-to-end ownership of the
+              Market Intelligence module — from Contentful CMS integration
+              to advanced search, real-time WebSocket features, and
+              architecture work across a React + TypeScript monorepo. I
+              shipped 10+ production features while maintaining 90% Sonar
+              coverage and 99.9% platform uptime.
             </p>
             <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              When I'm not in full-on developer mode, you can find me hovering
-              around on twitter or on indie hacker, witnessing the journey of
-              early startups or enjoying some free time. You can follow me on
-              Twitter where I share tech-related bites and build in public, or
-              you can follow me on GitHub.
+              Outside work, I won{" "}
+              <strong className="text-black">1st place</strong> at the
+              UK-India AIxcelerate Hackathon 2026 with{" "}
+              <em>Poopla</em> — an AI-assisted infant gut health screening app
+              built on Next.js 15, FastAPI, and AWS, presented at the UK AI
+              Showcase. I&apos;m passionate about AI-augmented development
+              and regularly use Claude Code and GitHub Copilot to accelerate
+              delivery.
             </p>
           </div>
         </div>

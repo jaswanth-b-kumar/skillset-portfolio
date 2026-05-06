@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FiLinkedin } from "react-icons/fi";
-import { SiGithub, SiX, SiDevdotto } from "react-icons/si";
+import { SiGithub, SiX, SiLeetcode } from "react-icons/si";
 import { type IconType } from "react-icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/useInView";
 
 type SocialLink = {
   href: string;
@@ -14,106 +16,186 @@ type SocialLink = {
 };
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { href: "https://linkedin.com/in/jaswanth-b-kumar", Icon: FiLinkedin, label: "LinkedIn", filled: true },
-  { href: "https://github.com/jaswanth-b-kumar", Icon: SiGithub, label: "GitHub", filled: false },
-  { href: "https://twitter.com", Icon: SiX, label: "X", filled: false },
-  { href: "https://dev.to", Icon: SiDevdotto, label: "Dev.to", filled: false },
+  {
+    href: "https://www.linkedin.com/in/jaswanth-bevara/",
+    Icon: FiLinkedin,
+    label: "LinkedIn",
+    filled: true,
+  },
+  {
+    href: "https://github.com/jaswanth-b-kumar",
+    Icon: SiGithub,
+    label: "GitHub",
+    filled: false,
+  },
+  {
+    href: "https://x.com/jaswanth_b_k",
+    Icon: SiX,
+    label: "X",
+    filled: false,
+  },
+  {
+    href: "https://leetcode.com/u/jaswanth-b-kumar/",
+    Icon: SiLeetcode,
+    label: "LeetCode",
+    filled: false,
+  },
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", website: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    website: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  const { ref: formRef, isVisible: formVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: ctaRef, isVisible: ctaVisible } = useInView<HTMLDivElement>(0.1);
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: wire up form submission
+    const mailto = `mailto:jaswanth.k.bevara@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${encodeURIComponent(form.email)}`;
+    window.location.href = mailto;
+    setSubmitted(true);
   }
 
   return (
     <section className="bg-white w-full" id="contact">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-[60px]">
         {/* Left: Form */}
-        <div className="flex-1 flex flex-col justify-center py-5">
-          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-            <Input
-              name="name"
-              placeholder="Your name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <Input
-              type="url"
-              name="website"
-              placeholder="Your website (If exists)"
-              value={form.website}
-              onChange={handleChange}
-            />
-            <Textarea
-              name="message"
-              placeholder="How can I help?*"
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
-
-            {/* Submit + socials row */}
-            <div className="flex items-center gap-6 flex-wrap">
-              <Button type="submit" className="text-xl font-semibold tracking-[0.02em]">
-                Get In Touch
+        <div
+          ref={formRef}
+          className={cn(
+            "flex-1 flex flex-col justify-center py-5 anim-fade-left",
+            formVisible && "in-view"
+          )}
+        >
+          {submitted ? (
+            <div className="flex flex-col gap-4 items-start">
+              <p className="text-2xl font-bold text-black">Message sent! 🎉</p>
+              <p className="text-base text-zinc-500">
+                Thank you for reaching out. I&apos;ll get back to you shortly.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setSubmitted(false);
+                  setForm({ name: "", email: "", website: "", message: "" });
+                }}
+              >
+                Send another
               </Button>
-
-              {SOCIAL_LINKS.map(({ href, Icon, label, filled }) => (
-                <Button
-                  key={label}
-                  asChild
-                  variant={filled ? "icon" : "icon-outline"}
-                  size="icon"
-                >
-                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                    <Icon size={20} className={filled ? "text-white" : "text-black"} />
-                  </a>
-                </Button>
-              ))}
             </div>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+              <Input
+                name="name"
+                placeholder="Your name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <Input
+                type="url"
+                name="website"
+                placeholder="Your website (optional)"
+                value={form.website}
+                onChange={handleChange}
+              />
+              <Textarea
+                name="message"
+                placeholder="How can I help?*"
+                value={form.message}
+                onChange={handleChange}
+                required
+              />
+
+              <div className="flex items-center gap-6 flex-wrap">
+                <Button
+                  type="submit"
+                  className="text-xl font-semibold tracking-[0.02em]"
+                >
+                  Get In Touch
+                </Button>
+
+                {SOCIAL_LINKS.map(({ href, Icon, label, filled }) => (
+                  <Button
+                    key={label}
+                    asChild
+                    variant={filled ? "icon" : "icon-outline"}
+                    size="icon"
+                  >
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
+                      <Icon
+                        size={20}
+                        className={filled ? "text-white" : "text-black"}
+                      />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </form>
+          )}
         </div>
 
         {/* Right: CTA text */}
-        <div className="flex-1 flex flex-col justify-center gap-10 py-5">
+        <div
+          ref={ctaRef}
+          className={cn(
+            "flex-1 flex flex-col justify-center gap-10 py-5 anim-fade-right",
+            ctaVisible && "in-view"
+          )}
+        >
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-3 text-[48px] font-extrabold leading-[56px] tracking-[-0.02em]">
               <div className="flex items-baseline gap-4 flex-wrap">
-                <span className="text-black">Let's</span>
+                <span className="text-black">Let&apos;s</span>
                 <span className="text-stroke-black">talk</span>
                 <span className="text-black">for</span>
               </div>
               <p className="text-black">Something special</p>
             </div>
             <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              I seek to push the limits of creativity to create high-engaging,
-              user-friendly, and memorable interactive experiences.
+              Open to senior frontend roles, interesting engineering problems,
+              and collaborations where craft and performance both matter.
+              Let&apos;s build something exceptional together.
             </p>
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black">
-              jaswanthphot@gmail.com
-            </p>
-            <p className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black">
-              +44 1234567890
-            </p>
+            <a
+              href="mailto:jaswanth.k.bevara@gmail.com"
+              className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity"
+            >
+              jaswanth.k.bevara@gmail.com
+            </a>
+            <a
+              href="tel:+4407356095607"
+              className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity"
+            >
+              +44 07356 095607
+            </a>
           </div>
         </div>
       </div>

@@ -1,118 +1,132 @@
-import { FaQuoteLeft } from "react-icons/fa";
 import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/useInView";
 
-const avatar1 =
-  "https://www.figma.com/api/mcp/asset/0b3dadc7-1470-4103-b3d1-a249d81db1f2";
-const avatar2 =
-  "https://www.figma.com/api/mcp/asset/e8824862-fac0-4b45-be87-ad7b08db6de1";
-
-type TestimonialCardProps = {
-  avatar: string;
-  quote: string;
-  name: string;
-  role: string;
+type AchievementCard = {
+  icon: string;
+  stat: string;
+  title: string;
+  description: string;
   dark?: boolean;
 };
 
-function TestimonialCard({ avatar, quote, name, role, dark = false }: TestimonialCardProps) {
+const ACHIEVEMENTS: AchievementCard[] = [
+  {
+    icon: "🏆",
+    stat: "1st Place",
+    title: "UK–India AIxcelerate\nHackathon 2026",
+    description:
+      "Won the AI category with Poopla, a Next.js 15 + FastAPI infant gut health screening app. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",
+    dark: false,
+  },
+  {
+    icon: "⚡",
+    stat: "8s → 3s",
+    title: "Page Load\nOptimization",
+    description:
+      "Reduced critical page-load time by 62% through API and rendering optimizations at Liv-ex, maintaining 99.9% production uptime across high-traffic trading workflows.",
+    dark: true,
+  },
+  {
+    icon: "📈",
+    stat: "+15% / +20%",
+    title: "Measurable\nProduct Impact",
+    description:
+      "15% user engagement increase via Market Intelligence delivery; 20% platform stickiness boost from advanced search and filter features across 500+ daily active users.",
+    dark: false,
+  },
+];
+
+function AchievementCard({ icon, stat, title, description, dark = false }: AchievementCard) {
   return (
     <div
       className={cn(
         "rounded-[20px] p-10 flex flex-col items-center gap-6 w-[370px] flex-shrink-0",
         "shadow-[0px_6px_8px_0px_rgba(24,39,75,0.12),0px_8px_16px_0px_rgba(24,39,75,0.08)]",
-        dark ? "bg-black" : "bg-white"
+        dark ? "bg-black border border-zinc-700" : "bg-white"
       )}
     >
-      {/* Avatar + quote badge */}
-      <div className="relative flex-shrink-0">
-        <img
-          src={avatar}
-          alt={name}
-          width="96"
-          height="96"
-          className="w-24 h-24 rounded-full object-cover block"
-        />
-        <div
-          className={cn(
-            "absolute -bottom-2 -right-2 w-[30px] h-[30px] rounded-full flex items-center justify-center",
-            dark ? "bg-white" : "bg-black"
-          )}
-        >
-          <FaQuoteLeft
-            size={14}
-            className={dark ? "text-black" : "text-white"}
-          />
-        </div>
+      {/* Icon */}
+      <div
+        className={cn(
+          "text-4xl w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0",
+          dark ? "bg-zinc-800" : "bg-zinc-100"
+        )}
+      >
+        {icon}
       </div>
 
+      {/* Stat */}
       <p
         className={cn(
-          "text-base font-normal leading-5 tracking-[0.02em] text-center w-full",
-          dark ? "text-white" : "text-neutral-600"
+          "text-[32px] font-extrabold leading-tight tracking-[-0.03em] text-center",
+          dark ? "text-white" : "text-black"
         )}
       >
-        {quote}
+        {stat}
       </p>
 
-      <div className={cn("w-[120px] h-0.5 flex-shrink-0", dark ? "bg-white" : "bg-black")} />
+      <div className={cn("w-[120px] h-0.5 flex-shrink-0", dark ? "bg-zinc-600" : "bg-black")} />
 
+      {/* Title */}
       <p
         className={cn(
-          "text-xl font-semibold leading-6 tracking-[-0.02em] text-center capitalize w-full",
-          dark ? "text-white" : "text-neutral-600"
+          "text-xl font-bold leading-7 text-center whitespace-pre-line",
+          dark ? "text-white" : "text-black"
         )}
       >
-        {name}
+        {title}
       </p>
 
+      {/* Description */}
       <p
         className={cn(
-          "text-base font-semibold leading-5 tracking-[-0.02em] text-center w-full",
-          dark ? "text-white" : "text-zinc-500"
+          "text-sm font-normal leading-6 tracking-[0.02em] text-center",
+          dark ? "text-zinc-400" : "text-zinc-500"
         )}
       >
-        {role}
+        {description}
       </p>
     </div>
   );
 }
 
-const TESTIMONIALS: TestimonialCardProps[] = [
-  {
-    avatar: avatar1,
-    quote: "I recently had to jump on 10+ different calls across eight different countries to find the right owner.",
-    name: "Evren Shah",
-    role: "Designer",
-  },
-  {
-    avatar: avatar2,
-    quote: "I recently had to jump on 10+ different calls across eight different countries to find the right owner.",
-    name: "Flora Sheen",
-    role: "Designer",
-    dark: true,
-  },
-  {
-    avatar: avatar1,
-    quote: "I recently had to jump on 10+ different calls across eight different countries to find the right owner.",
-    name: "Evren Shah",
-    role: "Designer",
-  },
-];
+export default function Achievements() {
+  const { ref: headingRef, isVisible: headingVisible } = useInView<HTMLDivElement>();
+  const { ref: cardsRef, isVisible: cardsVisible } = useInView<HTMLDivElement>(0.1);
 
-export default function Testimonials() {
   return (
-    <section className="bg-white w-full">
+    <section className="bg-white w-full" id="achievements">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
         {/* Heading */}
-        <div className="flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
-          <span className="font-normal">My</span>
-          <span className="font-extrabold">Testimonial</span>
+        <div
+          ref={headingRef}
+          className={cn(
+            "flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5 anim-fade-up",
+            headingVisible && "in-view"
+          )}
+        >
+          <span className="font-normal">Key</span>
+          <span className="font-extrabold">Achievements</span>
         </div>
 
         {/* Cards */}
-        <div className="flex items-center justify-between gap-6 px-6 py-10 flex-wrap">
-          {TESTIMONIALS.map((t, i) => (
-            <TestimonialCard key={`${t.name}-${i}`} {...t} />
+        <div
+          ref={cardsRef}
+          className="flex items-stretch justify-between gap-6 px-6 py-10 flex-wrap"
+        >
+          {ACHIEVEMENTS.map((a, i) => (
+            <div
+              key={a.stat}
+              className={cn(
+                "anim-scale-in",
+                i === 0 && "d-100",
+                i === 1 && "d-300",
+                i === 2 && "d-500",
+                cardsVisible && "in-view"
+              )}
+            >
+              <AchievementCard {...a} />
+            </div>
           ))}
         </div>
       </div>

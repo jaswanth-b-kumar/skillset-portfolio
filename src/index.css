@@ -40,7 +40,6 @@
 }
 
 @layer utilities {
-  /* text-stroke is not a Tailwind built-in — required for the outline heading effect */
   .text-stroke-black {
     color: transparent;
     -webkit-text-stroke: 2.5px #000000;
@@ -49,4 +48,80 @@
     color: transparent;
     -webkit-text-stroke: 2.5px #ffffff;
   }
+}
+
+/* ─── Scroll-smooth ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Keyframes ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInHero {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Animation utility classes ─── */
+.anim-fade-up   { opacity: 0; }
+.anim-fade-left { opacity: 0; }
+.anim-fade-right{ opacity: 0; }
+.anim-scale-in  { opacity: 0; }
+
+.in-view.anim-fade-up    { animation: fadeInUp   0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.in-view.anim-fade-left  { animation: fadeInLeft  0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.in-view.anim-fade-right { animation: fadeInRight 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.in-view.anim-scale-in   { animation: scaleIn    0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+/* Stagger delays */
+.d-100 { animation-delay: 0.10s; }
+.d-200 { animation-delay: 0.20s; }
+.d-300 { animation-delay: 0.30s; }
+.d-400 { animation-delay: 0.40s; }
+.d-500 { animation-delay: 0.50s; }
+.d-600 { animation-delay: 0.60s; }
+.d-700 { animation-delay: 0.70s; }
+.d-800 { animation-delay: 0.80s; }
+.d-900 { animation-delay: 0.90s; }
+
+/* Hero entrance (runs on page load, no scroll trigger needed) */
+.hero-line {
+  opacity: 0;
+  animation: slideInHero 0.75s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* Float animation for illustrations */
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Skill card hover */
+.skill-card {
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.skill-card:hover {
+  transform: translateY(-6px) scale(1.04);
 }
