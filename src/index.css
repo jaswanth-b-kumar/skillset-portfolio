@@ -125,3 +125,171 @@ html {
 .skill-card:hover {
   transform: translateY(-6px) scale(1.04);
 }
+
+/* ─── Tech Marquee ─── */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Stat pop (achievements) ─── */
+@keyframes statPop {
+  0%   { transform: scale(0.55); opacity: 0; }
+  65%  { transform: scale(1.1);  opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.anim-stat-pop { opacity: 0; }
+.in-view.anim-stat-pop {
+  animation: statPop 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── Scroll progress bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #000;
+  z-index: 9999;
+  transition: width 80ms linear;
+  transform-origin: left;
+}
+
+/* ─── Hackathon glow badge ─── */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+}
+.badge-pulse {
+  animation: badgePulse 2.4s ease-in-out infinite;
+}
+
+/* ─── Experience card left accent ─── */
+.exp-card-featured {
+  position: relative;
+}
+.exp-card-featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #7B1D1D 0%, #a83232 100%);
+  border-radius: 4px 0 0 4px;
+}
+
+/* ─── Link hover underline ─── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Hero floating chips ─── */
+@keyframes chipEnter {
+  from { opacity: 0; transform: translateY(18px) scale(0.88); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.chip-enter  { opacity: 0; animation: chipEnter 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+.chip-d1     { animation-delay: 0.75s; }
+.chip-d2     { animation-delay: 1.05s; }
+.chip-d3     { animation-delay: 1.30s; }
+.chip-d4     { animation-delay: 1.55s; }
+
+/* ─── Hero name shimmer ─── */
+@keyframes nameShimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+.name-shimmer {
+  background: linear-gradient(90deg, #000 0%, #000 30%, #5a5a5a 50%, #000 70%, #000 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nameShimmer 6s linear infinite;
+}
+
+/* ─── Skills category filter grid ─── */
+@keyframes filterGridIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.skills-grid-enter { animation: filterGridIn 0.38s cubic-bezier(0.22,1,0.36,1); }
+
+/* ─── Experience timeline line ─── */
+@keyframes timelineGrow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+.timeline-line {
+  height: 0;
+  animation: timelineGrow 1.4s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
+}
+
+/* ─── Hackathon card sweep shimmer ─── */
+@keyframes hackaShine {
+  0%   { left: -60%; }
+  100% { left: 130%; }
+}
+.hacka-card {
+  position: relative;
+  overflow: hidden;
+}
+.hacka-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  animation: hackaShine 3.5s ease-in-out 1s infinite;
+  pointer-events: none;
+}
+
+/* ─── Project card 3-D tilt on hover ─── */
+.project-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+}
+.project-card:hover {
+  transform: perspective(800px) rotateY(2deg) rotateX(1deg) scale(1.015);
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
+}
+
+/* ─── Nav link active underline ─── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.2s ease;
+}
+.nav-link:hover::after { width: 100%; }

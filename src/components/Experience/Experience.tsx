@@ -3,46 +3,28 @@ import { useInView } from "@/hooks/useInView";
 
 function LivexLogo() {
   return (
-    <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0 bg-[#7B1D1D]">
-      <span className="text-white text-[10px] font-extrabold tracking-tight leading-none">
-        LX
-      </span>
+    <div className="w-9 h-9 rounded-md flex items-center justify-center flex-shrink-0 bg-[#7B1D1D] shadow-md">
+      <span className="text-white text-xs font-extrabold tracking-tight leading-none">LX</span>
     </div>
   );
 }
 
 function AccentureLogo() {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      aria-label="Accenture"
-    >
-      <text
-        x="2"
-        y="26"
-        fontSize="28"
-        fontWeight="900"
-        fill="#A100FF"
-        fontFamily="Arial, sans-serif"
-      >
-        &gt;
-      </text>
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="Accenture">
+      <rect width="36" height="36" rx="6" fill="#1a1a1a" />
+      <text x="4" y="28" fontSize="28" fontWeight="900" fill="#A100FF" fontFamily="Arial, sans-serif">&gt;</text>
     </svg>
   );
 }
-
-type Bullet = string;
 
 type ExperienceEntry = {
   logo: React.ReactNode;
   title: string;
   company: string;
   period: string;
-  tech: string;
-  bullets: Bullet[];
+  tech: string[];
+  bullets: string[];
   highlight?: boolean;
 };
 
@@ -52,7 +34,7 @@ const EXPERIENCES: ExperienceEntry[] = [
     company: "Liv-ex Ltd.",
     title: "Software Engineer",
     period: "Jun 2024 – Present",
-    tech: "React · TypeScript · Node.js · AWS · Contentful · Highcharts · Redux · WebSocket · i18next · Claude Code",
+    tech: ["React", "TypeScript", "Redux", "Node.js", "AWS", "Contentful", "Highcharts", "WebSocket", "i18next", "Vitest", "SonarQube", "Claude Code"],
     bullets: [
       "Owned Market Intelligence end-to-end — shipped React/TypeScript features from design through production, increasing user engagement by 15%",
       "Integrated Contentful headless CMS, eliminating 1 engineering day per article across 2,000+ Market Intelligence pieces and cutting editorial dependency on engineering",
@@ -68,7 +50,7 @@ const EXPERIENCES: ExperienceEntry[] = [
     company: "Accenture",
     title: "Advanced Application Engineering Senior Analyst",
     period: "Sep 2020 – Apr 2024",
-    tech: "JavaScript · React · TypeScript · Angular · Three.js · jQuery · REST APIs · SharePoint",
+    tech: ["JavaScript", "React", "TypeScript", "Angular", "Three.js", "jQuery", "REST APIs", "SharePoint"],
     bullets: [
       "Delivered 50+ JavaScript SharePoint-hosted microsites for global stakeholders across India, US and Europe — owning the full frontend implementation lifecycle",
       "Built animation-heavy, cross-browser responsive interfaces using Three.js and Scrollify for high-engagement 2D/3D user experiences under tight release cycles",
@@ -80,13 +62,15 @@ const EXPERIENCES: ExperienceEntry[] = [
 ];
 
 export default function Experience() {
-  const { ref: headingRef, isVisible: headingVisible } = useInView<HTMLDivElement>();
-  const { ref: card1Ref, isVisible: card1Visible } = useInView<HTMLDivElement>(0.1);
-  const { ref: card2Ref, isVisible: card2Visible } = useInView<HTMLDivElement>(0.1);
+  const { ref: headingRef,  isVisible: headingVisible  } = useInView<HTMLDivElement>();
+  const { ref: achieveRef,  isVisible: achieveVisible  } = useInView<HTMLDivElement>(0.1);
+  const { ref: card1Ref,    isVisible: card1Visible    } = useInView<HTMLDivElement>(0.1);
+  const { ref: card2Ref,    isVisible: card2Visible    } = useInView<HTMLDivElement>(0.1);
 
   return (
     <section className="bg-black w-full" id="experience">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+
         {/* Heading */}
         <div
           ref={headingRef}
@@ -99,61 +83,116 @@ export default function Experience() {
           <span className="font-extrabold">Experience</span>
         </div>
 
-        {/* List */}
-        <div className="flex flex-col gap-8 px-6 py-10">
-          {EXPERIENCES.map((exp, i) => {
-            const ref = i === 0 ? card1Ref : card2Ref;
-            const visible = i === 0 ? card1Visible : card2Visible;
-            return (
-              <div
-                key={exp.company}
-                ref={ref}
-                className={cn(
-                  "rounded-[10px] p-[30px_24px] flex flex-col gap-5",
-                  "anim-fade-up",
-                  i === 1 && "d-200",
-                  visible && "in-view",
-                  exp.highlight ? "bg-zinc-800" : "border border-zinc-600"
-                )}
-              >
-                {/* Header row */}
-                <div className="flex items-start justify-between gap-6 flex-wrap">
-                  <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <div className="flex-shrink-0">{exp.logo}</div>
-                    <div className="flex flex-col gap-1">
-                      <h3 className="text-2xl font-semibold leading-7 tracking-[-0.02em] text-white m-0">
-                        {exp.title}
-                      </h3>
-                      <span className="text-sm font-semibold text-zinc-400 tracking-[0.02em]">
-                        {exp.company}
-                      </span>
+        {/* Hackathon Achievement Banner */}
+        <div
+          ref={achieveRef}
+          className={cn(
+            "hacka-card rounded-[12px] p-6 flex items-center gap-6 anim-fade-up",
+            "bg-gradient-to-r from-amber-950/60 via-amber-900/40 to-amber-950/60 border border-amber-600/50",
+            achieveVisible && "in-view d-100"
+          )}
+        >
+          <span className="text-4xl flex-shrink-0 select-none" aria-label="trophy">🏆</span>
+          <div className="flex flex-col gap-1.5 flex-1">
+            <p className="text-amber-400 font-bold text-base leading-5 tracking-wide">
+              UK-India AIxcelerate Hackathon 2026 — 1st Place
+            </p>
+            <p className="text-zinc-400 text-sm leading-5">
+              Built <span className="text-white font-semibold">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion &amp; UK AI Showcase.
+            </p>
+          </div>
+          <div className="flex-shrink-0 hidden sm:flex flex-col items-end gap-1">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-400 text-black tracking-wide badge-pulse">WINNER</span>
+            <span className="text-xs text-zinc-500 mt-1">May 2026</span>
+          </div>
+        </div>
+
+        {/* Experience timeline */}
+        <div className="relative flex gap-8 px-6 py-10">
+          {/* Timeline line */}
+          <div className="relative flex-shrink-0 w-5 flex flex-col items-center pt-6 pb-6">
+            <div className="w-px bg-zinc-700 timeline-line absolute top-6 bottom-6" />
+          </div>
+
+          {/* Cards */}
+          <div className="flex flex-col gap-8 flex-1">
+            {EXPERIENCES.map((exp, i) => {
+              const ref = i === 0 ? card1Ref : card2Ref;
+              const visible = i === 0 ? card1Visible : card2Visible;
+              return (
+                <div
+                  key={exp.company}
+                  ref={ref}
+                  className={cn(
+                    "relative rounded-[12px] p-[30px_28px] flex flex-col gap-5 transition-shadow duration-300",
+                    "anim-fade-up",
+                    i === 1 && "d-200",
+                    visible && "in-view",
+                    exp.highlight
+                      ? "bg-zinc-800 exp-card-featured card-glow-red"
+                      : "border border-zinc-700 hover:border-zinc-500"
+                  )}
+                >
+                  {/* Timeline dot */}
+                  <div
+                    className={cn(
+                      "absolute -left-[41px] top-9 w-3.5 h-3.5 rounded-full border-2 z-10",
+                      exp.highlight
+                        ? "bg-[#7B1D1D] border-[#a83232] shadow-[0_0_8px_2px_rgba(123,29,29,0.5)]"
+                        : "bg-zinc-600 border-zinc-500"
+                    )}
+                  />
+
+                  {/* Current badge */}
+                  {exp.highlight && (
+                    <span className="absolute top-4 right-4 text-xs font-bold px-2.5 py-1 rounded-full bg-[#7B1D1D]/40 text-[#e57373] border border-[#7B1D1D]/60 tracking-wide">
+                      Current
+                    </span>
+                  )}
+
+                  {/* Header row */}
+                  <div className="flex items-start justify-between gap-6 flex-wrap">
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      <div className="flex-shrink-0">{exp.logo}</div>
+                      <div className="flex flex-col gap-0.5">
+                        <h3 className="text-xl font-semibold leading-7 tracking-[-0.02em] text-white m-0">
+                          {exp.title}
+                        </h3>
+                        <span className="text-sm font-semibold text-zinc-400 tracking-[0.02em]">
+                          {exp.company}
+                        </span>
+                      </div>
                     </div>
+                    <span className="text-sm font-semibold leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap flex-shrink-0 mt-1">
+                      {exp.period}
+                    </span>
                   </div>
-                  <span className="text-sm font-semibold leading-5 tracking-[-0.02em] text-zinc-400 whitespace-nowrap flex-shrink-0 mt-1">
-                    {exp.period}
-                  </span>
+
+                  {/* Tech pills */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-zinc-700/60 text-zinc-300 border border-zinc-600/50 tracking-wide"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Bullet points */}
+                  <ul className="flex flex-col gap-2 pl-0 list-none m-0">
+                    {exp.bullets.map((b, bi) => (
+                      <li key={bi} className="text-sm font-normal leading-6 tracking-[0.02em] text-zinc-300 flex gap-3">
+                        <span className="text-zinc-500 flex-shrink-0 mt-0.5">▸</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Tech tags */}
-                <p className="text-xs font-semibold text-zinc-500 tracking-[0.04em] uppercase leading-5">
-                  {exp.tech}
-                </p>
-
-                {/* Bullet points */}
-                <ul className="flex flex-col gap-2 pl-0 list-none m-0">
-                  {exp.bullets.map((b, bi) => (
-                    <li
-                      key={bi}
-                      className="text-sm font-normal leading-6 tracking-[0.02em] text-zinc-300 flex gap-3"
-                    >
-                      <span className="text-zinc-500 flex-shrink-0 mt-0.5">▸</span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
