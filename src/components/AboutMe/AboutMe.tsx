@@ -88,7 +88,7 @@ export default function AboutMe() {
             textVisible && "in-view"
           )}
         >
-          <div className="flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
+          <div className="display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
             <span className="font-normal">About</span>
             <span className="font-extrabold">Me</span>
           </div>

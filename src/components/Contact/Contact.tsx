@@ -168,7 +168,7 @@ export default function Contact() {
           )}
         >
           <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-3 text-[48px] font-extrabold leading-[56px] tracking-[-0.02em]">
+            <div className="display-font flex flex-col gap-3 text-[48px] font-extrabold leading-[56px] tracking-[-0.02em]">
               <div className="flex items-baseline gap-4 flex-wrap">
                 <span className="text-black">Let&apos;s</span>
                 <span className="text-stroke-black">talk</span>

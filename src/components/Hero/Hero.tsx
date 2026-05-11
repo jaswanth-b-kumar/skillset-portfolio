@@ -88,14 +88,14 @@ export default function Hero() {
           <div className="flex flex-col gap-8">
             {/* Heading */}
             <div className="flex flex-col">
-              <div className="hero-line d-100 flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black">
+              <div className="hero-line d-100 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black">
                 <span className="font-normal whitespace-nowrap">Hello I&apos;m</span>
                 <span className="font-extrabold name-shimmer">Jaswanth.</span>
               </div>
-              <div className="hero-line d-200 flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em]">
+              <div className="hero-line d-200 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em]">
                 <span className="font-extrabold text-black">Senior Software</span>
               </div>
-              <div className="hero-line d-300 flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] flex-wrap">
+              <div className="hero-line d-300 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] flex-wrap">
                 <span className="font-extrabold text-stroke-black whitespace-nowrap">Engineer</span>
                 <span className="font-normal text-black whitespace-nowrap">Based In</span>
                 <span className="font-extrabold text-black whitespace-nowrap">London.</span>
@@ -170,7 +170,7 @@ export default function Hero() {
                 `d-${(i + 7) * 100}`
               )}
             >
-              <span className="text-[32px] font-extrabold leading-tight tracking-[-0.03em] text-black">
+              <span className="display-font text-[32px] font-extrabold leading-tight tracking-[-0.03em] text-black">
                 {value}
               </span>
               <span className="text-xs font-semibold tracking-widest uppercase text-zinc-500">

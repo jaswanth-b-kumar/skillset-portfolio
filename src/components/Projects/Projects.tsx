@@ -74,7 +74,7 @@ export default function Projects() {
         <div
           ref={headingRef}
           className={cn(
-            "flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
+            "display-font flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
             headingVisible && "in-view"
           )}
         >

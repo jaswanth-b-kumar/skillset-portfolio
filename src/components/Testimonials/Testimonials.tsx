@@ -101,7 +101,7 @@ export default function Achievements() {
         <div
           ref={headingRef}
           className={cn(
-            "flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5 anim-fade-up",
+            "display-font flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5 anim-fade-up",
             headingVisible && "in-view"
           )}
         >

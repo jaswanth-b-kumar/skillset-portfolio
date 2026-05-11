@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-28 py-6 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3 no-underline" aria-label="Home">
           <LogoIcon />
-          <span className="font-bold text-xl leading-6 tracking-[-0.02em] text-white capitalize">
+          <span className="display-font font-bold text-xl leading-6 tracking-[-0.02em] text-white capitalize">
             Jaswanth
           </span>
         </a>

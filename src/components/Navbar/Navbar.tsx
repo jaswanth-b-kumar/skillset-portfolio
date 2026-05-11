@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto h-[88px] px-28 flex items-center justify-between gap-8">
         <a href="/" className="flex items-center gap-3 no-underline flex-shrink-0" aria-label="Home">
           <LogoIcon />
-          <span className="font-bold text-xl leading-6 tracking-[-0.02em] text-black capitalize">
+          <span className="display-font font-bold text-xl leading-6 tracking-[-0.02em] text-black capitalize">
             Jaswanth
           </span>
         </a>
