@@ -113,8 +113,7 @@ export default function AboutMe() {
               coverage and 99.9% platform uptime.
             </p>
             <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              Outside work, I won{" "}
-              <strong className="text-black">1st place</strong> at the
+              Outside work, I reached 4th place at the
               UK-India AIxcelerate Hackathon 2026 with{" "}
               <em>Poopla</em> — an AI-assisted infant gut health screening app
               built on Next.js 15, FastAPI, and AWS, presented at the UK AI

@@ -11,11 +11,11 @@ type AchievementCard = {
 
 const ACHIEVEMENTS: AchievementCard[] = [
   {
-    icon: "🏆",
-    stat: "1st Place",
+    icon: "🎖️",
+    stat: "4th Place",
     title: "UK–India AIxcelerate\nHackathon 2026",
     description:
-      "Won the AI category with Poopla, a Next.js 15 + FastAPI infant gut health screening app. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",
+      "Built Poopla, a Next.js 15 + FastAPI infant gut health screening app, with a 5-member team. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",
     dark: false,
   },
   {

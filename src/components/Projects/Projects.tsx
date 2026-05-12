@@ -23,7 +23,7 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     number: "01",
-    badge: "🏆 UK-India AIxcelerate Hackathon 2026 — 1st Place",
+    badge: "UK-India AIxcelerate Hackathon 2026 — 4th Place",
     title: "Poopla — AI-Assisted Infant Gut Health Screening",
     description:
       "Led full-stack AI infant gut health screening development in a 5-member team: Next.js 15 frontend, FastAPI backend, asynchronous SQS inference worker, and Terraform-managed AWS infrastructure across 7 services. Engineered authenticated and anonymous inference paths with role-based access control and a clinical review queue. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",

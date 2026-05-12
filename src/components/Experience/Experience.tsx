@@ -88,21 +88,20 @@ export default function Experience() {
           ref={achieveRef}
           className={cn(
             "hacka-card rounded-[12px] p-6 flex items-center gap-6 anim-fade-up",
-            "bg-gradient-to-r from-amber-950/60 via-amber-900/40 to-amber-950/60 border border-amber-600/50",
+            "bg-zinc-800/60 border border-zinc-700/50",
             achieveVisible && "in-view d-100"
           )}
         >
-          <span className="text-4xl flex-shrink-0 select-none" aria-label="trophy">🏆</span>
+          <span className="text-3xl flex-shrink-0 select-none" aria-label="medal">🎖️</span>
           <div className="flex flex-col gap-1.5 flex-1">
-            <p className="text-amber-400 font-bold text-base leading-5 tracking-wide">
-              UK-India AIxcelerate Hackathon 2026 — 1st Place
+            <p className="text-zinc-200 font-semibold text-base leading-5 tracking-wide">
+              UK-India AIxcelerate Hackathon 2026 — 4th Place
             </p>
             <p className="text-zinc-400 text-sm leading-5">
-              Built <span className="text-white font-semibold">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion &amp; UK AI Showcase.
+              Built <span className="text-white font-medium">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion &amp; UK AI Showcase.
             </p>
           </div>
           <div className="flex-shrink-0 hidden sm:flex flex-col items-end gap-1">
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-400 text-black tracking-wide badge-pulse">WINNER</span>
             <span className="text-xs text-zinc-500 mt-1">May 2026</span>
           </div>
         </div>

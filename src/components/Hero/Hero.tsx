@@ -13,7 +13,7 @@ const ROLES = [
   "React · TypeScript Expert",
   "Fintech Platform Builder",
   "AI-Augmented Developer",
-  "Hackathon Champion 🏆",
+  "Hackathon Finalist",
 ];
 
 const STATS = [
@@ -21,7 +21,6 @@ const STATS = [
   { value: "10+",  label: "Features Shipped" },
   { value: "8s→3s",label: "Page Load Win" },
   { value: "570+", label: "Commits @ Liv-ex" },
-  { value: "#1",   label: "UK-India Hackathon" },
 ];
 
 type SocialLink = { href: string; Icon: IconType; label: string; filled: boolean };
@@ -35,7 +34,7 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 /* Floating achievement chips around the illustration */
 const CHIPS = [
-  { text: "🏆 #1 UK Hackathon", topPct: "6%",  rightPct: "-2%", dur: "6s",   offset: "-0.5s", cls: "chip-d1", rotate: "-2deg" },
+  { text: "AI Hackathon Finalist", topPct: "6%",  rightPct: "-2%", dur: "6s",   offset: "-0.5s", cls: "chip-d1", rotate: "-2deg" },
   { text: "⚡ 8s → 3s Load",    topPct: "32%", rightPct: "-8%", dur: "5.5s", offset: "-3s",   cls: "chip-d2", rotate:  "1.5deg" },
   { text: "570+ Commits",        topPct: "58%", rightPct: "-6%", dur: "7s",   offset: "-1.5s", cls: "chip-d3", rotate: "-1.5deg" },
   { text: "99.9% Uptime",        topPct: "80%", rightPct: "-2%", dur: "5s",   offset: "-2.5s", cls: "chip-d4", rotate:  "2deg" },
