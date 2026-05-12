@@ -1,52 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 
-const bgCircle =
-  "https://www.figma.com/api/mcp/asset/0cdba0b7-f2d9-4b4a-bd11-e9265043b3da";
-const charGroup4 =
-  "https://www.figma.com/api/mcp/asset/80043519-a84b-42d0-a1d8-73e371736583";
-const charGroup5 =
-  "https://www.figma.com/api/mcp/asset/a3e57f89-c325-4d55-ab27-2cdf0212083a";
-const charGroup2 =
-  "https://www.figma.com/api/mcp/asset/b35fed36-c1aa-4631-aad7-5dec97536e63";
-const charVector15 =
-  "https://www.figma.com/api/mcp/asset/adf57b6b-f236-42e1-96d4-c4a83f0c6015";
-const charGroup3 =
-  "https://www.figma.com/api/mcp/asset/15027543-1c56-4e6f-8a34-d52f0aacfcb4";
-const charGroup6 =
-  "https://www.figma.com/api/mcp/asset/ab7a3eea-bd53-45d3-b5d3-6f3642491571";
-const charGroup12 =
-  "https://www.figma.com/api/mcp/asset/407f5b31-5040-4d58-ba5b-6904174502b5";
-const charGroup8 =
-  "https://www.figma.com/api/mcp/asset/388bef14-b33b-4d6d-9d72-8100131c19c1";
-
-type LayerProps = {
-  src: string;
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-  alt?: string;
-};
-
-function IllusLayer({ src, top, left, width, height, alt = "" }: LayerProps) {
-  return (
-    <img
-      src={src}
-      alt={alt}
-      aria-hidden={!alt}
-      style={{
-        position: "absolute",
-        top,
-        left,
-        width,
-        height,
-        objectFit: "contain",
-      }}
-    />
-  );
-}
-
 export default function AboutMe() {
   const { ref: illusRef, isVisible: illusVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: textRef, isVisible: textVisible } = useInView<HTMLDivElement>(0.1);
@@ -54,30 +8,102 @@ export default function AboutMe() {
   return (
     <section className="bg-white w-full" id="about">
       <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-10">
-        {/* Illustration */}
+        {/* Terminal illustration */}
         <div
           ref={illusRef}
           className={cn(
-            "relative w-[526px] h-[526px] flex-shrink-0 anim-fade-left",
+            "relative w-[526px] h-[526px] flex-shrink-0 anim-fade-left rounded-[24px] overflow-hidden bg-zinc-950 flex flex-col",
             illusVisible && "in-view"
           )}
         >
-          <IllusLayer src={bgCircle} top={-2} left={-2} width={530} height={530} />
-          <IllusLayer src={charGroup4} top={234} left={50} width={353} height={331} />
-          <IllusLayer src={charGroup5} top={223} left={44} width={262} height={348} />
-          <IllusLayer src={charGroup2} top={213} left={110} width={275} height={313} />
-          <IllusLayer src={charVector15} top={228} left={208} width={267} height={327} />
-          <IllusLayer src={charGroup3} top={223} left={222} width={258} height={336} />
-          <IllusLayer src={charGroup6} top={356} left={120} width={148} height={88} />
-          <IllusLayer src={charGroup12} top={38} left={191} width={130} height={113} />
-          <IllusLayer
-            src={charGroup8}
-            top={59}
-            left={203}
-            width={120}
-            height={157}
-            alt="Developer character illustration"
-          />
+          {/* Title bar */}
+          <div className="flex items-center gap-2 px-5 py-3.5 bg-zinc-900 border-b border-zinc-800">
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            <span className="ml-3 text-xs text-zinc-500 font-mono tracking-wide">jaswanth.ts</span>
+          </div>
+
+          {/* Code body */}
+          <div className="flex-1 px-6 py-5 font-mono text-sm leading-7 select-none overflow-hidden">
+            <p>
+              <span className="text-purple-400">const </span>
+              <span className="text-sky-300">developer</span>
+              <span className="text-zinc-500"> = </span>
+              <span className="text-yellow-300">{"{"}</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">name</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-orange-300">"Jaswanth B Kumar"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">role</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-orange-300">"Senior SWE"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">location</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-orange-300">"London 🇬🇧"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">yearsExp</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-cyan-400">5</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">stack</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-yellow-300">{"["}</span>
+            </p>
+            <p className="pl-12">
+              <span className="text-orange-300">"React"</span>
+              <span className="text-zinc-500">, </span>
+              <span className="text-orange-300">"TypeScript"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-12">
+              <span className="text-orange-300">"Node.js"</span>
+              <span className="text-zinc-500">, </span>
+              <span className="text-orange-300">"AWS"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-12">
+              <span className="text-orange-300">"FastAPI"</span>
+              <span className="text-zinc-500">, </span>
+              <span className="text-orange-300">"Python"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-yellow-300">{"]"}</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p className="pl-6">
+              <span className="text-emerald-400">passion</span>
+              <span className="text-zinc-500">: </span>
+              <span className="text-orange-300">"AI-augmented dev"</span>
+              <span className="text-zinc-500">,</span>
+            </p>
+            <p>
+              <span className="text-yellow-300">{"}"}</span>
+              <span className="text-zinc-500">;</span>
+            </p>
+            <div className="mt-4 border-t border-zinc-800 pt-4">
+              <p><span className="text-zinc-600">{"// "}</span><span className="text-zinc-400">99.9% uptime maintained</span></p>
+              <p><span className="text-zinc-600">{"// "}</span><span className="text-zinc-400">10+ features shipped</span></p>
+            </div>
+          </div>
+
+          {/* Blinking cursor */}
+          <div className="px-6 pb-5 font-mono text-sm flex items-center gap-1">
+            <span className="text-zinc-500">{">"}</span>
+            <div className="w-2 h-4 bg-white/70 animate-pulse" />
+          </div>
         </div>
 
         {/* Text */}

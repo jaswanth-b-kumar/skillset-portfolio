@@ -4,9 +4,7 @@ import { SiGithub, SiX, SiLeetcode } from "react-icons/si";
 import { type IconType } from "react-icons";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const heroIllustration =
-  "https://www.figma.com/api/mcp/asset/58ef063b-d805-4447-a892-95a2d8e15ba7";
+import heroIllustration from "@/assets/designer-working.svg";
 
 const ROLES = [
   "Senior Software Engineer",
@@ -19,8 +17,7 @@ const ROLES = [
 const STATS = [
   { value: "5+",   label: "Years Exp." },
   { value: "10+",  label: "Features Shipped" },
-  { value: "8s→3s",label: "Page Load Win" },
-  { value: "570+", label: "Commits @ Liv-ex" },
+  { value: "8s→3s",label: "Page Load Win" }
 ];
 
 type SocialLink = { href: string; Icon: IconType; label: string; filled: boolean };
@@ -32,13 +29,6 @@ const SOCIAL_LINKS: SocialLink[] = [
   { href: "https://leetcode.com/u/jaswanth-b-kumar/",     Icon: SiLeetcode,  label: "LeetCode", filled: false },
 ];
 
-/* Floating achievement chips around the illustration */
-const CHIPS = [
-  { text: "AI Hackathon Finalist", topPct: "6%",  rightPct: "-2%", dur: "6s",   offset: "-0.5s", cls: "chip-d1", rotate: "-2deg" },
-  { text: "⚡ 8s → 3s Load",    topPct: "32%", rightPct: "-8%", dur: "5.5s", offset: "-3s",   cls: "chip-d2", rotate:  "1.5deg" },
-  { text: "570+ Commits",        topPct: "58%", rightPct: "-6%", dur: "7s",   offset: "-1.5s", cls: "chip-d3", rotate: "-1.5deg" },
-  { text: "99.9% Uptime",        topPct: "80%", rightPct: "-2%", dur: "5s",   offset: "-2.5s", cls: "chip-d4", rotate:  "2deg" },
-];
 
 function CyclingRole() {
   const [idx, setIdx] = useState(0);
@@ -104,7 +94,7 @@ export default function Hero() {
             <p className="hero-line d-400 text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               Senior Software Engineer with 5+ years shipping scalable React and
               TypeScript products for fintech platforms. I turn complex
-              requirements into elegant, performant user interfaces — from
+              requirements into elegant, performant user interfaces from
               live trading dashboards to AI-powered applications.
             </p>
 
@@ -126,34 +116,12 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Illustration + floating chips */}
-        <div className="relative flex-[0_0_600px] max-w-[600px] flex items-center justify-end hero-line d-200">
-          {/* Achievement chips */}
-          {CHIPS.map((chip) => (
-            <div
-              key={chip.text}
-              className={cn("chip-enter absolute z-10", chip.cls)}
-              style={{ top: chip.topPct, right: chip.rightPct }}
-            >
-              <div
-                className="animate-float"
-                style={{ animationDuration: chip.dur, animationDelay: chip.offset }}
-              >
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-black rounded-full text-xs font-bold tracking-wide text-black shadow-[2px_4px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap"
-                  style={{ transform: `rotate(${chip.rotate})`, display: "inline-flex" }}
-                >
-                  {chip.text}
-                </span>
-              </div>
-            </div>
-          ))}
-
+        {/* Right: Illustration */}
+        <div className="flex-[0_0_600px] max-w-[600px] flex items-center justify-end hero-line d-200">
           <img
             src={heroIllustration}
             alt="Developer at work"
-            className="w-full h-auto max-w-[500px] block animate-float relative z-0"
-            style={{ animationDuration: "5s", animationDelay: "-1.5s" }}
+            className="w-full h-auto block"
           />
         </div>
       </div>

@@ -1,5 +1,3 @@
-import { FiExternalLink } from "react-icons/fi";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 
@@ -136,22 +134,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              <Button
-                asChild
-                variant="ghost"
-                size="icon"
-                className="text-white w-5 h-5 p-0 hover:bg-transparent hover:opacity-70 self-start"
-              >
-                <a
-                  href={project.link}
-                  target={project.link !== "#" ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  aria-label={project.linkLabel ?? `View ${project.title}`}
-                  title={project.linkLabel}
-                >
-                  <FiExternalLink size={20} />
-                </a>
-              </Button>
             </div>
           </div>
         ))}

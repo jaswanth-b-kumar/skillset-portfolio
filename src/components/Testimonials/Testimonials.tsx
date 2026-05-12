@@ -112,7 +112,7 @@ export default function Achievements() {
         {/* Cards */}
         <div
           ref={cardsRef}
-          className="flex items-stretch justify-between gap-6 px-6 py-10 flex-wrap"
+          className="flex items-stretch justify-center gap-8 py-10 flex-wrap"
         >
           {ACHIEVEMENTS.map((a, i) => (
             <div
