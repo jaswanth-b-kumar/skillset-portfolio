@@ -7,12 +7,12 @@ export default function AboutMe() {
 
   return (
     <section className="bg-white w-full" id="about">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-10">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-10 md:py-[60px] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10">
         {/* Terminal illustration */}
         <div
           ref={illusRef}
           className={cn(
-            "relative w-[526px] h-[526px] flex-shrink-0 anim-fade-left rounded-[24px] overflow-hidden bg-zinc-950 flex flex-col",
+            "relative w-full md:w-[526px] md:h-[526px] md:flex-shrink-0 anim-fade-left rounded-[24px] overflow-hidden bg-zinc-950 flex flex-col",
             illusVisible && "in-view"
           )}
         >
@@ -25,7 +25,7 @@ export default function AboutMe() {
           </div>
 
           {/* Code body */}
-          <div className="flex-1 px-6 py-5 font-mono text-sm leading-7 select-none overflow-hidden">
+          <div className="flex-1 px-5 md:px-6 py-4 md:py-5 font-mono text-xs md:text-sm leading-6 md:leading-7 select-none overflow-hidden">
             <p>
               <span className="text-purple-400">const </span>
               <span className="text-sky-300">developer</span>
@@ -100,7 +100,7 @@ export default function AboutMe() {
           </div>
 
           {/* Blinking cursor */}
-          <div className="px-6 pb-5 font-mono text-sm flex items-center gap-1">
+          <div className="px-5 md:px-6 pb-4 md:pb-5 font-mono text-sm flex items-center gap-1">
             <span className="text-zinc-500">{">"}</span>
             <div className="w-2 h-4 bg-white/70 animate-pulse" />
           </div>
@@ -110,17 +110,17 @@ export default function AboutMe() {
         <div
           ref={textRef}
           className={cn(
-            "flex flex-col gap-5 flex-1 max-w-[610px] anim-fade-right",
+            "flex flex-col gap-5 w-full md:flex-1 md:max-w-[610px] anim-fade-right",
             textVisible && "in-view"
           )}
         >
-          <div className="display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5">
+          <div className="display-font flex items-baseline gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-black py-5">
             <span className="font-normal">About</span>
             <span className="font-extrabold">Me</span>
           </div>
 
           <div className="flex flex-col gap-5">
-            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+            <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               I&apos;m a Senior Software Engineer with 5+ years of experience
               building high-impact frontend products across fintech and
               enterprise environments. I specialise in React.js, TypeScript,
@@ -129,7 +129,7 @@ export default function AboutMe() {
               London places me in a lean, high-ownership setup where speed,
               quality, and product clarity are equally important.
             </p>
-            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+            <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               At Liv-ex, I&apos;m one of two React developers on a fine wine
               trading platform and have taken end-to-end ownership of the
               Market Intelligence module — from Contentful CMS integration
@@ -138,7 +138,7 @@ export default function AboutMe() {
               shipped 10+ production features while maintaining 90% Sonar
               coverage and 99.9% platform uptime.
             </p>
-            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+            <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               Outside work, I reached 4th place at the
               UK-India AIxcelerate Hackathon 2026 with{" "}
               <em>Poopla</em> — an AI-assisted infant gut health screening app

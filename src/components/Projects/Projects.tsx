@@ -67,12 +67,12 @@ export default function Projects() {
 
   return (
     <section className="bg-black w-full" id="project">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-10 md:py-[60px] flex flex-col gap-5">
         {/* Heading */}
         <div
           ref={headingRef}
           className={cn(
-            "display-font flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
+            "display-font flex items-baseline justify-center gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
             headingVisible && "in-view"
           )}
         >
@@ -86,29 +86,30 @@ export default function Projects() {
             key={project.number}
             ref={refs[i]}
             className={cn(
-              "flex items-center gap-10 py-5 anim-fade-up",
+              "flex flex-col md:flex-row items-center gap-7 md:gap-10 py-5 anim-fade-up",
               visibles[i] && "in-view",
               i > 0 && `d-${i * 100}`,
-              project.reverse && "flex-row-reverse"
+              /* reverse only on desktop */
+              project.reverse && "md:flex-row-reverse"
             )}
           >
-            {/* Image with 3-D tilt */}
+            {/* Image */}
             <div
               className={cn(
-                "flex-[0_0_594px] h-[476px] flex items-center overflow-hidden project-card",
-                project.reverse && "justify-end"
+                "w-full md:flex-[0_0_594px] md:h-[476px] flex items-center overflow-hidden project-card",
+                project.reverse && "md:justify-end"
               )}
             >
               <img
                 src={project.image}
                 alt={project.imageAlt}
-                className="w-[530px] h-[398px] object-cover rounded-[18px] shadow-[0px_8px_18px_-6px_rgba(24,39,75,0.24),0px_12px_42px_-4px_rgba(24,39,75,0.24)] block"
+                className="w-full h-[220px] sm:h-[280px] md:w-[530px] md:h-[398px] object-cover rounded-[18px] shadow-[0px_8px_18px_-6px_rgba(24,39,75,0.24),0px_12px_42px_-4px_rgba(24,39,75,0.24)] block"
               />
             </div>
 
             {/* Details */}
-            <div className="flex-1 flex flex-col gap-5 min-w-0">
-              <span className="text-[48px] font-extrabold leading-[56px] tracking-[-0.02em] text-white">
+            <div className="flex-1 flex flex-col gap-4 md:gap-5 min-w-0 w-full">
+              <span className="text-[32px] md:text-[48px] font-extrabold leading-tight md:leading-[56px] tracking-[-0.02em] text-white">
                 {project.number}
               </span>
 
@@ -118,7 +119,7 @@ export default function Projects() {
                 </span>
               )}
 
-              <h3 className="text-[32px] font-bold leading-10 tracking-[-0.02em] text-white m-0">
+              <h3 className="text-xl md:text-[32px] font-bold leading-tight md:leading-10 tracking-[-0.02em] text-white m-0">
                 {project.title}
               </h3>
               <p className="text-sm font-normal leading-6 tracking-[0.02em] text-zinc-400">

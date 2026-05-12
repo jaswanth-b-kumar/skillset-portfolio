@@ -10,7 +10,6 @@ import { FaAws } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 
-/* Text-based icon factory for tools without react-icons entries */
 function makeTextIcon(text: string) {
   return function TextIcon({ size = 40, className }: { size?: number; className?: string }) {
     return (
@@ -83,7 +82,9 @@ function SkillCard({ icon: Icon, label, selected = false, delayClass = "", isVis
   return (
     <div
       className={cn(
-        "skill-card group flex flex-col items-center justify-center gap-8 w-[186px] h-[186px] p-6 border-2 border-black rounded-[4px] flex-shrink-0 cursor-default",
+        "skill-card group flex flex-col items-center justify-center gap-4 md:gap-8",
+        "w-full aspect-square md:w-[186px] md:h-[186px] md:aspect-auto",
+        "p-4 md:p-6 border-2 border-black rounded-[4px] cursor-default",
         "anim-scale-in",
         delayClass,
         isVisible && "in-view",
@@ -93,13 +94,13 @@ function SkillCard({ icon: Icon, label, selected = false, delayClass = "", isVis
       <Icon
         size={56}
         className={cn(
-          "transition-colors duration-200",
+          "transition-colors duration-200 shrink-0",
           selected ? "text-white" : "text-black group-hover:text-white"
         )}
       />
       <span
         className={cn(
-          "text-xl font-bold leading-6 tracking-[-0.02em] text-center capitalize w-full transition-colors duration-200",
+          "text-base md:text-xl font-bold leading-tight md:leading-6 tracking-[-0.02em] text-center capitalize w-full transition-colors duration-200",
           selected ? "text-white" : "text-black group-hover:text-white"
         )}
       >
@@ -129,12 +130,12 @@ export default function Skills() {
 
   return (
     <section className="bg-white w-full" id="skills">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-10 md:py-[60px] flex flex-col gap-5">
         {/* Heading */}
         <div
           ref={headingRef}
           className={cn(
-            "display-font flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black py-5 anim-fade-up",
+            "display-font flex items-baseline justify-center gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-black py-5 anim-fade-up",
             headingVisible && "in-view"
           )}
         >
@@ -145,7 +146,7 @@ export default function Skills() {
         {/* Category filter tabs */}
         <div
           className={cn(
-            "flex items-center justify-center gap-3 flex-wrap pb-2 anim-fade-up",
+            "flex items-center justify-center gap-2 md:gap-3 flex-wrap pb-2 anim-fade-up",
             headingVisible && "in-view d-200"
           )}
         >
@@ -154,7 +155,7 @@ export default function Skills() {
               key={cat}
               onClick={() => handleCategoryChange(cat)}
               className={cn(
-                "px-5 py-2 text-sm font-semibold tracking-tight rounded-full border-2 transition-all duration-200 whitespace-nowrap",
+                "px-3 md:px-5 py-1.5 md:py-2 text-xs md:text-sm font-semibold tracking-tight rounded-full border-2 transition-all duration-200 whitespace-nowrap",
                 activeCategory === cat
                   ? "bg-black text-white border-black scale-105"
                   : "bg-white text-black border-black hover:bg-zinc-100 hover:scale-105"
@@ -165,11 +166,11 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills grid */}
+        {/* Skills grid — 2 cols on mobile, wrap on desktop */}
         <div ref={sectionRef}>
           <div
             key={filterKey}
-            className="skills-grid-enter flex items-center justify-center flex-wrap gap-4 py-5"
+            className="skills-grid-enter grid grid-cols-2 gap-4 md:flex md:items-center md:justify-center md:flex-wrap md:gap-4 py-5"
           >
             {filtered.map((skill, i) => (
               <SkillCard

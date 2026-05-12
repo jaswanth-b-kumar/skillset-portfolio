@@ -23,19 +23,19 @@ function LogoIcon() {
 export default function Footer() {
   return (
     <footer className="bg-black w-full">
-      <div className="max-w-[1440px] mx-auto px-28 py-6 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3 no-underline" aria-label="Home">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-5 md:py-6 flex items-center justify-between gap-4">
+        <a href="/" className="flex items-center gap-2 md:gap-3 no-underline" aria-label="Home">
           <LogoIcon />
-          <span className="display-font font-bold text-xl leading-6 tracking-[-0.02em] text-white capitalize">
+          <span className="display-font font-bold text-lg md:text-xl leading-6 tracking-[-0.02em] text-white capitalize">
             Jaswanth
           </span>
         </a>
 
-        <div className="flex flex-col items-end gap-3">
-          <p className="text-base font-semibold leading-5 tracking-[-0.02em] text-white whitespace-nowrap">
+        <div className="flex flex-col items-end gap-1 md:gap-3">
+          <p className="text-xs md:text-base font-semibold leading-5 tracking-[-0.02em] text-white text-right">
             © 2020–2026 Jaswanth Kumar Bevara
           </p>
-          <p className="text-sm font-normal leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap">
+          <p className="hidden md:block text-sm font-normal leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap">
             Built with React · TypeScript · Vite · Tailwind CSS
           </p>
         </div>

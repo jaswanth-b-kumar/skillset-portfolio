@@ -69,13 +69,13 @@ export default function Experience() {
 
   return (
     <section className="bg-black w-full" id="experience">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex flex-col gap-5">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-10 md:py-[60px] flex flex-col gap-5">
 
         {/* Heading */}
         <div
           ref={headingRef}
           className={cn(
-            "display-font flex items-baseline justify-center gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
+            "display-font flex items-baseline justify-center gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-white py-5 anim-fade-up",
             headingVisible && "in-view"
           )}
         >
@@ -87,17 +87,17 @@ export default function Experience() {
         <div
           ref={achieveRef}
           className={cn(
-            "hacka-card rounded-[12px] p-6 flex items-center gap-6 anim-fade-up",
+            "hacka-card rounded-[12px] p-5 md:p-6 flex items-start md:items-center gap-4 md:gap-6 anim-fade-up",
             "bg-zinc-800/60 border border-zinc-700/50",
             achieveVisible && "in-view d-100"
           )}
         >
-          <span className="text-3xl flex-shrink-0 select-none" aria-label="medal">🎖️</span>
+          <span className="text-3xl flex-shrink-0 select-none mt-0.5 md:mt-0" aria-label="medal">🎖️</span>
           <div className="flex flex-col gap-1.5 flex-1">
-            <p className="text-zinc-200 font-semibold text-base leading-5 tracking-wide">
+            <p className="text-zinc-200 font-semibold text-sm md:text-base leading-5 tracking-wide">
               UK-India AIxcelerate Hackathon 2026 — 4th Place
             </p>
-            <p className="text-zinc-400 text-sm leading-5">
+            <p className="text-zinc-400 text-xs md:text-sm leading-5">
               Built <span className="text-white font-medium">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion &amp; UK AI Showcase.
             </p>
           </div>
@@ -106,15 +106,15 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Experience timeline */}
-        <div className="relative flex gap-8 px-6 py-10">
-          {/* Timeline line */}
-          <div className="relative flex-shrink-0 w-5 flex flex-col items-center pt-6 pb-6">
+        {/* Experience timeline — desktop shows side line, mobile is just stacked cards */}
+        <div className="relative flex gap-8 px-0 md:px-6 py-6 md:py-10">
+          {/* Timeline line — desktop only */}
+          <div className="hidden md:flex relative flex-shrink-0 w-5 flex-col items-center pt-6 pb-6">
             <div className="w-px bg-zinc-700 timeline-line absolute top-6 bottom-6" />
           </div>
 
           {/* Cards */}
-          <div className="flex flex-col gap-8 flex-1">
+          <div className="flex flex-col gap-6 md:gap-8 flex-1">
             {EXPERIENCES.map((exp, i) => {
               const ref = i === 0 ? card1Ref : card2Ref;
               const visible = i === 0 ? card1Visible : card2Visible;
@@ -123,7 +123,7 @@ export default function Experience() {
                   key={exp.company}
                   ref={ref}
                   className={cn(
-                    "relative rounded-[12px] p-[30px_28px] flex flex-col gap-5 transition-shadow duration-300",
+                    "relative rounded-[12px] p-5 md:p-[30px_28px] flex flex-col gap-4 md:gap-5 transition-shadow duration-300",
                     "anim-fade-up",
                     i === 1 && "d-200",
                     visible && "in-view",
@@ -132,10 +132,10 @@ export default function Experience() {
                       : "border border-zinc-700 hover:border-zinc-500"
                   )}
                 >
-                  {/* Timeline dot */}
+                  {/* Timeline dot — desktop only */}
                   <div
                     className={cn(
-                      "absolute -left-[41px] top-9 w-3.5 h-3.5 rounded-full border-2 z-10",
+                      "hidden md:block absolute -left-[41px] top-9 w-3.5 h-3.5 rounded-full border-2 z-10",
                       exp.highlight
                         ? "bg-[#7B1D1D] border-[#a83232] shadow-[0_0_8px_2px_rgba(123,29,29,0.5)]"
                         : "bg-zinc-600 border-zinc-500"
@@ -150,11 +150,11 @@ export default function Experience() {
                   )}
 
                   {/* Header row */}
-                  <div className="flex items-start justify-between gap-6 flex-wrap">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 flex-wrap">
                     <div className="flex items-center gap-4 flex-1 min-w-0">
                       <div className="flex-shrink-0">{exp.logo}</div>
                       <div className="flex flex-col gap-0.5">
-                        <h3 className="text-xl font-semibold leading-7 tracking-[-0.02em] text-white m-0">
+                        <h3 className="text-base md:text-xl font-semibold leading-6 md:leading-7 tracking-[-0.02em] text-white m-0">
                           {exp.title}
                         </h3>
                         <span className="text-sm font-semibold text-zinc-400 tracking-[0.02em]">
@@ -162,7 +162,7 @@ export default function Experience() {
                         </span>
                       </div>
                     </div>
-                    <span className="text-sm font-semibold leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap flex-shrink-0 mt-1">
+                    <span className="text-xs md:text-sm font-semibold leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap flex-shrink-0 md:mt-1">
                       {exp.period}
                     </span>
                   </div>
@@ -172,7 +172,7 @@ export default function Experience() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-zinc-700/60 text-zinc-300 border border-zinc-600/50 tracking-wide"
+                        className="text-[10px] md:text-[11px] font-semibold px-2 md:px-2.5 py-0.5 rounded-full bg-zinc-700/60 text-zinc-300 border border-zinc-600/50 tracking-wide"
                       >
                         {t}
                       </span>
@@ -182,7 +182,7 @@ export default function Experience() {
                   {/* Bullet points */}
                   <ul className="flex flex-col gap-2 pl-0 list-none m-0">
                     {exp.bullets.map((b, bi) => (
-                      <li key={bi} className="text-sm font-normal leading-6 tracking-[0.02em] text-zinc-300 flex gap-3">
+                      <li key={bi} className="text-xs md:text-sm font-normal leading-5 md:leading-6 tracking-[0.02em] text-zinc-300 flex gap-3">
                         <span className="text-zinc-500 flex-shrink-0 mt-0.5">▸</span>
                         <span>{b}</span>
                       </li>

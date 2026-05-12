@@ -69,12 +69,12 @@ export default function Contact() {
 
   return (
     <section className="bg-white w-full" id="contact">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-[60px]">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-10 md:py-[60px] flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-[60px]">
         {/* Left: Form */}
         <div
           ref={formRef}
           className={cn(
-            "flex-1 flex flex-col justify-center py-5 anim-fade-left",
+            "w-full md:flex-1 flex flex-col justify-center py-5 anim-fade-left",
             formVisible && "in-view"
           )}
         >
@@ -126,10 +126,10 @@ export default function Contact() {
                 required
               />
 
-              <div className="flex items-center gap-6 flex-wrap">
+              <div className="flex items-center gap-4 md:gap-6 flex-wrap">
                 <Button
                   type="submit"
-                  className="text-xl font-semibold tracking-[0.02em]"
+                  className="text-base md:text-xl font-semibold tracking-[0.02em]"
                 >
                   Get In Touch
                 </Button>
@@ -163,36 +163,36 @@ export default function Contact() {
         <div
           ref={ctaRef}
           className={cn(
-            "flex-1 flex flex-col justify-center gap-10 py-5 anim-fade-right",
+            "w-full md:flex-1 flex flex-col justify-center gap-8 md:gap-10 py-5 anim-fade-right",
             ctaVisible && "in-view"
           )}
         >
-          <div className="flex flex-col gap-5">
-            <div className="display-font flex flex-col gap-3 text-[48px] font-extrabold leading-[56px] tracking-[-0.02em]">
-              <div className="flex items-baseline gap-4 flex-wrap">
+          <div className="flex flex-col gap-4 md:gap-5">
+            <div className="display-font flex flex-col gap-2 md:gap-3 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] font-extrabold tracking-[-0.02em]">
+              <div className="flex items-baseline gap-3 md:gap-4 flex-wrap">
                 <span className="text-black">Let&apos;s</span>
                 <span className="text-stroke-black">talk</span>
                 <span className="text-black">for</span>
               </div>
               <p className="text-black">Something special</p>
             </div>
-            <p className="text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+            <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               Open to senior frontend roles, interesting engineering problems,
               and collaborations where craft and performance both matter.
               Let&apos;s build something exceptional together.
             </p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 md:gap-4">
             <a
               href="mailto:jaswanth.k.bevara@gmail.com"
-              className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity"
+              className="text-lg md:text-[28px] font-semibold leading-7 md:leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity break-all"
             >
               jaswanth.k.bevara@gmail.com
             </a>
             <a
               href="tel:+4407356095607"
-              className="text-[28px] font-semibold leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity"
+              className="text-lg md:text-[28px] font-semibold leading-7 md:leading-8 tracking-[-0.02em] text-black hover:opacity-70 transition-opacity"
             >
               +44 07356 095607
             </a>

@@ -58,10 +58,19 @@ function CyclingRole() {
 export default function Hero() {
   return (
     <section className="bg-white w-full overflow-hidden" id="home">
-      <div className="max-w-[1440px] mx-auto px-28 py-[60px] flex items-center justify-between gap-10">
+      <div className="max-w-[1440px] mx-auto px-4 py-10 md:px-28 md:py-[60px] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10">
+
+        {/* Mobile: illustration first (above text) */}
+        <div className="w-[284px] h-[284px] md:hidden flex items-center justify-center flex-shrink-0">
+          <img
+            src={heroIllustration}
+            alt="Developer at work"
+            className="w-full h-full block"
+          />
+        </div>
 
         {/* Left: Text + Socials */}
-        <div className="flex flex-col gap-10 flex-[0_0_600px] max-w-[600px]">
+        <div className="flex flex-col gap-6 md:gap-10 w-full md:flex-[0_0_600px] md:max-w-[600px]">
 
           {/* Status badge + cycling role */}
           <div className="hero-line d-50 flex items-center gap-3 flex-wrap">
@@ -74,24 +83,24 @@ export default function Hero() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-5 md:gap-8">
             {/* Heading */}
             <div className="flex flex-col">
-              <div className="hero-line d-100 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] text-black">
+              <div className="hero-line d-100 display-font flex items-baseline gap-3 md:gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] text-black">
                 <span className="font-normal whitespace-nowrap">Hello I&apos;m</span>
                 <span className="font-extrabold name-shimmer">Jaswanth.</span>
               </div>
-              <div className="hero-line d-200 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em]">
+              <div className="hero-line d-200 display-font flex items-baseline gap-3 md:gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em]">
                 <span className="font-extrabold text-black">Senior Software</span>
               </div>
-              <div className="hero-line d-300 display-font flex items-baseline gap-4 text-[48px] leading-[56px] tracking-[-0.02em] flex-wrap">
+              <div className="hero-line d-300 display-font flex items-baseline gap-3 md:gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] flex-wrap">
                 <span className="font-extrabold text-stroke-black whitespace-nowrap">Engineer</span>
                 <span className="font-normal text-black whitespace-nowrap">Based In</span>
                 <span className="font-extrabold text-black whitespace-nowrap">London.</span>
               </div>
             </div>
 
-            <p className="hero-line d-400 text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
+            <p className="hero-line d-400 text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               Senior Software Engineer with 5+ years shipping scalable React and
               TypeScript products for fintech platforms. I turn complex
               requirements into elegant, performant user interfaces from
@@ -105,7 +114,7 @@ export default function Hero() {
           </div>
 
           {/* Social links */}
-          <div className="hero-line d-600 flex items-center gap-8">
+          <div className="hero-line d-600 flex items-center gap-5 md:gap-8">
             {SOCIAL_LINKS.map(({ href, Icon, label, filled }) => (
               <Button key={label} asChild variant={filled ? "icon" : "icon-outline"} size="icon">
                 <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
@@ -116,8 +125,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Illustration */}
-        <div className="flex-[0_0_600px] max-w-[600px] flex items-center justify-end hero-line d-200">
+        {/* Desktop: illustration right */}
+        <div className="hidden md:flex flex-[0_0_600px] max-w-[600px] items-center justify-end hero-line d-200">
           <img
             src={heroIllustration}
             alt="Developer at work"
@@ -128,19 +137,19 @@ export default function Hero() {
 
       {/* Stats bar */}
       <div className="border-t-2 border-black bg-white">
-        <div className="max-w-[1440px] mx-auto px-28 py-8 flex items-center justify-between gap-4 flex-wrap">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-28 py-6 md:py-8 flex items-center justify-between gap-4 flex-wrap">
           {STATS.map(({ value, label }, i) => (
             <div
               key={label}
               className={cn(
-                "flex flex-col items-center gap-1 flex-1 min-w-[100px] anim-stat-pop hero-line",
+                "flex flex-col items-center gap-1 flex-1 min-w-[80px] anim-stat-pop hero-line",
                 `d-${(i + 7) * 100}`
               )}
             >
-              <span className="display-font text-[32px] font-extrabold leading-tight tracking-[-0.03em] text-black">
+              <span className="display-font text-[24px] md:text-[32px] font-extrabold leading-tight tracking-[-0.03em] text-black">
                 {value}
               </span>
-              <span className="text-xs font-semibold tracking-widest uppercase text-zinc-500">
+              <span className="text-[10px] md:text-xs font-semibold tracking-widest uppercase text-zinc-500">
                 {label}
               </span>
             </div>
