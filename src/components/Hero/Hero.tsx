@@ -108,7 +108,7 @@ export default function Hero() {
             </p>
 
             <p className="hero-line d-500 text-sm font-semibold leading-5 tracking-[0.02em] text-zinc-400 italic">
-              &ldquo;A UI is a conversation between a machine and a human. I just
+              &ldquo;An application is a conversation between a machine and a human. I just
               make sure it&rsquo;s a polite and beautiful one.&rdquo;
             </p>
           </div>
