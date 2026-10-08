@@ -101,8 +101,8 @@ export default function Hero() {
             </div>
 
             <p className="hero-line d-400 text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              Senior Software Engineer with 5+ years shipping scalable React and
-              TypeScript products for fintech platforms. I turn complex
+              Senior Software Engineer with 6+ years shipping scalable React and
+              TypeScript products with Nest.js backend for fintech platforms. I turn complex
               requirements into elegant, performant user interfaces from
               live trading dashboards to AI-powered applications.
             </p>

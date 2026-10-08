@@ -121,7 +121,7 @@ export default function AboutMe() {
 
           <div className="flex flex-col gap-5">
             <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              I&apos;m a Senior Software Engineer with 5+ years of experience
+              I&apos;m a Senior Software Engineer with 6+ years of experience
               building high-impact frontend products across fintech and
               enterprise environments. I specialise in React.js, TypeScript,
               and UI architecture, with a strong focus on performance
