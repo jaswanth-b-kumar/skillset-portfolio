@@ -4,7 +4,7 @@ import {
   SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiPython,
   SiRedux, SiNextdotjs, SiAngular, SiFastapi, SiDocker, SiGit,
   SiTerraform, SiJest, SiGraphql, SiPostgresql, SiVitest,
-  SiSass, SiVite, SiContentful,
+  SiSass, SiVite, SiContentful, SiNestjs, SiPrisma, SiGithubactions,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { cn } from "@/lib/utils";
@@ -42,7 +42,7 @@ type Skill = {
 
 const SKILLS: Skill[] = [
   { icon: SiReact,         label: "React.js",      cats: ["Frontend"] },
-  { icon: SiTypescript,    label: "TypeScript",     cats: ["Frontend"] },
+  { icon: SiTypescript,    label: "TypeScript",     cats: ["Frontend", "Backend"] },
   { icon: SiJavascript,    label: "JavaScript",     cats: ["Frontend"] },
   { icon: SiRedux,         label: "Redux",          cats: ["Frontend"] },
   { icon: SiNextdotjs,     label: "Next.js",        cats: ["Frontend", "Backend"] },
@@ -50,14 +50,17 @@ const SKILLS: Skill[] = [
   { icon: SiSass,          label: "SCSS",           cats: ["Frontend"] },
   { icon: HighchartsIcon,  label: "Highcharts",     cats: ["Frontend"] },
   { icon: SiNodedotjs,     label: "Node.js",        cats: ["Backend"] },
+  { icon: SiNestjs,        label: "NestJS",         cats: ["Backend"] },
+  { icon: SiPostgresql,    label: "PostgreSQL",     cats: ["Backend"] },
+  { icon: SiPrisma,        label: "Prisma",         cats: ["Backend"] },
   { icon: SiPython,        label: "Python",         cats: ["Backend"] },
   { icon: SiFastapi,       label: "FastAPI",        cats: ["Backend"] },
   { icon: SiGraphql,       label: "GraphQL",        cats: ["Backend"] },
-  { icon: SiPostgresql,    label: "PostgreSQL",     cats: ["Backend"] },
   { icon: WebSocketIcon,   label: "WebSocket",      cats: ["Backend"] },
   { icon: FaAws,           label: "AWS",            cats: ["Cloud & Tools"] },
   { icon: SiDocker,        label: "Docker",         cats: ["Cloud & Tools"] },
   { icon: SiTerraform,     label: "Terraform",      cats: ["Cloud & Tools"] },
+  { icon: SiGithubactions, label: "GitHub Actions", cats: ["Cloud & Tools"] },
   { icon: SiGit,           label: "Git",            cats: ["Cloud & Tools"] },
   { icon: SiVite,          label: "Vite",           cats: ["Cloud & Tools"] },
   { icon: SiContentful,    label: "Contentful",     cats: ["Cloud & Tools"] },
@@ -166,7 +169,7 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills grid — 2 cols on mobile, wrap on desktop */}
+        {/* Skills grid: 2 cols on mobile, wrap on desktop */}
         <div ref={sectionRef}>
           <div
             key={filterKey}

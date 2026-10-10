@@ -13,9 +13,9 @@ const ACHIEVEMENTS: AchievementCard[] = [
   {
     icon: "🎖️",
     stat: "4th Place",
-    title: "UK–India AIxcelerate\nHackathon 2026",
+    title: "UK-India AIxcelerate\nHackathon 2026",
     description:
-      "Built Poopla, a Next.js 15 + FastAPI infant gut health screening app, with a 5-member team. Presented the production-deployed system at the UK Pavilion and UK AI Showcase.",
+      "Built Poopla, a Next.js 15 + FastAPI infant gut health screening app, with a 5-member team. Presented the production-deployed system at the UK Pavilion at the AI Summit in Delhi, India, in February 2026.",
     dark: false,
   },
   {

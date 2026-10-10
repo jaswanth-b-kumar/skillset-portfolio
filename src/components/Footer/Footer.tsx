@@ -33,7 +33,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-end gap-1 md:gap-3">
           <p className="text-xs md:text-base font-semibold leading-5 tracking-[-0.02em] text-white text-right">
-            © 2020–2026 Jaswanth Kumar Bevara
+            © 2020-2026 Jaswanth Kumar Bevara
           </p>
           <p className="hidden md:block text-sm font-normal leading-5 tracking-[-0.02em] text-zinc-500 whitespace-nowrap">
             Built with React · TypeScript · Vite · Tailwind CSS

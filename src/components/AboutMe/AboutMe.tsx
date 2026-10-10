@@ -41,7 +41,7 @@ export default function AboutMe() {
             <p className="pl-6">
               <span className="text-emerald-400">role</span>
               <span className="text-zinc-500">: </span>
-              <span className="text-orange-300">"Senior SWE"</span>
+              <span className="text-orange-300">"Senior Full Stack SWE"</span>
               <span className="text-zinc-500">,</span>
             </p>
             <p className="pl-6">
@@ -53,7 +53,7 @@ export default function AboutMe() {
             <p className="pl-6">
               <span className="text-emerald-400">yearsExp</span>
               <span className="text-zinc-500">: </span>
-              <span className="text-cyan-400">5</span>
+              <span className="text-cyan-400">6</span>
               <span className="text-zinc-500">,</span>
             </p>
             <p className="pl-6">
@@ -68,15 +68,15 @@ export default function AboutMe() {
               <span className="text-zinc-500">,</span>
             </p>
             <p className="pl-12">
-              <span className="text-orange-300">"Node.js"</span>
+              <span className="text-orange-300">"NestJS"</span>
               <span className="text-zinc-500">, </span>
-              <span className="text-orange-300">"AWS"</span>
+              <span className="text-orange-300">"PostgreSQL"</span>
               <span className="text-zinc-500">,</span>
             </p>
             <p className="pl-12">
-              <span className="text-orange-300">"FastAPI"</span>
+              <span className="text-orange-300">"Node.js"</span>
               <span className="text-zinc-500">, </span>
-              <span className="text-orange-300">"Python"</span>
+              <span className="text-orange-300">"AWS"</span>
               <span className="text-zinc-500">,</span>
             </p>
             <p className="pl-6">
@@ -95,7 +95,7 @@ export default function AboutMe() {
             </p>
             <div className="mt-4 border-t border-zinc-800 pt-4">
               <p><span className="text-zinc-600">{"// "}</span><span className="text-zinc-400">99.9% uptime maintained</span></p>
-              <p><span className="text-zinc-600">{"// "}</span><span className="text-zinc-400">10+ features shipped</span></p>
+              <p><span className="text-zinc-600">{"// "}</span><span className="text-zinc-400">15+ features shipped</span></p>
             </div>
           </div>
 
@@ -121,29 +121,34 @@ export default function AboutMe() {
 
           <div className="flex flex-col gap-5">
             <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              I&apos;m a Senior Software Engineer with 6+ years of experience
-              building high-impact frontend products across fintech and
-              enterprise environments. I specialise in React.js, TypeScript,
-              and UI architecture, with a strong focus on performance
-              engineering and production quality. My current role at Liv-ex in
-              London places me in a lean, high-ownership setup where speed,
-              quality, and product clarity are equally important.
+              I&apos;m a Senior Full Stack Engineer with 6+ years of experience
+              across fintech and enterprise products. I started out on the
+              frontend and it&apos;s still where I&apos;m strongest. These
+              days I also design the database, write the NestJS APIs and
+              handle the AWS deployment for the features I build. I care
+              about performance and about code that holds up in production.
+              At Liv-ex in London I work in a small team where each engineer
+              owns their features from start to finish.
             </p>
             <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              At Liv-ex, I&apos;m one of two React developers on a fine wine
-              trading platform and have taken end-to-end ownership of the
-              Market Intelligence module — from Contentful CMS integration
-              to advanced search, real-time WebSocket features, and
-              architecture work across a React + TypeScript monorepo. I
-              shipped 10+ production features while maintaining 90% Sonar
-              coverage and 99.9% platform uptime.
+              Liv-ex runs a trading platform for fine wine, and right now I
+              work on its finance and settlement system. I built core parts
+              of the NestJS finance service, including the charge data model,
+              settlement charge generation, net statements and contra review.
+              I also built the React screens that sit on top of it and set up
+              its deployment to AWS. Before that I owned the Market
+              Intelligence module, where I integrated Contentful CMS and
+              built advanced search and real-time WebSocket features. Over
+              that time I shipped 15+ production features while keeping Sonar
+              coverage at 90% and platform uptime at 99.9%.
             </p>
             <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
               Outside work, I reached 4th place at the
               UK-India AIxcelerate Hackathon 2026 with{" "}
-              <em>Poopla</em> — an AI-assisted infant gut health screening app
-              built on Next.js 15, FastAPI, and AWS, presented at the UK AI
-              Showcase. I&apos;m passionate about AI-augmented development
+              <em>Poopla</em>, an AI-assisted infant gut health screening app
+              built on Next.js 15, FastAPI, and AWS. We presented it at the UK
+              Pavilion at the AI Summit in Delhi, India, in February 2026.
+              I&apos;m passionate about AI-augmented development
               and regularly use Claude Code and GitHub Copilot to accelerate
               delivery.
             </p>

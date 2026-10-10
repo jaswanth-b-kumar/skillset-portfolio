@@ -43,7 +43,6 @@
 }
 .anim-react    { animation: popIn 0.65s 0.15s cubic-bezier(0.17,0.67,0.3,1.4) both, floatB 5.0s  0.8s ease-in-out infinite; }
 .anim-node     { animation: popIn 0.65s 0.30s cubic-bezier(0.17,0.67,0.3,1.4) both, floatA 4.6s  1.0s ease-in-out infinite; }
-.anim-python   { animation: popIn 0.65s 0.50s cubic-bezier(0.17,0.67,0.3,1.4) both, floatC 4.2s  1.2s ease-in-out infinite; }
 .anim-aws      { animation: popIn 0.60s 0.05s cubic-bezier(0.17,0.67,0.3,1.4) both, floatA 5.6s  0.7s ease-in-out infinite; }
 .anim-html     { animation: popIn 0.60s 0.20s cubic-bezier(0.17,0.67,0.3,1.4) both, floatD 4.9s  0.9s ease-in-out infinite; }
 .anim-apis     { animation: popIn 0.60s 0.40s cubic-bezier(0.17,0.67,0.3,1.4) both, floatD 5.3s  1.1s ease-in-out infinite; }
@@ -89,18 +88,6 @@
 <g id="javascript init" class="anim-icon anim-js">
 <path id="Vector 148" d="M421.806 154.711C420.81 163.949 422.547 192.389 406.857 190.619C403.586 190.25 400.615 189.703 399.061 186.622C397.434 183.395 396.088 180.587 395.926 176.922C395.727 172.419 397.519 170.294 401.16 168.262C402.437 167.55 399.693 170.435 399.45 170.714C397.85 172.552 403.279 170.311 405.354 169.852" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path id="Vector 149" d="M441.948 159.15C434.012 159.892 422.811 161.397 421.531 171.324C420.837 176.709 428.843 177.363 432.318 179.198C438.288 182.349 442.819 192.626 436.122 197.148C431.464 200.293 427.942 198.622 423.411 198.936C418.809 199.255 422.013 197.559 424.742 197.094" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g id="python" class="anim-icon anim-python">
-<path id="Vector 159" d="M96.5263 108.998C97.7186 113.497 102.322 130.225 103.424 136.337C106.456 153.165 101.698 130.203 101.686 137.635" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 160" d="M88.4463 116.272C88.0397 109.425 86.5036 99.9213 96.1052 100.9C100.622 101.36 105.598 104.041 108.414 107.628C112.766 113.171 110.47 121.764 105.768 126.175C103.265 128.523 100.837 129.699 97.5621 130.587C92.0139 132.091 96.3926 124.385 97.286 122.273" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 161" d="M113.419 124.64C122.959 124.13 131.741 122.252 135.154 132.598C137.137 138.611 139.552 145.916 137.899 152.253C136.405 157.979 133.187 161.558 127.304 159.119C118.896 155.634 118.908 149.072 123.484 142.528C125.169 140.119 131.621 135.294 131.626 132.477" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 162" d="M130.614 113.476C130.289 115.986 130.284 133.743 125.478 133.913C124.577 133.945 123.82 134.414 123.033 134.806C120.007 136.313 121.848 134.957 122.977 133.389C125.536 129.837 130.718 131.149 133.312 126.436C136.13 121.317 137.428 118.799 133.388 114.839C130.558 112.064 131.801 107.343 129.572 113.995" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 163" d="M144.694 97.3615C148.382 105.662 151.751 116.472 157.666 123.698C159.229 125.607 160.107 123.945 160.083 122.458C160.053 120.579 159.523 118.683 158.978 116.904" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 164" d="M133.989 118.947C139.839 116.645 154.204 114.316 156.652 107.01" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 165" d="M151.982 97.6332C177.338 141.985 152.634 110.812 165.522 102.701C173.345 97.7773 173.998 120.983 176.166 110.945" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 166" d="M174.627 96.1073C175.547 98.8582 178.637 117.016 185.07 112.868C187.946 111.013 191.296 107.477 191.85 104C192.446 100.27 190.115 90.7943 184.842 91.8146C182.436 92.2802 178.412 92.3927 176.842 94.6794C175.324 96.8898 174.367 102.066 176.188 96.6303" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 167" d="M192.593 91.7111C199.784 87.0947 208.235 85.579 209.329 96.4513C209.467 97.8157 209.492 99.5343 210.118 100.79C210.843 102.247 209.353 97.2298 207.941 96.4202" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector 168" d="M192.066 95.8746C192.391 101.558 191.579 109.257 194.234 114.588C194.325 114.771 194.956 116.161 194.638 115.399C194.008 113.891 193.748 112.867 192.562 111.231" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <g id="apis" class="anim-icon anim-apis">
 <path id="Vector 188" d="M342.539 9.29854C344.649 18.8043 347.025 28.3317 348.421 37.9812C349.201 43.3717 347.489 35.5931 347.276 34.4934C346.815 32.1129 346.287 30.0041 346.287 27.57C346.287 22.6709 346.156 17.717 345.792 12.8123C345.538 9.37905 341.321 -0.844002 346.651 7.68482C352.086 16.3813 355.924 25.9961 359.613 35.4825C360.121 36.7897 360.826 38.0286 361.383 39.2825C361.687 39.9675 355.982 34.3917 353.783 33.192" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

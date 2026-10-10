@@ -9,6 +9,14 @@ function LivexLogo() {
   );
 }
 
+function CarpeDiemLogo() {
+  return (
+    <div className="w-9 h-9 rounded-md flex items-center justify-center flex-shrink-0 bg-[#563ee8] shadow-md">
+      <span className="text-white text-xs font-extrabold tracking-tight leading-none">CD</span>
+    </div>
+  );
+}
+
 function AccentureLogo() {
   return (
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="Accenture">
@@ -33,14 +41,17 @@ const EXPERIENCES: ExperienceEntry[] = [
     logo: <LivexLogo />,
     company: "Liv-ex Ltd.",
     title: "Software Engineer",
-    period: "Jun 2024 – Present",
-    tech: ["React", "TypeScript", "Redux", "Node.js", "AWS", "Contentful", "Highcharts", "WebSocket", "i18next", "Vitest", "SonarQube", "Claude Code"],
+    period: "Jun 2024 - Present",
+    tech: ["React", "TypeScript", "NestJS", "Node.js", "PostgreSQL", "Prisma", "AWS", "Docker", "Terraform", "Redux", "Contentful", "Highcharts", "WebSocket", "Vitest", "SonarQube", "Claude Code"],
     bullets: [
-      "Owned Market Intelligence end-to-end — shipped React/TypeScript features from design through production, increasing user engagement by 15%",
-      "Integrated Contentful headless CMS, eliminating 1 engineering day per article across 2,000+ Market Intelligence pieces and cutting editorial dependency on engineering",
-      "Shipped 10+ platform features: Advanced Search (3 phases), WebSocket-driven Market Price Confidence, Offex data integration, and Highcharts visualizations — boosting platform stickiness by 20%",
+      "Built core modules of a new finance service in NestJS, Prisma and PostgreSQL, including the charge data model and 15+ REST endpoints documented in OpenAPI. Every change is written to an audit trail",
+      "Automated settlement charges so that one API call raises the wine, commission and settlement fee charges for both sides of a trade. It handles 7 currencies and stores the FX and commission rate each charge was priced at",
+      "Wrote the net position and contra review logic, which works out what each member owes from their invoices, credit notes and payments. Row locks, repeatable-read transactions and CHECK constraints stop concurrent edits from corrupting a balance",
+      "Set up the service's deployment to Amazon EKS with Docker, Terraform (Aurora PostgreSQL and IAM), GitHub Actions and Argo CD. Also designed the Debezium CDC connectors that bring FX and commission data in from other services",
+      "Built the staff screens in the React + TypeScript monorepo (lvx5): the transaction list and its filters, global search, login routing and the charge forms. Added shared UI primitives, theming and i18n across 2 app contexts",
+      "Owned the Market Intelligence frontend, which raised user engagement by 15%. Integrated the Contentful headless CMS and saved 1 engineering day per article across 2,000+ pieces",
+      "Shipped 10+ platform features, including Advanced Search (3 phases), WebSocket-driven Market Price Confidence, Offex data integration and Highcharts visualizations, and boosted platform stickiness by 20%",
       "Reduced critical page-load from 8s → 3s through API and rendering optimizations, maintaining 99.9% uptime on high-traffic trading workflows",
-      "Contributed to React + TypeScript monorepo (lvx5): shared UI primitives, theming, i18n, infinite-scroll table interactions across 2 app contexts",
       "Maintained 90% Sonar coverage; incorporated Claude Code and GitHub Copilot to accelerate PR-ready delivery and cut boilerplate effort",
     ],
     highlight: true,
@@ -49,14 +60,29 @@ const EXPERIENCES: ExperienceEntry[] = [
     logo: <AccentureLogo />,
     company: "Accenture",
     title: "Advanced Application Engineering Senior Analyst",
-    period: "Sep 2020 – Apr 2024",
+    period: "Sep 2020 - Apr 2024",
     tech: ["JavaScript", "React", "TypeScript", "Angular", "Three.js", "jQuery", "REST APIs", "SharePoint"],
     bullets: [
-      "Delivered 50+ JavaScript SharePoint-hosted microsites for global stakeholders across India, US and Europe — owning the full frontend implementation lifecycle",
+      "Delivered 50+ JavaScript SharePoint-hosted microsites for global stakeholders across India, US and Europe, owning the full frontend implementation lifecycle",
       "Built animation-heavy, cross-browser responsive interfaces using Three.js and Scrollify for high-engagement 2D/3D user experiences under tight release cycles",
       "Promoted to Senior Analyst: led React-based design library development providing 1,000+ reusable UI templates, reducing frontend widget effort by 70%",
       "Mentored junior developers, led code reviews, and drove sprint planning for a team of 8, accelerating application performance by 20%",
       "Architected TypeScript and Angular frontend for an internal finance application, improving page load times by 25%",
+    ],
+  },
+  {
+    logo: <CarpeDiemLogo />,
+    company: "CarpeDiem UK",
+    title: "Freelance UI/UX and Backend Engineer",
+    period: "Dec 2025 - Aug 2026",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Figma", "REST API (FastAPI)", "PostgreSQL", "Prisma", "Terraform", "GitHub Actions"],
+    bullets: [
+      "Designed and built the member-facing UI for a London experiences marketplace in Next.js, TypeScript and Tailwind CSS, working mobile first from Figma designs",
+      "Redesigned the landing page, pin cards, pin detail modal and plan pages, including a video banner, a carousel and full-screen video",
+      "Built the reviews feature across UI and API. Members review a pin with photos and videos, and admins read reviews grouped by pin, export them to CSV and switch reviews on or off",
+      "Added shareable pin links with readable slugs that open for visitors who are not signed in, along with pin requests, a bucket list page and Collections",
+      "Part-time backend work on the API and delivery: admin tools for users, pins and offers, feature flags, end-to-end tests and a Terraform apply workflow for staging and production",
+      "Worked as a freelancer using AI-accelerated development, with 150+ commits across UI, API and infrastructure",
     ],
   },
 ];
@@ -66,6 +92,10 @@ export default function Experience() {
   const { ref: achieveRef,  isVisible: achieveVisible  } = useInView<HTMLDivElement>(0.1);
   const { ref: card1Ref,    isVisible: card1Visible    } = useInView<HTMLDivElement>(0.1);
   const { ref: card2Ref,    isVisible: card2Visible    } = useInView<HTMLDivElement>(0.1);
+  const { ref: card3Ref,    isVisible: card3Visible    } = useInView<HTMLDivElement>(0.1);
+
+  const cardRefs     = [card1Ref,     card2Ref,     card3Ref];
+  const cardVisibles = [card1Visible, card2Visible, card3Visible];
 
   return (
     <section className="bg-black w-full" id="experience">
@@ -95,10 +125,10 @@ export default function Experience() {
           <span className="text-3xl flex-shrink-0 select-none mt-0.5 md:mt-0" aria-label="medal">🎖️</span>
           <div className="flex flex-col gap-1.5 flex-1">
             <p className="text-zinc-200 font-semibold text-sm md:text-base leading-5 tracking-wide">
-              UK-India AIxcelerate Hackathon 2026 — 4th Place
+              4th Place at the UK-India AIxcelerate Hackathon 2026
             </p>
             <p className="text-zinc-400 text-xs md:text-sm leading-5">
-              Built <span className="text-white font-medium">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion &amp; UK AI Showcase.
+              Built <span className="text-white font-medium">Poopla</span>, an AI-assisted infant gut health screening app with Next.js 15, FastAPI, Python &amp; AWS across 7 services. Presented at the UK Pavilion at the AI Summit in Delhi, India, in February 2026.
             </p>
           </div>
           <div className="flex-shrink-0 hidden sm:flex flex-col items-end gap-1">
@@ -106,9 +136,9 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Experience timeline — desktop shows side line, mobile is just stacked cards */}
+        {/* Experience timeline: desktop shows side line, mobile is just stacked cards */}
         <div className="relative flex gap-8 px-0 md:px-6 py-6 md:py-10">
-          {/* Timeline line — desktop only */}
+          {/* Timeline line, desktop only */}
           <div className="hidden md:flex relative flex-shrink-0 w-5 flex-col items-center pt-6 pb-6">
             <div className="w-px bg-zinc-700 timeline-line absolute top-6 bottom-6" />
           </div>
@@ -116,8 +146,8 @@ export default function Experience() {
           {/* Cards */}
           <div className="flex flex-col gap-6 md:gap-8 flex-1">
             {EXPERIENCES.map((exp, i) => {
-              const ref = i === 0 ? card1Ref : card2Ref;
-              const visible = i === 0 ? card1Visible : card2Visible;
+              const ref = cardRefs[i];
+              const visible = cardVisibles[i];
               return (
                 <div
                   key={exp.company}
@@ -125,14 +155,14 @@ export default function Experience() {
                   className={cn(
                     "relative rounded-[12px] p-5 md:p-[30px_28px] flex flex-col gap-4 md:gap-5 transition-shadow duration-300",
                     "anim-fade-up",
-                    i === 1 && "d-200",
+                    i > 0 && "d-200",
                     visible && "in-view",
                     exp.highlight
                       ? "bg-zinc-800 exp-card-featured card-glow-red"
                       : "border border-zinc-700 hover:border-zinc-500"
                   )}
                 >
-                  {/* Timeline dot — desktop only */}
+                  {/* Timeline dot, desktop only */}
                   <div
                     className={cn(
                       "hidden md:block absolute -left-[41px] top-9 w-3.5 h-3.5 rounded-full border-2 z-10",

@@ -7,17 +7,17 @@ import { cn } from "@/lib/utils";
 import heroIllustration from "@/assets/designer-working.svg";
 
 const ROLES = [
-  "Senior Software Engineer",
-  "React · TypeScript Expert",
+  "Senior Full Stack Engineer",
+  "React · NestJS · PostgreSQL",
   "Fintech Platform Builder",
   "AI-Augmented Developer",
   "Hackathon Finalist",
 ];
 
 const STATS = [
-  { value: "5+",   label: "Years Exp." },
-  { value: "10+",  label: "Features Shipped" },
-  { value: "8s→3s",label: "Page Load Win" }
+  { value: "6+",   label: "Years Exp." },
+  { value: "15+",  label: "Features Shipped" },
+  { value: "50+",  label: "Microsites Worked On" }
 ];
 
 type SocialLink = { href: string; Icon: IconType; label: string; filled: boolean };
@@ -91,7 +91,7 @@ export default function Hero() {
                 <span className="font-extrabold name-shimmer">Jaswanth.</span>
               </div>
               <div className="hero-line d-200 display-font flex items-baseline gap-3 md:gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em]">
-                <span className="font-extrabold text-black">Senior Software</span>
+                <span className="font-extrabold text-black">Senior Full Stack</span>
               </div>
               <div className="hero-line d-300 display-font flex items-baseline gap-3 md:gap-4 text-[28px] leading-[34px] md:text-[48px] md:leading-[56px] tracking-[-0.02em] flex-wrap">
                 <span className="font-extrabold text-stroke-black whitespace-nowrap">Engineer</span>
@@ -101,10 +101,12 @@ export default function Hero() {
             </div>
 
             <p className="hero-line d-400 text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              Senior Software Engineer with 6+ years shipping scalable React and
-              TypeScript products with Nest.js backend for fintech platforms. I turn complex
-              requirements into elegant, performant user interfaces from
-              live trading dashboards to AI-powered applications.
+              I&apos;m a full stack engineer with 6+ years of experience
+              building products for fintech platforms. I write TypeScript on
+              both sides of the app, with React in the browser, NestJS and
+              PostgreSQL behind it, and AWS to run it all. I like owning a
+              feature all the way through, from the database schema to the
+              screen people use.
             </p>
 
             <p className="hero-line d-500 text-sm font-semibold leading-5 tracking-[0.02em] text-zinc-400 italic">

@@ -177,7 +177,7 @@ export default function Contact() {
               <p className="text-black">Something special</p>
             </div>
             <p className="text-sm md:text-base font-normal leading-6 tracking-[0.02em] text-zinc-500">
-              Open to senior frontend roles, interesting engineering problems,
+              Open to senior full stack roles, interesting engineering problems,
               and collaborations where craft and performance both matter.
               Let&apos;s build something exceptional together.
             </p>
